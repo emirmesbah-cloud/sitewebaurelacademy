@@ -1,0 +1,55 @@
+# ============================================================================
+# Validation HTML/CSS du site web statique
+# Pas de déploiement auto (cPanel = upload manuel pour l'instant).
+# Sert juste à attraper les erreurs HTML basiques avant prod.
+# ============================================================================
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  html-check:
+    name: HTML & links sanity check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Liste des fichiers HTML
+        run: |
+          echo "## HTML files in repo" >> $GITHUB_STEP_SUMMARY
+          find . -name "*.html" -not -path "./node_modules/*" | sort >> $GITHUB_STEP_SUMMARY
+
+      - name: Vérifie qu'aucun fichier HTML n'a de DOCTYPE manquant
+        run: |
+          missing=$(find . -name "*.html" -not -path "./node_modules/*" | xargs -I {} sh -c 'head -1 {} | grep -qi "<!DOCTYPE" || echo {}')
+          if [ -n "$missing" ]; then
+            echo "❌ Fichiers HTML sans DOCTYPE :"
+            echo "$missing"
+            exit 1
+          fi
+          echo "✅ Tous les fichiers HTML ont un DOCTYPE."
+
+      - name: Vérifie qu'aucun fichier ne contient TODO_FILL ou FIXME critique
+        run: |
+          if grep -rn "TODO_CRITICAL\|FIXME_CRITICAL" --include="*.html" --include="*.css" --include="*.js" .; then
+            echo "❌ Marqueurs TODO_CRITICAL ou FIXME_CRITICAL trouvés"
+            exit 1
+          fi
+          echo "✅ Pas de TODO bloquant."
+
+      - name: Compte les ressources critiques
+        run: |
+          fonts=$(ls -1 assets/fonts/*.woff2 2>/dev/null | wc -l)
+          html=$(find . -name "*.html" | wc -l)
+          echo "## Stats" >> $GITHUB_STEP_SUMMARY
+          echo "- Fonts woff2 : $fonts" >> $GITHUB_STEP_SUMMARY
+          echo "- HTML files : $html" >> $GITHUB_STEP_SUMMARY
+          if [ "$fonts" -lt 6 ]; then
+            echo "⚠️ Moins de 6 fichiers woff2 — vérifier assets/fonts/"
+          fi
