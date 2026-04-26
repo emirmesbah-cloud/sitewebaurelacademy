@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Politique de confidentialité — Aurel Academy</title>
+<meta name="description" content="Comment Aurel Academy collecte, utilise et protège vos données personnelles.">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="robots" content="index,follow">
+
+<link rel="icon" type="image/svg+xml" href="https://cours.aurel-academy.com/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css?v=1">
+<link rel="stylesheet" href="/legal/legal.css?v=1">
+
+<script>
+  (function () {
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    var fromStorage = null;
+    try { fromStorage = localStorage.getItem('aurel-lang-legal'); } catch (e) {}
+    var lang = (fromUrl === 'fr' || fromUrl === 'ar') ? fromUrl
+             : (fromStorage === 'fr' || fromStorage === 'ar') ? fromStorage : 'fr';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    window.__aurelLang = lang;
+  })();
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/">Aurel Academy<span class="dot">.</span></a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang-set="fr">FR</button>
+      <button type="button" data-lang-set="ar">عربي</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="kicker" data-i18n="kicker"></div>
+  <h1 data-i18n="title"></h1>
+  <p class="updated" data-i18n="updated"></p>
+
+  <article id="content"></article>
+</main>
+
+<footer>
+  <span data-i18n="foot"></span><br>
+  <a href="/mentions/" data-i18n="nav.mentions"></a>
+  <a href="/confidentialite/" data-i18n="nav.priv"></a>
+  <a href="/conditions/" data-i18n="nav.cgv"></a>
+</footer>
+
+<script>
+(function () {
+  var I18N = {
+    fr: {
+      kicker: 'Vos données, votre vie privée',
+      title: 'Politique de confidentialité',
+      updated: 'Dernière mise à jour : avril 2026',
+      'nav.mentions': 'Mentions légales',
+      'nav.priv': 'Confidentialité',
+      'nav.cgv': 'Conditions',
+      foot: '© Aurel Academy — Tous droits réservés.',
+      content: '\
+        <h2>1. Préambule</h2>\
+        <p>Chez <strong>Aurel Academy</strong>, la confiance et le respect de la vie privée de nos apprenants sont essentiels. La présente politique explique quelles données personnelles nous collectons via le site <strong>aurel-academy.com</strong> (le « Site »), pourquoi nous les collectons, comment nous les utilisons, à qui nous les transmettons, et quels sont vos droits.</p>\
+        <p>En soumettant un formulaire ou en utilisant le Site, vous reconnaissez avoir pris connaissance de la présente politique.</p>\
+\
+        <h2>2. Responsable du traitement</h2>\
+        <p>Le responsable du traitement des données est <strong>Aurel Academy</strong>, organisme privé de formation à la langue allemande basé en Algérie.</p>\
+        <ul>\
+          <li><strong>Contact :</strong> <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a></li>\
+        </ul>\
+\
+        <h2>3. Données que nous collectons</h2>\
+        <p>Nous collectons uniquement les données nécessaires aux finalités décrites ci-dessous. Concrètement :</p>\
+        <ul>\
+          <li><strong>Données fournies par le formulaire d’inscription :</strong> prénom, nom, numéro WhatsApp, email, profession, niveau d’allemand, formule choisie, wilaya, adresse.</li>\
+          <li><strong>Données techniques automatiques :</strong> URL de la page de provenance (referrer), URL de landing, agent utilisateur (navigateur, OS), horodatage, langue choisie.</li>\
+          <li><strong>Données d’échange :</strong> messages que vous nous envoyez par email, WhatsApp ou tout autre canal de contact.</li>\
+        </ul>\
+\
+        <h2>4. Pourquoi nous utilisons ces données (finalités)</h2>\
+        <ul>\
+          <li><strong>Gérer votre demande d’inscription</strong> et vous recontacter sous 24h ;</li>\
+          <li><strong>Délivrer la formation</strong> à laquelle vous vous êtes inscrit (envoi des accès, suivi pédagogique) ;</li>\
+          <li><strong>Vous communiquer</strong> des informations utiles relatives à votre formation (rappels, contenus, mises à jour) ;</li>\
+          <li><strong>Améliorer notre service</strong> en analysant les performances de nos pages et la qualité de nos contenus ;</li>\
+          <li><strong>Respecter nos obligations légales</strong> (comptabilité, fiscalité, demandes des autorités).</li>\
+        </ul>\
+\
+        <h2>5. Base légale</h2>\
+        <p>Les traitements reposent selon le cas sur :</p>\
+        <ul>\
+          <li>L’<strong>exécution d’un contrat</strong> (lorsque vous vous inscrivez à un programme) ;</li>\
+          <li>Votre <strong>consentement</strong> (lorsque vous remplissez un formulaire pour être recontacté) ;</li>\
+          <li>L’<strong>intérêt légitime</strong> d’Aurel Academy (sécurité du site, lutte contre la fraude, amélioration du service) ;</li>\
+          <li>Le <strong>respect d’obligations légales</strong>.</li>\
+        </ul>\
+\
+        <h2>6. Durée de conservation</h2>\
+        <ul>\
+          <li><strong>Prospects (formulaires non confirmés) :</strong> 24 mois maximum à compter du dernier contact.</li>\
+          <li><strong>Apprenants inscrits :</strong> pendant toute la durée de la formation, puis 5 ans à des fins de preuve, comptabilité et obligations légales.</li>\
+          <li><strong>Données techniques (logs, statistiques) :</strong> jusqu’à 13 mois.</li>\
+        </ul>\
+\
+        <h2>7. Destinataires des données</h2>\
+        <p>Vos données sont accessibles à l’équipe Aurel Academy strictement habilitée. Nous faisons appel à des prestataires techniques pour exploiter le Site et traiter les inscriptions :</p>\
+        <ul>\
+          <li><strong>Google (Google Sheets / Apps Script) :</strong> stockage opérationnel des inscriptions et envoi des notifications internes.</li>\
+          <li><strong>Hébergeur web :</strong> hébergement du Site et de ses fichiers.</li>\
+          <li><strong>Outils de messagerie :</strong> WhatsApp / Telegram / email pour communiquer avec vous.</li>\
+          <li><strong>Outils d’analyse et de publicité</strong> (par ex. Meta Pixel, Google Analytics) lorsqu’ils sont activés.</li>\
+        </ul>\
+        <p>Nous ne vendons jamais vos données personnelles à des tiers.</p>\
+\
+        <h2>8. Transferts hors d’Algérie</h2>\
+        <p>Certains de nos prestataires (Google, Meta, etc.) traitent les données dans des serveurs situés hors d’Algérie. Nous nous appuyons sur leurs engagements contractuels et leurs garanties standard de protection des données.</p>\
+\
+        <h2>9. Cookies et traceurs</h2>\
+        <p>Le Site utilise un nombre limité de cookies et traceurs :</p>\
+        <ul>\
+          <li><strong>Cookies fonctionnels :</strong> nécessaires au fonctionnement du Site (par ex. mémorisation de la langue choisie via localStorage). Pas de consentement requis.</li>\
+          <li><strong>Cookies de mesure d’audience :</strong> activés uniquement avec votre accord, lorsqu’un outil d’analyse est en place. Ils permettent de mesurer les performances et d’améliorer le Site.</li>\
+          <li><strong>Cookies publicitaires (Meta Pixel, etc.) :</strong> activés uniquement avec votre accord lorsqu’ils sont en place. Ils permettent de mesurer l’efficacité des campagnes publicitaires.</li>\
+        </ul>\
+        <p>Vous pouvez à tout moment refuser ou supprimer les cookies via les paramètres de votre navigateur.</p>\
+\
+        <h2>10. Vos droits</h2>\
+        <p>Vous disposez des droits suivants sur vos données :</p>\
+        <ul>\
+          <li><strong>Droit d’accès</strong> à vos données ;</li>\
+          <li><strong>Droit de rectification</strong> en cas d’erreur ou de mise à jour ;</li>\
+          <li><strong>Droit à l’effacement</strong> (droit à l’oubli), sous réserve d’obligations légales ;</li>\
+          <li><strong>Droit d’opposition</strong> et droit de <strong>retrait du consentement</strong> ;</li>\
+          <li><strong>Droit à la portabilité</strong> de vos données.</li>\
+        </ul>\
+        <p>Pour exercer ces droits, écrivez-nous à <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a>. Nous vous répondrons dans un délai raisonnable, en règle générale sous 30 jours.</p>\
+\
+        <h2>11. Sécurité</h2>\
+        <p>Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables pour protéger vos données contre la perte, l’altération, l’accès non autorisé ou la divulgation. Aucune transmission Internet ou stockage électronique n’étant totalement infaillible, nous ne pouvons toutefois pas garantir une sécurité absolue.</p>\
+\
+        <h2>12. Mineurs</h2>\
+        <p>Le Site est destiné à un public majeur (18 ans et plus). Nous ne collectons pas sciemment de données concernant des personnes mineures sans accord parental.</p>\
+\
+        <h2>13. Modifications</h2>\
+        <p>Cette politique peut évoluer, notamment pour tenir compte de la législation ou de nos pratiques. La date de dernière mise à jour figure en haut de la présente page.</p>\
+\
+        <h2>14. Contact</h2>\
+        <p>Pour toute question relative à vos données personnelles : <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a>.</p>\
+      ',
+    },
+    ar: {
+      kicker: 'بياناتك، خصوصيتك',
+      title: 'سياسة الخصوصية',
+      updated: 'آخر تحديث: أفريل 2026',
+      'nav.mentions': 'الشروط القانونية',
+      'nav.priv': 'الخصوصية',
+      'nav.cgv': 'الشروط',
+      foot: '© Aurel Academy — جميع الحقوق محفوظة.',
+      content: '\
+        <h2>1. تمهيد</h2>\
+        <p>في <strong>Aurel Academy</strong>، الثقة واحترام خصوصية متعلمينا قيمة أساسية. تشرح هذه السياسة ما هي البيانات الشخصية التي نجمعها عبر الموقع <strong>aurel-academy.com</strong> («الموقع»)، ولماذا نجمعها، وكيف نستعملها، ولمن نُحيلها، وما هي حقوقك.</p>\
+        <p>بإرسال نموذج أو باستعمال الموقع، تُقرّ بأنك اطلعت على هذه السياسة.</p>\
+\
+        <h2>2. المسؤول عن المعالجة</h2>\
+        <p>المسؤول عن معالجة البيانات هو <strong>Aurel Academy</strong>، مؤسسة خاصة لتعليم الألمانية مقرها في الجزائر.</p>\
+        <ul>\
+          <li><strong>التواصل:</strong> <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a></li>\
+        </ul>\
+\
+        <h2>3. البيانات التي نجمعها</h2>\
+        <p>نجمع فقط البيانات الضرورية للأغراض الموصوفة أدناه:</p>\
+        <ul>\
+          <li><strong>بيانات نموذج التسجيل:</strong> الاسم، اللقب، رقم الواتساب، البريد الإلكتروني، المهنة، مستوى الألمانية، الصيغة المختارة، الولاية، العنوان.</li>\
+          <li><strong>بيانات تقنية تلقائية:</strong> رابط الصفحة المُحيلة (referrer)، رابط صفحة الوصول، عميل المستخدم (المتصفح، النظام)، الطابع الزمني، اللغة المختارة.</li>\
+          <li><strong>بيانات التواصل:</strong> الرسائل التي تُرسلها لنا عبر البريد، الواتساب أو أي قناة أخرى.</li>\
+        </ul>\
+\
+        <h2>4. لماذا نستخدم هذه البيانات (الأغراض)</h2>\
+        <ul>\
+          <li><strong>تسيير طلب التسجيل</strong> ومعاودة الاتصال بك خلال 24 ساعة ؛</li>\
+          <li><strong>تقديم التكوين</strong> الذي سجّلت فيه (إرسال بيانات الدخول، المتابعة التعليمية) ؛</li>\
+          <li><strong>التواصل معك</strong> بمعلومات مفيدة تتعلق بتكوينك ؛</li>\
+          <li><strong>تحسين خدمتنا</strong> بتحليل أداء الصفحات وجودة المحتوى ؛</li>\
+          <li><strong>الامتثال للالتزامات القانونية</strong> (محاسبة، ضرائب، طلبات السلطات).</li>\
+        </ul>\
+\
+        <h2>5. الأساس القانوني</h2>\
+        <p>تستند المعالجات حسب الحالة إلى:</p>\
+        <ul>\
+          <li><strong>تنفيذ عقد</strong> (عند تسجيلك في برنامج) ؛</li>\
+          <li><strong>موافقتك</strong> (عند ملء نموذج للتواصل) ؛</li>\
+          <li><strong>المصلحة المشروعة</strong> لـ Aurel Academy (أمن الموقع، مكافحة الاحتيال، تحسين الخدمة) ؛</li>\
+          <li><strong>الامتثال لالتزامات قانونية</strong>.</li>\
+        </ul>\
+\
+        <h2>6. مدة الحفظ</h2>\
+        <ul>\
+          <li><strong>المهتمون (نماذج غير مؤكدة):</strong> 24 شهراً كحد أقصى من آخر تواصل.</li>\
+          <li><strong>المتعلمون المسجَّلون:</strong> طوال مدة التكوين، ثم 5 سنوات لأغراض الإثبات والمحاسبة والالتزامات القانونية.</li>\
+          <li><strong>البيانات التقنية (السجلات، الإحصاء):</strong> حتى 13 شهراً.</li>\
+        </ul>\
+\
+        <h2>7. مستلمو البيانات</h2>\
+        <p>بياناتك متاحة لفريق Aurel Academy المُخوَّل دون سواه. نستعين بمزودي خدمات تقنية لتشغيل الموقع ومعالجة التسجيلات:</p>\
+        <ul>\
+          <li><strong>Google (Google Sheets / Apps Script):</strong> تخزين تشغيلي للتسجيلات وإرسال إشعارات داخلية.</li>\
+          <li><strong>مستضيف الويب:</strong> استضافة الموقع وملفاته.</li>\
+          <li><strong>أدوات المراسلة:</strong> الواتساب / تلغرام / البريد للتواصل معك.</li>\
+          <li><strong>أدوات التحليل والإعلان</strong> (مثلاً Meta Pixel، Google Analytics) عند تفعيلها.</li>\
+        </ul>\
+        <p>نحن لا نبيع بياناتك الشخصية لأي طرف ثالث.</p>\
+\
+        <h2>8. النقل خارج الجزائر</h2>\
+        <p>بعض مزودينا (Google، Meta، إلخ) يعالجون البيانات على خوادم خارج الجزائر. نعتمد على التزاماتهم التعاقدية وضماناتهم القياسية لحماية البيانات.</p>\
+\
+        <h2>9. الكوكيز والمتعقبات</h2>\
+        <p>يستخدم الموقع عدداً محدوداً من الكوكيز والمتعقبات:</p>\
+        <ul>\
+          <li><strong>كوكيز وظيفية:</strong> ضرورية لعمل الموقع (مثلاً حفظ اللغة المختارة عبر localStorage). لا تتطلب موافقة.</li>\
+          <li><strong>كوكيز قياس الأداء:</strong> تُفعَّل فقط بموافقتك، عند توفر أداة تحليل. تسمح بقياس الأداء وتحسين الموقع.</li>\
+          <li><strong>كوكيز إعلانية (Meta Pixel، إلخ):</strong> تُفعَّل فقط بموافقتك عند توفرها. تسمح بقياس فعالية الحملات الإعلانية.</li>\
+        </ul>\
+        <p>يمكنك في أي وقت رفض أو حذف الكوكيز عبر إعدادات متصفحك.</p>\
+\
+        <h2>10. حقوقك</h2>\
+        <p>تتمتع بالحقوق التالية على بياناتك:</p>\
+        <ul>\
+          <li><strong>حق الوصول</strong> إلى بياناتك ؛</li>\
+          <li><strong>حق التصحيح</strong> في حال خطأ أو تحديث ؛</li>\
+          <li><strong>حق المحو</strong> (الحق في النسيان)، مع مراعاة الالتزامات القانونية ؛</li>\
+          <li><strong>حق الاعتراض</strong> وحق <strong>سحب الموافقة</strong> ؛</li>\
+          <li><strong>حق نقل بياناتك</strong>.</li>\
+        </ul>\
+        <p>لممارسة هذه الحقوق، راسلنا على <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a>. سنرد عليك خلال أجل معقول، عموماً في حدود 30 يوماً.</p>\
+\
+        <h2>11. الأمن</h2>\
+        <p>نضع تدابير تقنية وتنظيمية معقولة لحماية بياناتك من الضياع أو التغيير أو الوصول غير المرخّص أو الإفشاء. ولأن أي إرسال عبر الإنترنت أو تخزين إلكتروني ليس آمناً بالكامل، لا يمكننا ضمان أمن مطلق.</p>\
+\
+        <h2>12. القاصرون</h2>\
+        <p>الموقع موجَّه للبالغين (18 سنة فأكثر). لا نجمع عن قصد بيانات تخص قاصرين دون موافقة الولي.</p>\
+\
+        <h2>13. التعديلات</h2>\
+        <p>قد تتطور هذه السياسة، خاصة لمواكبة التشريع أو ممارساتنا. تاريخ آخر تحديث مُبيَّن أعلى الصفحة.</p>\
+\
+        <h2>14. التواصل</h2>\
+        <p>لأي سؤال يخص بياناتك الشخصية: <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a>.</p>\
+      ',
+    },
+  };
+
+  function applyLang(l) {
+    document.documentElement.lang = l;
+    document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+    var t = I18N[l];
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key]) el.textContent = t[key];
+    });
+    document.getElementById('content').innerHTML = t.content;
+    document.title = (l === 'ar') ? 'سياسة الخصوصية — Aurel Academy' : 'Politique de confidentialité — Aurel Academy';
+    document.querySelectorAll('[data-lang-set]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-lang-set') === l);
+    });
+    try { localStorage.setItem('aurel-lang-legal', l); } catch (e) {}
+  }
+
+  applyLang(window.__aurelLang || 'fr');
+
+  document.querySelectorAll('[data-lang-set]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var l = btn.getAttribute('data-lang-set');
+      applyLang(l);
+      var url = new URL(location.href);
+      url.searchParams.set('lang', l);
+      history.replaceState(null, '', url.toString());
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

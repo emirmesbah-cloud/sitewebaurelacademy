@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <title>Aurel Academy — Apprends l'allemand, construis ton avenir en Allemagne</title>
+  <meta name="description" content="Aurel Academy forme les jeunes Algériens 18-35 ans à l'allemand : programme live A1→B2 et formation Deutsch für Pflegekräfte pour infirmiers." />
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts/fonts.css?v=20260426a" />
+
+  <link rel="stylesheet" href="css/style.css?v=20260426a" />
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Aurel Academy">
+        <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="#F97316"/>
+          <path d="M13 27 L20 11 L27 27 M16 22 H24" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="logo-text">Aurel <span class="italic-accent">Academy</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="nav-list">
+          <li class="nav-item has-dropdown">
+            <button class="nav-link" aria-haspopup="true" aria-expanded="false">Programmes <span class="nav-caret">▾</span></button>
+            <ul class="nav-dropdown">
+              <li><a href="/pflege">🏥 Deutsch für Pflegekräfte</a></li>
+              <li><a href="/allemand">🇩🇪 Allemand A1→B2</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang" role="group" aria-label="Langue">
+          <button class="lang-btn is-active" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="ar" aria-label="Arabe">عر</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+        <a class="btn btn-outline btn-sm hide-mobile-inline" href="/login">Espace étudiant <span aria-hidden="true">→</span></a>
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav aria-label="Menu mobile">
+        <a href="/pflege">🏥 Formation Pflege</a>
+        <a href="/allemand">🇩🇪 Allemand A1→B2</a>
+        <a href="#about">À propos</a>
+        <a href="#faq">FAQ</a>
+        <a href="/login" class="btn btn-outline btn-block mt-3">Espace étudiant →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <span class="hero-badge">
+            <span class="pulse-dot"></span>
+            Inscriptions ouvertes — places limitées
+          </span>
+          <h1 class="hero-title">
+            Apprends l'allemand.<br/>
+            Construis ton avenir en <span class="italic-accent">Allemagne</span>.
+          </h1>
+          <p class="hero-desc">
+            Programmes en ligne pour Algériens qui partent travailler ou étudier en Allemagne. De zéro à B2, puis prêt pour l'emploi.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#programmes">🏥 Formation Pflege <span aria-hidden="true">→</span></a>
+            <a class="btn btn-outline btn-lg" href="#programmes">🇩🇪 Allemand A1→B2 <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="hero-social">
+            <div class="avatars">
+              <span class="avatar" style="background:#FDBA74">A</span>
+              <span class="avatar" style="background:#86EFAC">M</span>
+              <span class="avatar" style="background:#FCA5A5">S</span>
+              <span class="avatar" style="background:#C4B5FD">Y</span>
+            </div>
+            <div class="social-text">
+              <strong>50+ étudiants</strong>
+              <span class="stars" aria-label="4.9 sur 5">★★★★★</span>
+              <span class="muted">4.9/5</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" id="hero-visual">
+
+          <!-- Decorative background -->
+          <svg class="hv-dots" viewBox="0 0 400 400" aria-hidden="true" preserveAspectRatio="none">
+            <defs>
+              <pattern id="hv-dot-pattern" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.2" fill="#E5E7EB"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="400" fill="url(#hv-dot-pattern)"/>
+          </svg>
+
+          <div class="hv-blush" aria-hidden="true"></div>
+
+          <!-- Floating decorative shapes -->
+          <svg class="hv-shape hv-shape-1" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16" fill="#FDBA74"/></svg>
+          <svg class="hv-shape hv-shape-2" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#86EFAC"/></svg>
+          <svg class="hv-shape hv-shape-3" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="6" fill="#BFDBFE" transform="rotate(15 14 14)"/></svg>
+          <svg class="hv-shape hv-shape-4" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="none" stroke="#F97316" stroke-width="2" stroke-dasharray="4 4"/></svg>
+
+          <!-- ── Dashboard mockup ────────────────────── -->
+          <div class="hv-mockup" role="img" aria-label="Aperçu du dashboard étudiant Aurel Academy">
+            <div class="hv-mockup__bar">
+              <span class="hv-dot hv-dot--r"></span>
+              <span class="hv-dot hv-dot--y"></span>
+              <span class="hv-dot hv-dot--g"></span>
+              <span class="hv-mockup__title">Aurel Academy</span>
+            </div>
+
+            <div class="hv-mockup__body">
+
+              <div class="hv-progress">
+                <div class="hv-progress__label">
+                  <span>Module 5/8</span>
+                  <strong>75%</strong>
+                </div>
+                <div class="hv-progress__track">
+                  <div class="hv-progress__fill"></div>
+                </div>
+              </div>
+
+              <div class="hv-next">
+                <div class="hv-next__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="#F97316"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="hv-next__text">
+                  <span class="hv-next__label">Prochaine leçon</span>
+                  <strong>Vocabulaire médical : Les signes vitaux</strong>
+                </div>
+              </div>
+
+              <div class="hv-stats">
+                <div class="hv-stat">
+                  <span class="hv-stat__emoji">🔥</span>
+                  <strong>12 jours</strong>
+                  <span class="hv-stat__label">Streak</span>
+                </div>
+                <div class="hv-stat">
+                  <span class="hv-stat__emoji">🎓</span>
+                  <strong>B1</strong>
+                  <span class="hv-stat__label">Certificat</span>
+                </div>
+                <div class="hv-stat">
+                  <span class="hv-stat__emoji">⏱️</span>
+                  <strong>4h</strong>
+                  <span class="hv-stat__label">Ce mois</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── Floating cards ──────────────────────── -->
+          <div class="hv-card hv-card-1" aria-hidden="true">
+            <span class="hv-card__emoji">🎓</span>
+            <div class="hv-card__text">
+              <strong>B2 Certifié</strong>
+              <span>Goethe-Institut</span>
+            </div>
+          </div>
+
+          <div class="hv-card hv-card-2 hv-card--green" aria-hidden="true">
+            <span class="hv-card__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>
+            </span>
+            <div class="hv-card__text">
+              <strong>+50 étudiants</strong>
+              <span>qui étudient chez Aurel</span>
+            </div>
+          </div>
+
+          <div class="hv-card hv-card-3" aria-hidden="true">
+            <div class="hv-avatars">
+              <span class="hv-avatar" style="background:#FDBA74">A</span>
+              <span class="hv-avatar" style="background:#86EFAC">M</span>
+              <span class="hv-avatar" style="background:#FCA5A5">S</span>
+            </div>
+            <div class="hv-card__text">
+              <span class="hv-stars">★★★★★</span>
+              <strong>4.9/5</strong>
+            </div>
+          </div>
+
+          <div class="hv-card hv-card-4 hv-card--orange" aria-hidden="true">
+            <span class="hv-card__emoji">🔥</span>
+            <div class="hv-card__text">
+              <strong>Streak 127 jours</strong>
+              <span>consistency wins</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 2.5 STATS BAR ═══════════ -->
+    <section class="stats-bar" aria-label="Chiffres clés">
+      <div class="container">
+        <ul class="stats">
+          <li class="stat">
+            <strong data-count="50" data-suffix="+">0</strong>
+            <span>Étudiants formés</span>
+          </li>
+          <li class="stat">
+            <strong data-count="8" data-suffix=" mois">0</strong>
+            <span>Pour atteindre B2</span>
+          </li>
+          <li class="stat">
+            <strong data-count="100" data-suffix="%">0</strong>
+            <span>En ligne</span>
+          </li>
+          <li class="stat">
+            <strong>2</strong>
+            <span>Programmes</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════ 3. PROGRAMMES ═══════════ -->
+    <section id="programmes" class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Nos programmes</span>
+          <h2>Deux programmes, <span class="italic-accent">un objectif</span>.</h2>
+          <p class="section-lead">Choisis le parcours qui correspond à ton projet.</p>
+        </div>
+
+        <div class="grid grid-2 cards-stagger programs">
+
+          <article class="card program program-pflege">
+            <span class="program-float-badge" aria-label="Spécialisé">🏥 Spécialisé</span>
+            <div class="program-icon">
+              <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+                <rect x="14" y="8" width="36" height="48" rx="6" fill="#FFEDD5"/>
+                <path d="M26 22h12M32 16v12" stroke="#F97316" stroke-width="3" stroke-linecap="round"/>
+                <rect x="22" y="36" width="20" height="4" rx="2" fill="#F97316"/>
+                <rect x="22" y="44" width="14" height="4" rx="2" fill="#FDBA74"/>
+              </svg>
+            </div>
+            <span class="program-badge">🏥 Formation spécialisée</span>
+            <h3>Deutsch für Pflegekräfte</h3>
+            <p class="program-desc">L'allemand médical pour décrocher ton poste Pflege en Allemagne. 10 modules, 18 leçons vidéo, glossaire 150 termes, coaching live.</p>
+            <ul class="program-stats">
+              <li>10 modules</li>
+              <li>4h30</li>
+              <li>Accès à vie</li>
+            </ul>
+            <p class="program-price">À partir de <strong>12 900 DA</strong></p>
+            <div class="program-ctas">
+              <a class="btn btn-primary btn-block" href="/pflege">Découvrir la formation <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="card program program-a1b2">
+            <span class="program-float-badge program-float-badge--green" aria-label="Populaire">🔥 Populaire</span>
+            <div class="program-icon">
+              <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+                <rect x="10" y="10" width="18" height="44" rx="2" fill="#0A0A0A"/>
+                <rect x="28" y="10" width="18" height="44" rx="2" fill="#DC2626"/>
+                <rect x="46" y="10" width="8" height="44" rx="2" fill="#FBBF24"/>
+              </svg>
+            </div>
+            <span class="program-badge program-badge-green">🇩🇪 Programme complet</span>
+            <h3>Allemand A1 → B2</h3>
+            <p class="program-desc">De zéro à niveau B2 en 8 mois. Live sessions, Telegram privé, préparation Ausbildung et visa.</p>
+            <ul class="program-stats">
+              <li>8 mois</li>
+              <li>5 phases</li>
+              <li>Accompagnement live</li>
+            </ul>
+            <p class="program-price">Sur demande</p>
+            <div class="program-ctas program-ctas-dual">
+              <a class="btn btn-green btn-block" href="/allemand">📋 Voir le programme</a>
+              <a class="btn btn-outline-green btn-block" href="https://wa.me/213555290826?text=Je%20veux%20rejoindre%20Aurel%20Academy" target="_blank" rel="noopener">💬 WhatsApp</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 4. POURQUOI (6 features) ═══════════ -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Pourquoi nous</span>
+          <h2>Pourquoi <span class="italic-accent">Aurel Academy</span> ?</h2>
+          <p class="section-lead">Six raisons concrètes pour te faire confiance.</p>
+        </div>
+
+        <div class="grid grid-3 features">
+
+          <div class="feature card fade-up">
+            <div class="feature__icon feature__icon--orange">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .8-4.5 4.3 1 6.4L12 16l-5.5 3.5 1-6.4L3 8.8 9 8z"/></svg>
+            </div>
+            <h3>Faite par des Algériens</h3>
+            <p class="muted">Fondateurs passés par le chemin. On connaît chaque piège, chaque démarche.</p>
+          </div>
+
+          <div class="feature card fade-up">
+            <div class="feature__icon feature__icon--green">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5M11 20c0-3 2.5-5 6-5s4 2 4 5"/></svg>
+            </div>
+            <h3>Accompagnement réel</h3>
+            <p class="muted">Pas juste des vidéos. Coaching live, communauté, feedback personnalisé.</p>
+          </div>
+
+          <div class="feature card fade-up">
+            <div class="feature__icon feature__icon--blue">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8V5h14v3M12 5v16M8 21h8"/><path d="M5 8c0 3 1.5 6 7 6s7-3 7-6"/></svg>
+            </div>
+            <h3>Préparation complète</h3>
+            <p class="muted">Langue + entretien + dossier visa + culture pro. Tu arrives prêt pour le terrain.</p>
+          </div>
+
+          <div class="feature card fade-up">
+            <div class="feature__icon feature__icon--red">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 2v4M17 2v4M3 10h18"/></svg>
+            </div>
+            <h3>Coaching live chaque semaine</h3>
+            <p class="muted">Une session live avec un coach natif pour poser tes questions et pratiquer l'oral.</p>
+          </div>
+
+          <div class="feature card fade-up">
+            <div class="feature__icon feature__icon--purple">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <h3>Dossier visa pas à pas</h3>
+            <p class="muted">Check-list visa, traduction assermentée, lettre de motivation. On t'accompagne jusqu'au RDV consulat.</p>
+          </div>
+
+          <div class="feature card fade-up">
+            <div class="feature__icon feature__icon--teal">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+            </div>
+            <h3>Communauté Telegram privée</h3>
+            <p class="muted">50+ étudiants connectés 24/7. Entraide, ressources, annonces d'emploi en Allemagne.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 5. COMMENT ÇA MARCHE ═══════════ -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Comment ça marche</span>
+          <h2>3 étapes pour <span class="italic-accent">changer ta vie</span>.</h2>
+        </div>
+
+        <ol class="steps">
+          <li class="step fade-up">
+            <div class="step-num">01</div>
+            <div class="step-illus">
+              <svg viewBox="0 0 80 80" width="64" height="64" aria-hidden="true"><rect x="14" y="18" width="52" height="44" rx="6" fill="#FFEDD5"/><rect x="20" y="26" width="18" height="14" rx="3" fill="#F97316"/><rect x="42" y="26" width="18" height="14" rx="3" fill="#FDBA74"/><rect x="20" y="44" width="40" height="4" rx="2" fill="#FDBA74"/><rect x="20" y="52" width="28" height="4" rx="2" fill="#FDBA74"/></svg>
+            </div>
+            <h3>Choisis ton programme</h3>
+            <p class="muted">Pflege (santé) ou A1→B2 (général). 30 secondes pour décider.</p>
+          </li>
+
+          <li class="step fade-up">
+            <div class="step-num">02</div>
+            <div class="step-illus">
+              <svg viewBox="0 0 80 80" width="64" height="64" aria-hidden="true"><rect x="14" y="22" width="52" height="36" rx="6" fill="#DCFCE7"/><rect x="14" y="22" width="52" height="10" rx="6" fill="#10B981"/><rect x="22" y="40" width="18" height="4" rx="2" fill="#10B981"/><rect x="22" y="48" width="28" height="4" rx="2" fill="#86EFAC"/><circle cx="54" cy="46" r="6" fill="#10B981"/><path d="M51 46l2 2 4-4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Inscris-toi en ligne</h3>
+            <p class="muted">Paiement CIB/Edahabia sécurisé ou virement. Accès immédiat après confirmation.</p>
+          </li>
+
+          <li class="step fade-up">
+            <div class="step-num">03</div>
+            <div class="step-illus">
+              <svg viewBox="0 0 80 80" width="64" height="64" aria-hidden="true"><circle cx="40" cy="40" r="28" fill="#FEF3C7"/><path d="M28 40l8 8 16-18" stroke="#F97316" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Commence aujourd'hui</h3>
+            <p class="muted">Reçois ton code d'accès sur WhatsApp, connecte-toi à ta plateforme, et c'est parti.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════ 6. LEAD FORM ═══════════ -->
+    <section class="lead-section" id="contact">
+      <div class="container lead-inner">
+        <div class="lead-text">
+          <span class="eyebrow">Contact</span>
+          <h2>Tu veux en savoir <span class="italic-accent">plus ?</span></h2>
+          <p class="section-lead">Laisse-nous ton numéro. On te rappelle sur WhatsApp dans les 24h.</p>
+
+          <form class="lead-form" id="lead-form" novalidate>
+
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="lf-prenom">Prénom <span class="req">*</span></label>
+                <input id="lf-prenom" name="prenom" type="text" required autocomplete="given-name" placeholder="Ex : Amir" />
+                <small class="field-error" data-for="prenom"></small>
+              </div>
+              <div class="field">
+                <label for="lf-nom">Nom <span class="req">*</span></label>
+                <input id="lf-nom" name="nom" type="text" required autocomplete="family-name" placeholder="Ex : Mosbah" />
+                <small class="field-error" data-for="nom"></small>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="lf-phone">Numéro WhatsApp <span class="req">*</span></label>
+              <input id="lf-phone" name="phone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="+213 5XX XXX XXX" />
+              <small class="field-error" data-for="phone"></small>
+            </div>
+
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="lf-age">Âge <span class="req">*</span></label>
+                <select id="lf-age" name="age" required>
+                  <option value="" disabled selected>Choisis ta tranche d'âge</option>
+                  <option value="18-22 ans">18-22 ans</option>
+                  <option value="23-27 ans">23-27 ans</option>
+                  <option value="28-32 ans">28-32 ans</option>
+                  <option value="33-40 ans">33-40 ans</option>
+                  <option value="40+ ans">40+ ans</option>
+                </select>
+                <small class="field-error" data-for="age"></small>
+              </div>
+              <div class="field">
+                <label for="lf-profession">Profession actuelle <span class="req">*</span></label>
+                <select id="lf-profession" name="profession" required>
+                  <option value="" disabled selected>Choisis ta profession</option>
+                  <option value="Étudiant(e)">Étudiant(e)</option>
+                  <option value="Infirmier / Aide-soignant">Infirmier / Aide-soignant</option>
+                  <option value="Médecin / Profession médicale">Médecin / Profession médicale</option>
+                  <option value="Salarié(e) (autre secteur)">Salarié(e) (autre secteur)</option>
+                  <option value="Sans emploi">Sans emploi</option>
+                  <option value="Entrepreneur / Freelance">Entrepreneur / Freelance</option>
+                  <option value="Autre">Autre</option>
+                </select>
+                <small class="field-error" data-for="profession"></small>
+              </div>
+            </div>
+
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="lf-niveau">Niveau d'allemand actuel <span class="req">*</span></label>
+                <select id="lf-niveau" name="niveau" required>
+                  <option value="" disabled selected>Ton niveau actuel</option>
+                  <option value="Débutant complet (zéro)">Débutant complet (zéro)</option>
+                  <option value="Quelques bases (A1)">Quelques bases (A1)</option>
+                  <option value="Niveau élémentaire (A2)">Niveau élémentaire (A2)</option>
+                  <option value="Niveau intermédiaire (B1)">Niveau intermédiaire (B1)</option>
+                  <option value="Niveau avancé (B2+)">Niveau avancé (B2+)</option>
+                </select>
+                <small class="field-error" data-for="niveau"></small>
+              </div>
+              <div class="field">
+                <label for="lf-objectif">Comment veux-tu partir en Allemagne ? <span class="req">*</span></label>
+                <select id="lf-objectif" name="objectif" required>
+                  <option value="" disabled selected>Ton objectif</option>
+                  <option value="Ausbildung (formation pro)">Ausbildung (formation pro)</option>
+                  <option value="Emploi direct (Pflege ou autre)">Emploi direct (Pflege ou autre)</option>
+                  <option value="Études universitaires">Études universitaires</option>
+                  <option value="Regroupement familial">Regroupement familial</option>
+                  <option value="Je ne sais pas encore">Je ne sais pas encore</option>
+                </select>
+                <small class="field-error" data-for="objectif"></small>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="lf-interet">Je m'intéresse à... <span class="req">*</span></label>
+              <select id="lf-interet" name="interet" required>
+                <option value="" disabled selected>Choisis un programme</option>
+                <option value="Formation Pflege (santé)">Formation Pflege (santé)</option>
+                <option value="Programme A1→B2 (général)">Programme A1→B2 (général)</option>
+                <option value="Les deux">Les deux</option>
+                <option value="Je veux un conseil d'abord">Je veux un conseil d'abord</option>
+              </select>
+              <small class="field-error" data-for="interet"></small>
+            </div>
+
+            <div class="field">
+              <label for="lf-message">Message (optionnel)</label>
+              <textarea id="lf-message" name="message" rows="3" placeholder="Parle-nous de ton projet en quelques mots..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-whatsapp btn-lg btn-block">
+              💬 Envoyer via WhatsApp <span aria-hidden="true">→</span>
+            </button>
+            <p class="lead-note">En soumettant, tu seras redirigé vers WhatsApp avec ton message pré-rempli.</p>
+
+            <ul class="lead-trust">
+              <li>✓ Réponse &lt;24h</li>
+              <li>✓ Aucun engagement</li>
+              <li>✓ Conseil gratuit</li>
+            </ul>
+          </form>
+        </div>
+
+        <aside class="lead-visual" aria-hidden="true">
+          <svg viewBox="0 0 400 500" width="100%" height="100%">
+            <defs>
+              <linearGradient id="phone-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#F5F5F2"/>
+                <stop offset="100%" stop-color="#FFFFFF"/>
+              </linearGradient>
+            </defs>
+            <rect x="100" y="40" width="200" height="420" rx="32" fill="#0A0A0A"/>
+            <rect x="112" y="56" width="176" height="388" rx="22" fill="url(#phone-grad)"/>
+            <rect x="160" y="64" width="80" height="10" rx="5" fill="#0A0A0A"/>
+
+            <g class="float-a">
+              <rect x="128" y="110" width="140" height="60" rx="14" fill="#25D366"/>
+              <circle cx="148" cy="140" r="12" fill="#fff"/>
+              <rect x="170" y="124" width="78" height="6" rx="3" fill="#fff" opacity="0.85"/>
+              <rect x="170" y="136" width="60" height="6" rx="3" fill="#fff" opacity="0.65"/>
+              <rect x="170" y="148" width="40" height="6" rx="3" fill="#fff" opacity="0.5"/>
+            </g>
+
+            <g class="float-b">
+              <rect x="144" y="200" width="140" height="50" rx="14" fill="#FFFFFF" stroke="#E5E7EB"/>
+              <rect x="160" y="214" width="88" height="6" rx="3" fill="#0A0A0A" opacity="0.8"/>
+              <rect x="160" y="226" width="60" height="6" rx="3" fill="#6B7280"/>
+            </g>
+
+            <g class="float-c">
+              <rect x="128" y="280" width="140" height="60" rx="14" fill="#F97316"/>
+              <rect x="148" y="296" width="100" height="6" rx="3" fill="#fff"/>
+              <rect x="148" y="308" width="80" height="6" rx="3" fill="#fff" opacity="0.8"/>
+              <rect x="148" y="320" width="50" height="6" rx="3" fill="#fff" opacity="0.6"/>
+            </g>
+          </svg>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ═══════════ 7. TÉMOIGNAGES ═══════════ -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Témoignages</span>
+          <h2>Ils ont <span class="italic-accent">commencé</span> leur aventure.</h2>
+        </div>
+
+        <div class="carousel" id="carousel" aria-roledescription="carousel">
+          <div class="carousel-track">
+            <article class="testimonial is-active" aria-hidden="false">
+              <div class="testimonial-photo" style="background:linear-gradient(135deg,#FDBA74,#F97316)">A</div>
+              <div class="stars">★★★★★</div>
+              <blockquote>"J'étais bloqué au chômage à Alger. Aujourd'hui j'ai un Ausbildung en Bavière et mon allemand est B1."</blockquote>
+              <cite><strong>Amine, 26 ans</strong><br/>Programme A1→B2 · Maintenant en Allemagne depuis 6 mois</cite>
+            </article>
+
+            <article class="testimonial" aria-hidden="true">
+              <div class="testimonial-photo" style="background:linear-gradient(135deg,#86EFAC,#10B981)">M</div>
+              <div class="stars">★★★★★</div>
+              <blockquote>"Infirmière depuis 4 ans, la formation Pflege m'a permis de maîtriser le vocabulaire médical. J'ai signé avec un Pflegeheim à Munich."</blockquote>
+              <cite><strong>Meriem, 29 ans</strong><br/>Deutsch für Pflegekräfte · Contrat signé</cite>
+            </article>
+
+            <article class="testimonial" aria-hidden="true">
+              <div class="testimonial-photo" style="background:linear-gradient(135deg,#FCA5A5,#DC2626)">S</div>
+              <div class="stars">★★★★★</div>
+              <blockquote>"L'accompagnement humain fait toute la différence. Aurel et l'équipe répondent vite, ils comprennent notre réalité."</blockquote>
+              <cite><strong>Sofiane, 24 ans</strong><br/>Programme A1→B2 · Visa Ausbildung en cours</cite>
+            </article>
+          </div>
+
+          <div class="carousel-dots" role="tablist">
+            <button class="carousel-dot is-active" data-idx="0" aria-label="Témoignage 1"></button>
+            <button class="carousel-dot" data-idx="1" aria-label="Témoignage 2"></button>
+            <button class="carousel-dot" data-idx="2" aria-label="Témoignage 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 8. FAQ ═══════════ -->
+    <section id="faq">
+      <div class="container container-narrow">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions <span class="italic-accent">fréquentes</span>.</h2>
+        </div>
+
+        <div class="faq" id="faq-list">
+          <details class="faq-item fade-up">
+            <summary>Je pars de zéro en allemand, c'est possible ?</summary>
+            <div class="faq-body"><p>Oui. Nos deux programmes commencent à zéro. A1→B2 te prend par la main sur 8 mois. Pour Pflege, aucun prérequis strict — le vocabulaire est traduit en français et arabe.</p></div>
+          </details>
+          <details class="faq-item fade-up">
+            <summary>Combien de temps pour atteindre B2 ?</summary>
+            <div class="faq-body"><p>8 mois en suivant le programme A1→B2 (1-2h/jour). Certains étudiants motivés y arrivent plus vite.</p></div>
+          </details>
+          <details class="faq-item fade-up">
+            <summary>Quels sont les prix ?</summary>
+            <div class="faq-body"><p>Formation Pflege : à partir de 12 900 DA (accès à vie). Programme A1→B2 : sur demande, facilités de paiement disponibles. Contacte-nous sur WhatsApp.</p></div>
+          </details>
+          <details class="faq-item fade-up">
+            <summary>Pflege ou A1→B2, lequel choisir ?</summary>
+            <div class="faq-body"><p>Pflege si tu es infirmier ou aide-soignant visant un poste en Pflegeheim allemand. A1→B2 si tu veux une formation générale pour partir en Ausbildung ou études. Les deux se complètent : Pflege + allemand général = combo puissant.</p></div>
+          </details>
+          <details class="faq-item fade-up">
+            <summary>Les cours sont en ligne ou présentiel ?</summary>
+            <div class="faq-body"><p>100% en ligne. Pflege est on-demand (vidéos). A1→B2 mélange live sessions et replays. Tu suis depuis n'importe où en Algérie.</p></div>
+          </details>
+        </div>
+
+        <div class="center mt-5">
+          <a class="btn btn-whatsapp btn-lg" href="https://wa.me/213555290826" target="_blank" rel="noopener">💬 Poser ta question sur WhatsApp <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <a class="logo" href="#top" aria-label="Aurel Academy">
+          <svg viewBox="0 0 40 40" width="32" height="32" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" fill="#F97316"/>
+            <path d="M13 27 L20 11 L27 27 M16 22 H24" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <span class="logo-text">Aurel <span class="italic-accent">Academy</span></span>
+        </a>
+        <p class="footer-tag">Former la prochaine génération d'Algériens qui réussissent en Allemagne.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm5.5-2.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 8a6 6 0 0 1-4-1.5V16a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2h3a4 4 0 0 0 4 4v2z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23 7a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.4A3 3 0 0 0 1 7a31 31 0 0 0 0 10 3 3 0 0 0 2.1 2.1c1.9.4 8.9.4 8.9.4s7 0 8.9-.4A3 3 0 0 0 23 17a31 31 0 0 0 0-10zM10 15V9l5 3-5 3z"/></svg></a>
+          <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 7-1.6 7.4c-.1.5-.5.7-.9.4l-2.6-1.9-1.2 1.2c-.1.1-.3.2-.5.2l.2-2.5 4.6-4.2c.2-.2 0-.3-.3-.1L9 13l-2.4-.8c-.5-.2-.5-.6.1-.8l9.3-3.6c.4-.2.8.1.6.7z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Programmes</h4>
+        <ul>
+          <li><a href="/pflege">Deutsch für Pflegekräfte</a></li>
+          <li><a href="/allemand">Allemand A1→B2</a></li>
+          <li><a href="/login">Espace étudiant</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/213555290826">WhatsApp : +213 555 290 826</a></li>
+          <li><a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a></li>
+        </ul>
+        <ul class="footer-legal">
+          <li><a href="/mentions/">Mentions légales</a></li>
+          <li><a href="/conditions/">Conditions</a></li>
+          <li><a href="/confidentialite/">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">© 2026 Aurel Academy. Tous droits réservés.</div>
+    </div>
+  </footer>
+
+  <!-- ═══════════ WhatsApp Float ═══════════ -->
+  <a class="whatsapp-float" href="https://wa.me/213555290826?text=Bonjour%20Aurel%20Academy" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M20.52 3.48A11.88 11.88 0 0 0 12 0C5.37 0 0 5.37 0 12a11.9 11.9 0 0 0 1.64 6.05L0 24l6.1-1.6A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 21.82a9.8 9.8 0 0 1-5-1.37l-.36-.22-3.62.95.97-3.53-.24-.37A9.82 9.82 0 1 1 21.82 12 9.83 9.83 0 0 1 12 21.82zm5.38-7.36c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.06 8.06 0 0 1-2.37-1.47 8.93 8.93 0 0 1-1.64-2.04c-.17-.3 0-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5l-.57-.01a1.1 1.1 0 0 0-.8.37 3.34 3.34 0 0 0-1.04 2.48c0 1.46 1.06 2.88 1.21 3.08.15.2 2.09 3.2 5.07 4.49a17 17 0 0 0 1.69.62 4.07 4.07 0 0 0 1.87.12 3.05 3.05 0 0 0 2-1.42 2.5 2.5 0 0 0 .17-1.42c-.07-.12-.27-.2-.57-.35z"/></svg>
+  </a>
+
+  <script src="js/lead-form.js?v=20260426a" defer></script>
+  <script src="js/ui.js?v=20260426a" defer></script>
+  <script src="js/animations.js?v=20260426b" defer></script>
+</body>
+</html>

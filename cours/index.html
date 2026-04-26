@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,viewport-fit=cover">
+<title>Aurel Academy — Espace étudiant</title>
+<meta name="description" content="Plateforme étudiants Aurel Academy.">
+<meta name="theme-color" content="#0B0B0F">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/app.css?v=3">
+<link rel="stylesheet" href="/assets/secondary.css?v=3">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">A</div>
+      <span>Aurel Academy</span>
+    </a>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+      </div>
+      <a href="https://aurel-academy.com" class="nav-link-ext nav-public" data-i18n="nav.backToSite">Site principal</a>
+      <a href="/profile/" class="nav-link-ext nav-private hidden" id="navProfile">Mon profil</a>
+      <a href="/aide/" class="nav-link-ext nav-private hidden" id="navHelp">Aide</a>
+      <button class="nav-logout hidden" id="logoutBtn" data-i18n="nav.logout">Déconnexion</button>
+    </div>
+  </div>
+</nav>
+
+<!-- LOGIN / LANDING VIEW -->
+<section class="view view-login" id="loginView">
+  <!-- HERO -->
+  <div class="landing-hero">
+    <div class="container">
+      <div class="landing-hero-inner">
+        <div class="auth-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">Plateforme étudiants Aurel Academy</span>
+        </div>
+        <h1 class="landing-h1" data-i18n="hero.title">Apprends l'allemand <em>pour travailler</em> en Allemagne</h1>
+        <p class="landing-sub" data-i18n="hero.sub">Formations en ligne pour infirmiers, étudiants et futurs Ausbildung — accès à vie, bonus exclusifs, Lives pour les Accompagnés.</p>
+        <div class="landing-hero-ctas">
+          <a href="#login" class="btn btn-primary">
+            <span data-i18n="hero.cta1">J'ai un code d'accès</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://aurel-academy.com/pflege/" class="btn btn-outline" data-i18n="hero.cta2">Voir les formations</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COURSES SHOWCASE -->
+  <div class="landing-section">
+    <div class="container">
+      <div class="section-tag visible"><span data-i18n="courses.tag">Ce que tu peux apprendre</span></div>
+      <h2 class="landing-h2" data-i18n="courses.title">Nos <em>formations</em></h2>
+      <div class="landing-courses-grid">
+        <a href="https://aurel-academy.com/pflege/" class="glass landing-course-card">
+          <div class="lc-icon">🏥</div>
+          <span class="landing-pill available" data-i18n="course.disponible">Disponible</span>
+          <h3 data-i18n="course.pflege.title">Deutsch für Pflegekräfte</h3>
+          <p data-i18n="course.pflege.desc">L'allemand médical pour décrocher ton poste Pflege en Allemagne. 10 modules, 4h30, 4 bonus.</p>
+          <span class="lc-cta" data-i18n="course.voir">Voir la formation →</span>
+        </a>
+        <div class="glass landing-course-card locked">
+          <div class="lc-icon">🇩🇪</div>
+          <span class="landing-pill" data-i18n="course.bientot">Bientôt</span>
+          <h3 data-i18n="course.allemand.title">Allemand général</h3>
+          <p data-i18n="course.allemand.desc">Prépare ton B1/B2 pour la vie quotidienne, les études et le travail en Allemagne.</p>
+          <span class="lc-cta" data-i18n="course.aVenir">À venir</span>
+        </div>
+        <div class="glass landing-course-card locked">
+          <div class="lc-icon">🎓</div>
+          <span class="landing-pill" data-i18n="course.bientot">Bientôt</span>
+          <h3 data-i18n="course.ausbildung.title">Ausbildung</h3>
+          <p data-i18n="course.ausbildung.desc">Le parcours complet pour trouver, décrocher et réussir ton Ausbildung en Allemagne.</p>
+          <span class="lc-cta" data-i18n="course.aVenir">À venir</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY THIS PLATFORM -->
+  <div class="landing-section landing-section-alt">
+    <div class="container">
+      <div class="section-tag visible"><span data-i18n="why.tag">Pourquoi cette plateforme</span></div>
+      <h2 class="landing-h2" data-i18n="why.title">Un espace <em>pensé pour toi</em></h2>
+      <div class="landing-why-grid">
+        <div class="landing-why-card">
+          <div class="why-icon">🔒</div>
+          <h4 data-i18n="why.c1.title">Code unique + appareil</h4>
+          <p data-i18n="why.c1.desc">Ton code est lié à ton appareil pour empêcher le partage. Tu restes protégé.</p>
+        </div>
+        <div class="landing-why-card">
+          <div class="why-icon">♾️</div>
+          <h4 data-i18n="why.c2.title">Accès à vie</h4>
+          <p data-i18n="why.c2.desc">Tu paies une fois. Tu reviens quand tu veux, autant de fois que tu veux.</p>
+        </div>
+        <div class="landing-why-card">
+          <div class="why-icon">🎁</div>
+          <h4 data-i18n="why.c3.title">Bonus exclusifs</h4>
+          <p data-i18n="why.c3.desc">Audios, PDFs, templates CV & Anschreiben — débloqués au fil de ta progression.</p>
+        </div>
+        <div class="landing-why-card">
+          <div class="why-icon">👥</div>
+          <h4 data-i18n="why.c4.title">Communauté & Lives</h4>
+          <p data-i18n="why.c4.desc">Cohort Accompagné : 8 sessions live + groupe WhatsApp privé pour rester dans l'action.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGIN SECTION -->
+  <div class="landing-section" id="login">
+    <div class="container auth-container">
+      <div class="auth-card glass">
+        <div class="auth-badge">
+          <span class="dot"></span>
+          <span data-i18n="login.badge">Espace étudiant sécurisé</span>
+        </div>
+        <h2 class="auth-title" data-i18n="login.title">Accède à <em>tes cours</em></h2>
+        <p class="auth-sub" data-i18n="login.sub">Entre ton code d'accès pour accéder à tes cours.</p>
+
+        <form id="loginForm" class="auth-form">
+          <div class="form-group">
+            <label for="coupon" data-i18n="login.couponLabel">Code d'accès</label>
+            <input type="text" id="coupon" name="coupon" placeholder="AU-XXXXXX ou AC-XXXXXX" autocomplete="off" spellcheck="false" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">
+            <span data-i18n="login.submit">Accéder à mes cours</span>
+            <span class="arrow">→</span>
+          </button>
+          <div class="auth-error hidden" id="loginError"></div>
+        </form>
+
+        <div class="auth-help">
+          <p data-i18n="login.help1">Pas encore de code ?</p>
+          <a href="https://aurel-academy.com/pflege/" data-i18n="login.help2">Voir les formations disponibles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="landing-section landing-section-alt">
+    <div class="container">
+      <div class="section-tag visible"><span data-i18n="faq.tag">Questions fréquentes</span></div>
+      <h2 class="landing-h2" data-i18n="faq.title">On répond à <em>tes questions</em></h2>
+      <div class="landing-faq">
+        <details class="faq-item">
+          <summary data-i18n="faq.q1">Comment j'obtiens un code d'accès ?</summary>
+          <p data-i18n="faq.a1">Tu achètes une formation sur <a href="https://aurel-academy.com/pflege/">aurel-academy.com/pflege/</a>. Tu reçois ton code unique sur WhatsApp juste après le paiement.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q2">Mon code ne marche pas, que faire ?</summary>
+          <p data-i18n="faq.a2">Vérifie qu'il commence bien par <code>AU-</code> ou <code>AC-</code>. Si le code est "déjà utilisé sur un autre appareil", contacte-nous sur WhatsApp — on peut le débloquer.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q3">Je peux utiliser mon code sur plusieurs appareils ?</summary>
+          <p data-i18n="faq.a3">Non. Ton code est lié à ton appareil pour éviter le partage. Si tu changes de téléphone, contacte-nous pour transférer l'accès.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q4">J'ai perdu mon code — je peux le récupérer ?</summary>
+          <p data-i18n="faq.a4">Oui. Envoie-nous un message WhatsApp avec ton nom et la date d'achat, on te renvoie ton code.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q5">L'accès est vraiment à vie ?</summary>
+          <p data-i18n="faq.a5">Oui. Tu paies une seule fois. Tu gardes l'accès aux vidéos + bonus + mises à jour, à vie.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="landing-final">
+    <div class="container">
+      <h2 class="landing-h2" data-i18n="final.title">Prêt à <em>commencer</em> ?</h2>
+      <p class="landing-sub" data-i18n="final.sub">Rejoins les étudiants Aurel Academy qui partent travailler en Allemagne.</p>
+      <div class="landing-hero-ctas">
+        <a href="#login" class="btn btn-primary" data-i18n="final.cta1">J'ai un code →</a>
+        <a href="https://aurel-academy.com/pflege/" class="btn btn-outline" data-i18n="final.cta2">Je veux m'inscrire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD VIEW -->
+<section class="view view-dashboard hidden" id="dashboardView">
+  <div class="container">
+    <div class="dash-header">
+      <div>
+        <div class="section-tag visible"><span data-i18n="dash.tag">Tes formations</span></div>
+        <h1 class="dash-title" data-i18n="dash.title">Bon retour 👋</h1>
+        <p class="dash-sub">
+          <span data-i18n="dash.sub">Continue ton parcours. Ton accès</span>
+          <span class="tier-badge" id="tierBadge">—</span>
+        </p>
+      </div>
+      <div class="dash-stats">
+        <div class="dash-stat">
+          <div class="stat-num" id="statCourses">0</div>
+          <div class="stat-label" data-i18n="dash.statCourses">Cours</div>
+        </div>
+        <div class="dash-stat">
+          <div class="stat-num" id="statProgress">0%</div>
+          <div class="stat-label" data-i18n="dash.statProgress">Progression</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="courses-grid" id="coursesGrid">
+      <!-- Course cards injected by JS -->
+    </div>
+
+    <div class="dash-tip">
+      <span class="tip-icon">💡</span>
+      <span data-i18n="dash.tip">Nouvelle formation bientôt disponible : <b>Allemand général</b> & <b>Ausbildung</b>.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN VIEW -->
+<section class="view view-admin hidden" id="adminView">
+  <div class="container">
+    <div class="admin-login glass" id="adminLogin">
+      <h2 class="auth-title">Admin <em>Aurel Academy</em></h2>
+      <form id="adminLoginForm" class="auth-form">
+        <div class="form-group">
+          <label for="adminPwd">Mot de passe</label>
+          <input type="password" id="adminPwd" name="password" autocomplete="off" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+        <div class="auth-error hidden" id="adminError"></div>
+      </form>
+    </div>
+
+    <div class="admin-panel hidden" id="adminPanel">
+      <div class="dash-header">
+        <div>
+          <div class="section-tag visible"><span>Admin</span></div>
+          <h1 class="dash-title">Tableau de bord admin</h1>
+        </div>
+        <button class="btn btn-outline btn-sm" id="adminRefresh">↻ Rafraîchir</button>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat"><div class="stat-num" id="aTotal">0</div><div class="stat-label">Total coupons</div></div>
+        <div class="stat"><div class="stat-num" id="aUsed">0</div><div class="stat-label">Utilisés</div></div>
+        <div class="stat"><div class="stat-num" id="aAvail">0</div><div class="stat-label">Disponibles</div></div>
+        <div class="stat"><div class="stat-num" id="aAvgProg">0%</div><div class="stat-label">Progression moy.</div></div>
+      </div>
+
+      <div class="admin-tiers">
+        <div class="glass admin-tier-card">
+          <div class="tier-header"><span class="tier-badge tier-au">AU</span> Autonome</div>
+          <div class="tier-stats"><span id="auSold">0</span> / <span id="auTotal">0</span> utilisés</div>
+        </div>
+        <div class="glass admin-tier-card">
+          <div class="tier-header"><span class="tier-badge tier-ac">AC</span> Accompagné</div>
+          <div class="tier-stats"><span id="acSold">0</span> / <span id="acTotal">0</span> utilisés</div>
+        </div>
+      </div>
+
+      <div class="glass admin-gen">
+        <h3>Générer des coupons</h3>
+        <div class="admin-gen-row">
+          <div class="form-group"><label>AU- (Autonome)</label><input type="number" id="genAU" value="50" min="0" max="500"></div>
+          <div class="form-group"><label>AC- (Accompagné)</label><input type="number" id="genAC" value="50" min="0" max="500"></div>
+          <button class="btn btn-primary" id="genBtn">Générer</button>
+        </div>
+        <div class="admin-gen-output hidden" id="genOutput"></div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-outline btn-sm" id="exportCsv">⬇ Export CSV</button>
+        <input type="search" id="adminSearch" placeholder="Rechercher un coupon…" class="admin-search">
+      </div>
+
+      <div class="glass admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Tier</th>
+              <th>Statut</th>
+              <th>IP</th>
+              <th>Activé</th>
+              <th>Modules faits</th>
+            </tr>
+          </thead>
+          <tbody id="adminTbody"></tbody>
+        </table>
+      </div>
+
+      <div class="glass admin-logs-section">
+        <div class="admin-logs-header">
+          <h3>Journal d'activité</h3>
+          <button class="btn btn-outline btn-sm" id="logsRefresh">↻ Rafraîchir</button>
+        </div>
+        <div class="logs-wrap">
+          <table class="logs-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Événement</th>
+                <th>Code</th>
+                <th>IP</th>
+              </tr>
+            </thead>
+            <tbody id="logsTbody">
+              <tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:20px">Chargement…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coupon detail modal -->
+<div class="modal-backdrop" id="couponModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h3 id="modalCode">—</h3>
+    <div class="sub" id="modalTierLine">—</div>
+
+    <div class="modal-grid">
+      <div class="modal-field">
+        <div class="label">Statut</div>
+        <div class="value" id="modalStatus">—</div>
+      </div>
+      <div class="modal-field">
+        <div class="label">Tier</div>
+        <div class="value" id="modalTier">—</div>
+      </div>
+      <div class="modal-field">
+        <div class="label">Activé le</div>
+        <div class="value" id="modalActivated">—</div>
+      </div>
+      <div class="modal-field">
+        <div class="label">Dernière activité</div>
+        <div class="value" id="modalLast">—</div>
+      </div>
+      <div class="modal-field wide">
+        <div class="label">IP liée à l'appareil</div>
+        <div class="value" id="modalIP">—</div>
+      </div>
+    </div>
+
+    <div class="modal-progress">
+      <div class="label">Progression Pflege <span id="modalProgCount">0/10</span></div>
+      <div class="modal-modules" id="modalModules"></div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-outline" id="modalCancel">Fermer</button>
+      <button class="btn-danger" id="modalRevoke">Révoquer le coupon</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Aurel Academy — <a href="https://aurel-academy.com">aurel-academy.com</a></p>
+</footer>
+
+<script src="/assets/i18n.js?v=3"></script>
+<script src="/assets/app.js?v=3"></script>
+<script src="/assets/animations.js?v=3"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>

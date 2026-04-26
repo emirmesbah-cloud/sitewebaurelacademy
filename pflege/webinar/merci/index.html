@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Merci ! — Aurel Academy</title>
+<meta name="theme-color" content="#0B0B0F">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="https://cours.aurel-academy.com/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cours.aurel-academy.com/assets/app.css">
+<link rel="stylesheet" href="/pflege/webinar/webinar.css">
+
+<!-- META PIXEL — fire CompleteRegistration conversion on thank-you page view (à activer) -->
+<!--
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_PIXEL_ID');
+fbq('track', 'PageView');
+fbq('track', 'Lead');
+fbq('track', 'CompleteRegistration');
+</script>
+-->
+<!-- GOOGLE ANALYTICS (à activer) -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');gtag('event','conversion',{send_to:'G-XXXXXXXXXX/webinar_signup'});</script>
+-->
+</head>
+<body class="wb-minimal">
+
+<main class="ty-wrap">
+  <div class="ty-inner">
+    <div class="ty-check">✓</div>
+    <h1 class="ty-title">Inscription <em>confirmée !</em></h1>
+    <p class="ty-sub">Redirection vers le groupe WhatsApp…</p>
+    <div class="ty-spinner"></div>
+  </div>
+</main>
+
+<script>
+(function(){
+  // Fallback group URL (in case sessionStorage is empty — same as in webinar.js)
+  var GROUP_FALLBACK = 'https://chat.whatsapp.com/PLACEHOLDER';
+  var url;
+  try { url = sessionStorage.getItem('aurel.wb.groupUrl'); } catch(e){}
+  if (!url) url = GROUP_FALLBACK;
+
+  setTimeout(function(){
+    window.location.href = url;
+  }, 1000);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Mon profil — Aurel Academy</title>
+<meta name="theme-color" content="#0B0B0F">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/app.css?v=4">
+<link rel="stylesheet" href="/assets/secondary.css?v=4">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">A</div>
+      <span>Aurel Academy</span>
+    </a>
+    <div class="nav-breadcrumb">
+      <a href="/">Mes cours</a>
+      <span class="sep">/</span>
+      <span class="current">Mon profil</span>
+    </div>
+    <div class="nav-right">
+      <a href="/aide/" class="nav-link-ext">Aide</a>
+      <button class="nav-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </div>
+</nav>
+
+<main class="view">
+  <div class="container sec-container">
+    <div class="sec-header">
+      <div class="section-tag visible"><span>Mon espace</span></div>
+      <h1 class="dash-title">Mon <em>profil</em></h1>
+      <p class="dash-sub">Retrouve ici les infos de ton compte et gère ton accès.</p>
+    </div>
+
+    <div class="profile-grid">
+      <!-- ID CARD -->
+      <div class="glass profile-card profile-id">
+        <div class="profile-avatar">
+          <span id="profileInitials">—</span>
+        </div>
+        <div class="profile-badge-row">
+          <span class="tier-badge" id="profileTier">—</span>
+          <span class="status-pill status-used" id="profileStatus">Actif</span>
+        </div>
+        <div class="profile-code-label">Ton code d'accès</div>
+        <div class="profile-code" id="profileCode">—</div>
+        <button class="profile-copy" id="copyBtn">📋 Copier le code</button>
+      </div>
+
+      <!-- INFO CARDS -->
+      <div class="profile-stack">
+        <div class="glass profile-info-card">
+          <div class="pic-icon">📅</div>
+          <div>
+            <div class="pic-label">Activé le</div>
+            <div class="pic-value" id="activatedDate">—</div>
+          </div>
+        </div>
+        <div class="glass profile-info-card">
+          <div class="pic-icon">⚡</div>
+          <div>
+            <div class="pic-label">Dernière activité</div>
+            <div class="pic-value" id="lastActivity">—</div>
+          </div>
+        </div>
+        <div class="glass profile-info-card">
+          <div class="pic-icon">📚</div>
+          <div>
+            <div class="pic-label">Modules terminés</div>
+            <div class="pic-value" id="modulesDone">0 / 10</div>
+          </div>
+        </div>
+        <div class="glass profile-info-card">
+          <div class="pic-icon">🔒</div>
+          <div>
+            <div class="pic-label">Appareil lié (IP)</div>
+            <div class="pic-value pic-mono" id="deviceIP">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="profile-actions glass">
+      <h3>Besoin d'aide ?</h3>
+      <p>Si tu as perdu ton code, changé d'appareil ou rencontré un problème, on te dépanne.</p>
+      <div class="profile-actions-btns">
+        <a href="/aide/" class="btn btn-outline">Voir l'aide</a>
+        <a href="https://wa.me/" class="btn btn-primary" id="waContact">
+          <span>Contacter sur WhatsApp</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- DANGER ZONE -->
+    <div class="profile-danger glass">
+      <h3>Déconnexion</h3>
+      <p>Tu seras redirigé vers la page de connexion. Ton accès reste actif — tu pourras te reconnecter à tout moment avec ton code.</p>
+      <button class="btn btn-outline" id="logoutBtn2">Se déconnecter</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Aurel Academy — <a href="https://aurel-academy.com">aurel-academy.com</a></p>
+</footer>
+
+<script src="/assets/i18n.js?v=4"></script>
+<script src="/assets/profile.js?v=4"></script>
+<script src="/assets/animations.js?v=4"></script>
+</body>
+</html>

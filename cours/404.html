@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Page introuvable — Aurel Academy</title>
+<meta name="theme-color" content="#0B0B0F">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/app.css">
+<link rel="stylesheet" href="/assets/secondary.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">A</div>
+      <span>Aurel Academy</span>
+    </a>
+    <div class="nav-right">
+      <a href="/aide/" class="nav-link-ext">Aide</a>
+      <a href="https://aurel-academy.com" class="nav-link-ext">Site principal</a>
+    </div>
+  </div>
+</nav>
+
+<main class="err-wrap">
+  <div class="err-inner">
+    <div class="err-code">404</div>
+    <h1 class="err-title">Cette page n'existe pas</h1>
+    <p class="err-sub">Le lien est peut-être cassé ou la page a été déplacée. Pas de panique, on te ramène là où tu veux aller.</p>
+    <div class="err-ctas">
+      <a href="/" class="btn btn-primary">
+        <span>Retour à l'accueil</span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="/aide/" class="btn btn-outline">Contacter l'aide</a>
+    </div>
+    <div class="err-countdown">
+      <span class="dot"></span>
+      <span>Redirection automatique dans <b id="cd">10</b> secondes…</span>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Aurel Academy — <a href="https://aurel-academy.com">aurel-academy.com</a></p>
+</footer>
+
+<script>
+var t = 10;
+var cd = document.getElementById('cd');
+var iv = setInterval(function(){
+  t--; cd.textContent = t;
+  if (t <= 0) { clearInterval(iv); location.href = '/'; }
+}, 1000);
+</script>
+</body>
+</html>

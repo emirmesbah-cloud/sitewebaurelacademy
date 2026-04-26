@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Aide & Support — Aurel Academy</title>
+<meta name="theme-color" content="#0B0B0F">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/app.css?v=4">
+<link rel="stylesheet" href="/assets/secondary.css?v=4">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">A</div>
+      <span>Aurel Academy</span>
+    </a>
+    <div class="nav-breadcrumb">
+      <a href="/">Mes cours</a>
+      <span class="sep">/</span>
+      <span class="current">Aide</span>
+    </div>
+    <div class="nav-right">
+      <a href="/profile/" class="nav-link-ext">Mon profil</a>
+      <button class="nav-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </div>
+</nav>
+
+<main class="view">
+  <div class="container sec-container">
+    <div class="aide-header">
+      <div class="section-tag visible"><span>Centre d'aide</span></div>
+      <h1 class="dash-title">Comment <em>t'aider</em> ?</h1>
+      <p class="dash-sub">Trouve une réponse rapide ou contacte-nous directement sur WhatsApp.</p>
+    </div>
+
+    <div class="aide-search">
+      <input type="search" id="faqSearch" placeholder="🔍 Rechercher dans l'aide…">
+    </div>
+
+    <div class="aide-topics">
+      <a href="#cat-acces" class="glass aide-topic">
+        <div class="at-icon">🔑</div>
+        <h4>Accès & code</h4>
+        <p>Problèmes de connexion, code perdu</p>
+      </a>
+      <a href="#cat-cours" class="glass aide-topic">
+        <div class="at-icon">📚</div>
+        <h4>Cours & modules</h4>
+        <p>Vidéos, progression, bonus</p>
+      </a>
+      <a href="#cat-appareil" class="glass aide-topic">
+        <div class="at-icon">📱</div>
+        <h4>Appareil & app</h4>
+        <p>Changer de téléphone, installer l'app</p>
+      </a>
+      <a href="#cat-paiement" class="glass aide-topic">
+        <div class="at-icon">💳</div>
+        <h4>Paiement & remboursement</h4>
+        <p>Factures, remboursement, garantie</p>
+      </a>
+    </div>
+
+    <!-- FAQ CATEGORIES -->
+    <section id="cat-acces" class="aide-cat">
+      <h2 class="landing-h2">🔑 Accès & code</h2>
+      <div class="landing-faq">
+        <details class="faq-item"><summary>Mon code ne fonctionne pas, que faire ?</summary><p>Vérifie que tu l'écris en majuscules et que tu inclus bien le tiret (ex: <code>AU-A1B2C3</code>). Si tu vois "Code invalide", recontacte-nous sur WhatsApp pour qu'on vérifie.</p></details>
+        <details class="faq-item"><summary>Le message "déjà utilisé sur un autre appareil" s'affiche</summary><p>Ton code est lié à l'appareil où tu l'as activé la première fois. Si tu as changé de téléphone, contacte-nous sur WhatsApp avec ton code, on le débloque pour ton nouvel appareil.</p></details>
+        <details class="faq-item"><summary>J'ai perdu mon code, comment le récupérer ?</summary><p>Envoie-nous ton nom complet et la date approximative d'achat par WhatsApp. On te renvoie ton code dans la journée.</p></details>
+        <details class="faq-item"><summary>Mon code peut-il expirer ?</summary><p>Non. Ton code donne accès à vie aux cours. Il n'expire jamais.</p></details>
+      </div>
+    </section>
+
+    <section id="cat-cours" class="aide-cat">
+      <h2 class="landing-h2">📚 Cours & modules</h2>
+      <div class="landing-faq">
+        <details class="faq-item"><summary>La vidéo ne se lance pas</summary><p>Essaye de : rafraîchir la page, changer de navigateur (Chrome recommandé), vérifier ta connexion internet. Si le problème persiste, envoie-nous un screenshot sur WhatsApp.</p></details>
+        <details class="faq-item"><summary>Comment marquer un module comme terminé ?</summary><p>Clique sur le bouton "Marquer comme terminé ✓" en haut à droite de la page du module. Ta progression est sauvegardée automatiquement.</p></details>
+        <details class="faq-item"><summary>Quand mes bonus se débloquent-ils ?</summary><p>Chaque bonus se débloque automatiquement après avoir terminé un module précis. Tu vois la condition de déblocage sur chaque bonus (ex: "Termine le module 1").</p></details>
+        <details class="faq-item"><summary>Je ne vois pas les Lives et le groupe WhatsApp</summary><p>Ces fonctionnalités sont exclusives au pack <strong>Accompagné</strong> (code <code>AC-</code>). Si tu as acheté le pack Autonome (<code>AU-</code>), tu n'y as pas accès. Tu peux upgrader à tout moment — contacte-nous.</p></details>
+      </div>
+    </section>
+
+    <section id="cat-appareil" class="aide-cat">
+      <h2 class="landing-h2">📱 Appareil</h2>
+      <div class="landing-faq">
+        <details class="faq-item"><summary>Je change de téléphone, que faire ?</summary><p>Envoie-nous un message WhatsApp avec ton code actuel. On déverrouille le binding IP et tu peux réactiver ton code sur ton nouvel appareil.</p></details>
+        <details class="faq-item"><summary>Les vidéos fonctionnent-elles hors ligne ?</summary><p>Les vidéos sont en streaming (VDOCipher) et nécessitent une connexion internet. Seuls les PDFs et audios bonus peuvent être téléchargés.</p></details>
+        <details class="faq-item"><summary>La plateforme marche sur mon téléphone ?</summary><p>Oui. La plateforme est responsive et fonctionne sur tous les navigateurs mobiles récents (Chrome, Safari, Firefox). Il suffit d'aller sur <code>cours.aurel-academy.com</code>.</p></details>
+      </div>
+    </section>
+
+    <section id="cat-paiement" class="aide-cat">
+      <h2 class="landing-h2">💳 Paiement & remboursement</h2>
+      <div class="landing-faq">
+        <details class="faq-item"><summary>Quelle est ta politique de remboursement ?</summary><p>Satisfait ou remboursé sous <strong>14 jours</strong> après activation. Envoie-nous un WhatsApp avec ton code et le motif, on fait le remboursement.</p></details>
+        <details class="faq-item"><summary>Puis-je avoir une facture ?</summary><p>Oui. Demande-la par WhatsApp avec ton nom complet et ton adresse, on te l'envoie par email.</p></details>
+        <details class="faq-item"><summary>Je veux upgrader d'Autonome à Accompagné</summary><p>C'est possible, tu ne paies que la différence. Contacte-nous sur WhatsApp pour activer l'upgrade.</p></details>
+      </div>
+    </section>
+
+    <!-- WhatsApp contact box -->
+    <div class="aide-contact glass">
+      <div class="ac-icon">💬</div>
+      <h3>Pas trouvé ta réponse ?</h3>
+      <p>Écris-nous directement sur WhatsApp. On répond en général en moins d'1h en journée.</p>
+      <div class="aide-contact-btns">
+        <a href="https://wa.me/" class="btn btn-whatsapp" id="waContact">
+          <span>Ouvrir WhatsApp</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="/profile/" class="btn btn-outline">Voir mon code</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Aurel Academy — <a href="https://aurel-academy.com">aurel-academy.com</a></p>
+</footer>
+
+<script>
+// TODO: real Aurel support number
+var WHATSAPP_SUPPORT = 'https://wa.me/213555290826';
+
+document.getElementById('waContact').href = WHATSAPP_SUPPORT + '?text=' + encodeURIComponent("Salut, j'ai besoin d'aide avec la plateforme Aurel Academy.");
+
+document.getElementById('logoutBtn').addEventListener('click', function(){
+  localStorage.removeItem('aurel.coupon');
+  localStorage.removeItem('aurel.tier');
+  location.href = '/';
+});
+
+// FAQ live search
+var searchInput = document.getElementById('faqSearch');
+searchInput.addEventListener('input', function(){
+  var q = this.value.toLowerCase().trim();
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var text = item.textContent.toLowerCase();
+    var match = !q || text.includes(q);
+    item.style.display = match ? '' : 'none';
+    if (q && match) item.setAttribute('open','');
+    else if (!q) item.removeAttribute('open');
+  });
+  document.querySelectorAll('.aide-cat').forEach(function(cat){
+    var hasVisible = Array.from(cat.querySelectorAll('.faq-item')).some(function(i){ return i.style.display !== 'none'; });
+    cat.style.display = hasVisible ? '' : 'none';
+  });
+});
+</script>
+<script src="/assets/animations.js?v=4"></script>
+</body>
+</html>

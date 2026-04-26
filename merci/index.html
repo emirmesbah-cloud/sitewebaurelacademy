@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Merci — Aurel Academy</title>
+<meta name="description" content="Ta réservation est bien reçue. Aurel te rappelle sous 24h sur WhatsApp.">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="robots" content="noindex,nofollow">
+
+<link rel="icon" type="image/svg+xml" href="https://cours.aurel-academy.com/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css?v=1">
+
+<script>
+  // Pre-paint: pick lang from URL > 'fr'
+  (function () {
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    var lang = (fromUrl === 'fr' || fromUrl === 'ar') ? fromUrl : 'fr';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    window.__aurelLang = lang;
+  })();
+</script>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { overflow-x: hidden; max-width: 100vw; }
+
+  :root {
+    --bg-1: #0A0A0A;
+    --bg-2: #14171F;
+    --ink: #F5F1EA;
+    --ink-dim: rgba(245,241,234,0.72);
+    --ink-mute: rgba(245,241,234,0.48);
+    --gold: #F4B860;
+    --orange: #F97316;
+    --line: rgba(245,241,234,0.10);
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #1a1d28 0%, var(--bg-1) 60%);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  [dir="rtl"] body {
+    font-family: 'Reem Kufi', 'Noto Sans Arabic', 'Inter', system-ui, sans-serif;
+  }
+
+  .wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px 48px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+  }
+
+  .check-ring {
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--orange));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 40px rgba(249,115,22,0.30);
+    animation: pop .6s cubic-bezier(.4,0,.2,1) both;
+  }
+  .check-ring svg { width: 44px; height: 44px; stroke: #0A0A0A; }
+
+  @keyframes pop {
+    0% { transform: scale(0.4); opacity: 0; }
+    60% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(244,184,96,0.12);
+    border: 1px solid rgba(244,184,96,0.32);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  [dir="rtl"] .badge { letter-spacing: normal; }
+
+  h1 {
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  [dir="rtl"] h1 { letter-spacing: normal; }
+
+  h1 .accent { color: var(--gold); }
+
+  .lead {
+    font-size: clamp(16px, 2.6vw, 18px);
+    color: var(--ink-dim);
+    margin-bottom: 28px;
+  }
+
+  .info {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  .chip {
+    padding: 7px 14px;
+    border-radius: 10px;
+    background: rgba(245,241,234,0.05);
+    border: 1px solid var(--line);
+    color: var(--ink-dim);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .chip strong { color: var(--ink); font-weight: 700; }
+
+  .ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  @media (min-width: 480px) {
+    .ctas { flex-direction: row; justify-content: center; }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    min-width: 220px;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.30);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(37,211,102,0.42); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-secondary:hover { background: rgba(245,241,234,0.06); }
+
+  .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  .next {
+    margin-top: 44px;
+    padding: 22px 24px;
+    border-radius: 14px;
+    background: rgba(245,241,234,0.04);
+    border: 1px solid var(--line);
+    text-align: start;
+  }
+  .next h3 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  [dir="rtl"] .next h3 { letter-spacing: normal; }
+  .next ol {
+    list-style: none;
+    counter-reset: step;
+    display: grid;
+    gap: 12px;
+  }
+  .next li {
+    counter-increment: step;
+    display: flex;
+    gap: 12px;
+    color: var(--ink-dim);
+    font-size: 14px;
+    align-items: flex-start;
+  }
+  .next li::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(244,184,96,0.14);
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer {
+    padding: 24px 20px;
+    text-align: center;
+    color: var(--ink-mute);
+    font-size: 12px;
+    border-top: 1px solid var(--line);
+  }
+  footer a { color: var(--ink-dim); text-decoration: none; margin: 0 8px; }
+  footer a:hover { color: var(--gold); }
+
+  .lang-switch {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    gap: 4px;
+    background: rgba(245,241,234,0.05);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 3px;
+    z-index: 10;
+  }
+  [dir="rtl"] .lang-switch { right: auto; left: 18px; }
+  .lang-switch button {
+    background: transparent;
+    border: none;
+    color: var(--ink-mute);
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .lang-switch button.is-active {
+    background: var(--gold);
+    color: #0A0A0A;
+  }
+</style>
+</head>
+<body>
+
+<div class="lang-switch" role="group" aria-label="Language">
+  <button type="button" data-lang-set="fr" id="btn-fr">FR</button>
+  <button type="button" data-lang-set="ar" id="btn-ar">عربي</button>
+</div>
+
+<main class="wrap">
+  <div class="card">
+
+    <div class="check-ring" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <div class="badge" id="badge"></div>
+    <h1 id="title"></h1>
+    <p class="lead" id="lead"></p>
+
+    <div class="info" id="info" hidden>
+      <span class="chip" id="chip-program"></span>
+      <span class="chip" id="chip-tier" hidden></span>
+    </div>
+
+    <div class="ctas">
+      <a class="btn btn-primary" id="cta-whatsapp" href="https://wa.me/213000000000" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span id="cta-wa-label"></span>
+      </a>
+      <a class="btn btn-secondary" id="cta-home" href="/">
+        <span id="cta-home-label"></span>
+      </a>
+    </div>
+
+    <div class="next">
+      <h3 id="next-title"></h3>
+      <ol id="next-list"></ol>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <span id="foot-text"></span>
+  <a href="/mentions/" id="foot-mentions"></a>
+  <a href="/confidentialite/" id="foot-priv"></a>
+  <a href="/conditions/" id="foot-cgv"></a>
+</footer>
+
+<script>
+(function () {
+  var qs = new URLSearchParams(location.search);
+  var lang = (qs.get('lang') === 'ar') ? 'ar' : 'fr';
+  var program = qs.get('program') || '';
+  var tier = (qs.get('tier') || '').toLowerCase();
+  var prenom = (qs.get('p') || '').trim();
+  // sanitize prenom: max 30 chars, strip HTML
+  prenom = prenom.replace(/[<>]/g, '').slice(0, 30);
+
+  var I18N = {
+    fr: {
+      badge: 'Réservation reçue',
+      title_with_name: 'Merci, <span class="accent">{name}</span> !',
+      title_no_name: 'Merci, on a bien reçu ta demande.',
+      lead: 'Aurel te rappelle sous 24h sur WhatsApp pour valider ton inscription et répondre à toutes tes questions.',
+      chip_program: 'Programme : <strong>{program}</strong>',
+      chip_tier: { premium: 'Formule : <strong>Premium</strong>', standard: 'Formule : <strong>Standard</strong>', accompagne: 'Formule : <strong>Accompagné</strong>', autonome: 'Formule : <strong>Autonome</strong>' },
+      cta_wa: 'Me contacter sur WhatsApp',
+      cta_home: '← Retour à l’accueil',
+      next_title: 'Prochaines étapes',
+      next: [
+        'On te recontacte par WhatsApp dans les 24h (jours ouvrés).',
+        'Aurel valide avec toi le bon niveau et la bonne formule.',
+        'Tu reçois ton accès et tu démarres ton allemand.',
+      ],
+      foot: '© Aurel Academy · ',
+      mentions: 'Mentions légales',
+      priv: 'Confidentialité',
+      cgv: 'Conditions',
+    },
+    ar: {
+      badge: 'تم استلام حجزك',
+      title_with_name: 'شكرا، <span class="accent">{name}</span> !',
+      title_no_name: 'شكرا، تم استلام طلبك.',
+      lead: 'سيتصل بك أوريل خلال 24 ساعة عبر الواتساب لتأكيد تسجيلك والإجابة على جميع أسئلتك.',
+      chip_program: 'البرنامج: <strong>{program}</strong>',
+      chip_tier: { premium: 'الصيغة: <strong>Premium</strong>', standard: 'الصيغة: <strong>Standard</strong>', accompagne: 'الصيغة: <strong>مرافقة</strong>', autonome: 'الصيغة: <strong>ذاتية</strong>' },
+      cta_wa: 'تواصل معنا على الواتساب',
+      cta_home: '→ العودة إلى الرئيسية',
+      next_title: 'الخطوات القادمة',
+      next: [
+        'سنتصل بك عبر الواتساب خلال 24 ساعة (أيام العمل).',
+        'سيؤكد معك أوريل المستوى والصيغة المناسبين.',
+        'تتلقى رابط الوصول وتبدأ تعلم الألمانية.',
+      ],
+      foot: '© Aurel Academy · ',
+      mentions: 'الشروط القانونية',
+      priv: 'الخصوصية',
+      cgv: 'الشروط',
+    },
+  };
+
+  function programLabel(p) {
+    if (!p) return '';
+    if (p === 'Pflege') return (lang === 'ar') ? 'Deutsch für Pflegekräfte' : 'Deutsch für Pflegekräfte';
+    if (p === 'Allemand') return (lang === 'ar') ? 'الألمانية A1 → B2' : 'Allemand A1 → B2';
+    return p;
+  }
+
+  function setText(id, html) { var el = document.getElementById(id); if (el) el.innerHTML = html; }
+
+  function applyLang(l) {
+    document.documentElement.lang = l;
+    document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+    var t = I18N[l];
+
+    setText('badge', t.badge);
+    if (prenom) {
+      setText('title', t.title_with_name.replace('{name}', escapeHtml(prenom)));
+    } else {
+      setText('title', t.title_no_name);
+    }
+    setText('lead', t.lead);
+
+    var info = document.getElementById('info');
+    var chipP = document.getElementById('chip-program');
+    var chipT = document.getElementById('chip-tier');
+    if (program) {
+      chipP.innerHTML = t.chip_program.replace('{program}', programLabel(program));
+      info.hidden = false;
+    } else {
+      info.hidden = true;
+    }
+    var tierKey = tier;
+    if (t.chip_tier[tierKey]) {
+      chipT.innerHTML = t.chip_tier[tierKey];
+      chipT.hidden = false;
+    } else {
+      chipT.hidden = true;
+    }
+
+    setText('cta-wa-label', t.cta_wa);
+    setText('cta-home-label', t.cta_home);
+    setText('next-title', t.next_title);
+
+    var ol = document.getElementById('next-list');
+    ol.innerHTML = '';
+    t.next.forEach(function (step) {
+      var li = document.createElement('li');
+      li.textContent = step;
+      ol.appendChild(li);
+    });
+
+    setText('foot-text', t.foot);
+    setText('foot-mentions', t.mentions);
+    setText('foot-priv', t.priv);
+    setText('foot-cgv', t.cgv);
+
+    document.title = (l === 'ar') ? 'شكرا — Aurel Academy' : 'Merci — Aurel Academy';
+
+    document.querySelectorAll('[data-lang-set]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-lang-set') === l);
+    });
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  applyLang(lang);
+
+  document.querySelectorAll('[data-lang-set]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var l = btn.getAttribute('data-lang-set');
+      lang = l;
+      applyLang(l);
+      var url = new URL(location.href);
+      url.searchParams.set('lang', l);
+      history.replaceState(null, '', url.toString());
+    });
+  });
+
+  // ============================================================
+  // CONVERSION TRACKING — placeholders, à activer quand les pixels sont prêts
+  // ============================================================
+  // Meta Pixel (à décommenter quand tu mets ton Pixel ID dans le <head>)
+  // if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: program, content_category: tier });
+  //
+  // Google Analytics 4 (à décommenter quand le tag GA4 est en place)
+  // if (typeof gtag === 'function') gtag('event', 'generate_lead', { program: program, tier: tier });
+  //
+  // TikTok Pixel (idem)
+  // if (typeof ttq !== 'undefined') ttq.track('SubmitForm', { content_type: program });
+})();
+</script>
+
+</body>
+</html>

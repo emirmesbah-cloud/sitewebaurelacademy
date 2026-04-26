@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Live gratuit — Travailler en Pflege en Allemagne · Aurel Academy</title>
+<meta name="description" content="Inscris-toi au live gratuit Aurel Academy sur le secteur Pflege en Allemagne.">
+<meta name="theme-color" content="#0B0B0F">
+
+<meta property="og:title" content="Live gratuit — Pflege en Allemagne · Aurel Academy">
+<meta property="og:description" content="Comment décrocher un poste Pflege en Allemagne en 8 mois. Session live en direct + Q&R.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aurel-academy.com/pflege/webinar/">
+<meta property="og:image" content="https://aurel-academy.com/pflege/webinar/og.jpg">
+
+<link rel="icon" type="image/svg+xml" href="https://cours.aurel-academy.com/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cours.aurel-academy.com/assets/app.css">
+<link rel="stylesheet" href="/pflege/webinar/webinar.css">
+
+<!-- META PIXEL (à activer) -->
+<!--
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_PIXEL_ID'); fbq('track', 'PageView');
+</script>
+-->
+<!-- GOOGLE ANALYTICS (à activer) -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
+-->
+</head>
+<body class="wb-minimal">
+
+<main class="wb-page">
+  <div class="wb-logo">
+    <div class="nav-logo-icon">A</div>
+    <span>Aurel Academy</span>
+  </div>
+
+  <h1 class="wb-h1">Live gratuit : <em>Travaille en Pflege</em> en Allemagne.</h1>
+  <p class="wb-sub">Inscris-toi au live gratuit Aurel Academy sur le secteur Pflege en Allemagne.</p>
+
+  <div class="wb-trust-pills">
+    <span><span class="dot"></span> 100 % gratuit</span>
+    <span><span class="dot"></span> Live en direct</span>
+    <span><span class="dot"></span> Q&amp;R incluse</span>
+  </div>
+
+  <div class="wb-form-card glass">
+    <form id="wbForm" class="wb-form">
+      <div class="form-group">
+        <label for="wbFirstname">Ton prénom <span class="req">*</span></label>
+        <input type="text" id="wbFirstname" name="firstname" required placeholder="Ex: Mohamed" autocomplete="given-name">
+      </div>
+
+      <div class="form-group">
+        <label for="wbPhone">Ton numéro WhatsApp <span class="req">*</span></label>
+        <input type="tel" id="wbPhone" name="phone" required placeholder="Ex: 0555 29 08 26" autocomplete="tel">
+        <div class="form-error hidden" id="phoneError">Format attendu : 05/06/07 + 8 chiffres</div>
+      </div>
+
+      <div class="form-group">
+        <label for="wbWilaya">Ta ville / wilaya <span class="req">*</span></label>
+        <select id="wbWilaya" name="wilaya" required>
+          <option value="">Choisis ta wilaya</option>
+          <!-- Populated by JS -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="wbGerman">Ton niveau d'allemand actuel <span class="req">*</span></label>
+        <select id="wbGerman" name="german_level" required>
+          <option value="">Choisis ton niveau</option>
+          <option value="aucun">Aucun — je débute de zéro</option>
+          <option value="a1">A1 — bases</option>
+          <option value="a2">A2 — élémentaire</option>
+          <option value="b1">B1 — intermédiaire</option>
+          <option value="b2">B2 — intermédiaire avancé</option>
+          <option value="c1">C1 ou plus</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="wbProfile">Ton expérience dans le secteur santé <span class="req">*</span></label>
+        <select id="wbProfile" name="health_profile" required>
+          <option value="">Choisis ton profil</option>
+          <option value="etudiant">Étudiant·e en soins (INFSPM…)</option>
+          <option value="ide_moins_2">Infirmier·ère diplômé·e (moins de 2 ans)</option>
+          <option value="ide_2_5">Infirmier·ère diplômé·e (2 à 5 ans)</option>
+          <option value="ide_5_plus">Infirmier·ère diplômé·e (5 ans et +)</option>
+          <option value="autre_paramedical">Autre paramédical</option>
+          <option value="reconversion">Reconversion (pas encore dans le santé)</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-lg" id="wbSubmit">
+        <span id="wbSubmitLabel">Rejoindre le groupe WhatsApp</span>
+        <span class="arrow">→</span>
+      </button>
+      <p class="wb-form-note">🔒 Tes données restent confidentielles. Zéro spam.</p>
+      <div class="form-error hidden" id="formError"></div>
+    </form>
+  </div>
+
+  <div class="wb-footer">
+    <a href="https://aurel-academy.com">aurel-academy.com</a> · © 2026 Aurel Academy
+  </div>
+</main>
+
+<script src="/pflege/webinar/webinar.js"></script>
+</body>
+</html>

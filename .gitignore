@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Temporary
+*.tmp
+*.bak
+*.old
+~$*
+
+# Helper / scripts cPanel locaux (le cas échéant)
+/_old_/
+/_archive_/

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Allemand A1 → B2 — Aurel Academy</title>
+<meta name="description" content="De zéro à niveau B2 en 8 mois. Programme live A1→B2 pour Algériens qui partent en Ausbildung, études ou emploi en Allemagne.">
+<meta name="theme-color" content="#FFFFFF">
+
+<meta property="og:title" content="Allemand A1 → B2 — Aurel Academy">
+<meta property="og:description" content="8 mois pour atteindre B2. Programme live, Telegram privé, préparation Ausbildung et visa.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aurel-academy.com/allemand/">
+<meta property="og:image" content="https://aurel-academy.com/allemand/og.jpg">
+
+<link rel="icon" type="image/svg+xml" href="https://cours.aurel-academy.com/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/noto-arabic-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css?v=20260426a">
+<link rel="stylesheet" href="/allemand/allemand.css?v=20260426a">
+
+<script>
+  (function () {
+    var DEFAULT = 'fr'; // /allemand defaults to French
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    var fromStorage = null;
+    try { fromStorage = localStorage.getItem('aurel-lang-allemand'); } catch (e) {}
+    var lang = (fromUrl === 'fr' || fromUrl === 'ar') ? fromUrl
+             : (fromStorage === 'fr' || fromStorage === 'ar') ? fromStorage
+             : DEFAULT;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    window.__aurelLang = lang;
+  })();
+</script>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="https://aurel-academy.com" class="logo">
+      <span class="logo-mark">A</span>
+      <span class="logo-text">Aurel <span class="italic-accent">Academy</span></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#programme" data-i18n="nav.programme">Programme</a>
+      <a href="#tarifs"    data-i18n="nav.tarifs">Tarifs</a>
+      <a href="#faq"       data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="fr" type="button">FR</button>
+        <button class="lang-btn" data-lang="ar" type="button">عر</button>
+      </div>
+      <a href="#reserver" class="btn btn-primary btn-sm" data-i18n="cta.reserve">Réserver ma place →</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Menu mobile">
+      <a href="#programme" data-i18n="nav.programme">Programme</a>
+      <a href="#tarifs"    data-i18n="nav.tarifs">Tarifs</a>
+      <a href="#faq"       data-i18n="nav.faq">FAQ</a>
+      <a href="#reserver" class="btn btn-primary btn-block" style="margin-top:8px" data-i18n="cta.reserve">Réserver ma place →</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <span class="badge" data-i18n="hero.badge">🇩🇪 Programme complet 8 mois</span>
+        <h1 class="h1"><span data-i18n="hero.title.before">Allemand </span><span class="italic-accent" data-i18n="hero.title.accent">A1 → B2</span></h1>
+        <p class="hero-sub" data-i18n="hero.sub">De zéro à niveau B2 en 8 mois. Programme live mené par Aurel pour les Algériens qui partent travailler ou étudier en Allemagne.</p>
+        <div class="hero-stats">
+          <strong data-i18n="hero.stats.duration">8 mois</strong>
+          <span class="sep">·</span>
+          <strong data-i18n="hero.stats.phases">5 phases</strong>
+          <span class="sep">·</span>
+          <strong data-i18n="hero.stats.live">Live</strong>
+          <span data-i18n="hero.stats.suffix">+ Telegram privé</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#reserver" class="btn btn-primary btn-lg" data-i18n="hero.cta.primary">Réserver ma place →</a>
+          <a href="#programme" class="btn btn-ghost btn-lg" data-i18n="hero.cta.secondary">Voir le programme ▼</a>
+        </div>
+        <div class="hero-proof">
+          <span class="stars">★★★★★</span>
+          <span data-i18n="hero.proof"><strong>50+ étudiants</strong> · 4.9/5 — placés en Ausbildung et emploi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ DUAL LEAD FORMS (above-the-fold) ═══════════ -->
+  <section class="section section-muted" id="reserver">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="form.eyebrow">Réservation</span>
+        <h2 class="h2"><span data-i18n="form.title.before">Réserve ta place </span><span class="italic-accent" data-i18n="form.title.accent">maintenant</span><span data-i18n="form.title.suffix">.</span></h2>
+        <p class="section-lead" data-i18n="form.lead">Choisis la formule qui te correspond et remplis directement le formulaire.</p>
+      </div>
+
+      <div class="dual-forms" id="dual-forms">
+
+        <!-- ── PREMIUM ── -->
+        <form class="booking-form-card booking-form-card--premium" id="form-premium" data-tier="Premium" novalidate>
+          <input type="hidden" name="tier" value="Premium">
+
+          <div class="bf-head">
+            <span class="bf-ribbon" data-i18n="form.tier.prem.ribbon">⭐ Recommandé</span>
+            <h3 class="bf-title" data-i18n="form.tier.prem.title">Premium</h3>
+            <div class="bf-price" data-i18n="form.tier.prem.price">Sur demande</div>
+            <span class="bf-exclusive" data-i18n="form.tier.prem.exclusive">CERCLE PRIVÉ · 30 PLACES MAX</span>
+            <p class="bf-desc" data-i18n="form.tier.prem.desc">Coaching individuel + accompagnement Ausbildung & visa de A à Z.</p>
+            <ul class="bf-feats">
+              <li data-i18n="form.tier.prem.feat.1">Tout Standard inclus</li>
+              <li data-i18n="form.tier.prem.feat.2">Coaching individuel hebdomadaire</li>
+              <li data-i18n="form.tier.prem.feat.3">Accompagnement Ausbildung A→Z</li>
+              <li data-i18n="form.tier.prem.feat.4">Préparation visa + simulation consulat</li>
+              <li data-i18n="form.tier.prem.feat.5">Suivi jusqu'au premier contrat</li>
+            </ul>
+          </div>
+
+          <div class="bf-body">
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="bf-prem-prenom" data-i18n="form.firstname.label">Prénom *</label>
+                <input id="bf-prem-prenom" name="prenom" type="text" required autocomplete="given-name" placeholder="Ex : Amir" data-i18n-placeholder="form.firstname.placeholder">
+                <small class="field-error" data-for="prenom"></small>
+              </div>
+              <div class="field">
+                <label for="bf-prem-nom" data-i18n="form.lastname.label">Nom *</label>
+                <input id="bf-prem-nom" name="nom" type="text" required autocomplete="family-name" placeholder="Ex : Mosbah" data-i18n-placeholder="form.lastname.placeholder">
+                <small class="field-error" data-for="nom"></small>
+              </div>
+            </div>
+            <div class="field">
+              <label for="bf-prem-whatsapp" data-i18n="form.whatsapp.label">Numéro WhatsApp *</label>
+              <input id="bf-prem-whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="+213 5XX XXX XXX" data-i18n-placeholder="form.whatsapp.placeholder">
+              <small class="field-error" data-for="whatsapp"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-email" data-i18n="form.email.label">Email *</label>
+              <input id="bf-prem-email" name="email" type="email" required autocomplete="email" placeholder="ton@email.com" data-i18n-placeholder="form.email.placeholder">
+              <small class="field-error" data-for="email"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-profession" data-i18n="form.profession.label">Profession actuelle *</label>
+              <select id="bf-prem-profession" name="profession" required>
+                <option value="" disabled selected data-i18n="form.profession.placeholder">Choisis ta profession</option>
+                <option data-i18n="form.profession.opt.student">Étudiant(e)</option>
+                <option data-i18n="form.profession.opt.employee">Salarié(e)</option>
+                <option data-i18n="form.profession.opt.unemployed">Sans emploi</option>
+                <option data-i18n="form.profession.opt.nurse">Infirmier / Aide-soignant</option>
+                <option data-i18n="form.profession.opt.doctor">Médecin / Profession médicale</option>
+                <option data-i18n="form.profession.opt.entrepreneur">Entrepreneur / Freelance</option>
+                <option data-i18n="form.profession.opt.other">Autre</option>
+              </select>
+              <small class="field-error" data-for="profession"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-niveau" data-i18n="form.level.label">Niveau d'allemand actuel *</label>
+              <select id="bf-prem-niveau" name="niveau_allemand" required>
+                <option value="" disabled selected data-i18n="form.level.placeholder">Ton niveau actuel</option>
+                <option data-i18n="form.level.opt.zero">Débutant complet</option>
+                <option data-i18n="form.level.opt.a1">Quelques bases (A1)</option>
+                <option data-i18n="form.level.opt.a2">Élémentaire (A2)</option>
+                <option data-i18n="form.level.opt.b1">Intermédiaire (B1)</option>
+                <option data-i18n="form.level.opt.b2">Avancé (B2+)</option>
+              </select>
+              <small class="field-error" data-for="niveau_allemand"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-wilaya" data-i18n="form.wilaya.label">Wilaya *</label>
+              <input id="bf-prem-wilaya" name="wilaya" type="text" required placeholder="Ex : Alger, Oran, Constantine…" data-i18n-placeholder="form.wilaya.placeholder">
+              <small class="field-error" data-for="wilaya"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-adresse" data-i18n="form.adresse.label">Adresse *</label>
+              <textarea id="bf-prem-adresse" name="adresse" rows="2" required placeholder="Rue, quartier, commune…" data-i18n-placeholder="form.adresse.placeholder"></textarea>
+              <small class="field-error" data-for="adresse"></small>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block bf-submit">
+              <span class="btn-text" data-i18n="form.submit.premium">📩 Rejoindre Premium →</span>
+              <span class="btn-loading" aria-hidden="true" data-i18n="form.submit.loading">Envoi en cours…</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- ── STANDARD ── -->
+        <form class="booking-form-card booking-form-card--standard" id="form-standard" data-tier="Standard" novalidate>
+          <input type="hidden" name="tier" value="Standard">
+
+          <div class="bf-head">
+            <h3 class="bf-title" data-i18n="form.tier.std.title">Standard</h3>
+            <div class="bf-price" data-i18n="form.tier.std.price">Sur demande</div>
+            <p class="bf-desc" data-i18n="form.tier.std.desc">5 phases A1→B2 en 8 mois · sessions live · Telegram privé.</p>
+            <ul class="bf-feats">
+              <li data-i18n="form.tier.std.feat.1">5 phases A1 → B2 (8 mois)</li>
+              <li data-i18n="form.tier.std.feat.2">Sessions live hebdomadaires avec Aurel</li>
+              <li data-i18n="form.tier.std.feat.3">Communauté Telegram privée</li>
+              <li data-i18n="form.tier.std.feat.4">Préparation B2 (Goethe / TestDaF)</li>
+            </ul>
+          </div>
+
+          <div class="bf-body">
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="bf-std-prenom" data-i18n="form.firstname.label">Prénom *</label>
+                <input id="bf-std-prenom" name="prenom" type="text" required autocomplete="given-name" placeholder="Ex : Amir" data-i18n-placeholder="form.firstname.placeholder">
+                <small class="field-error" data-for="prenom"></small>
+              </div>
+              <div class="field">
+                <label for="bf-std-nom" data-i18n="form.lastname.label">Nom *</label>
+                <input id="bf-std-nom" name="nom" type="text" required autocomplete="family-name" placeholder="Ex : Mosbah" data-i18n-placeholder="form.lastname.placeholder">
+                <small class="field-error" data-for="nom"></small>
+              </div>
+            </div>
+            <div class="field">
+              <label for="bf-std-whatsapp" data-i18n="form.whatsapp.label">Numéro WhatsApp *</label>
+              <input id="bf-std-whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="+213 5XX XXX XXX" data-i18n-placeholder="form.whatsapp.placeholder">
+              <small class="field-error" data-for="whatsapp"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-email" data-i18n="form.email.label">Email *</label>
+              <input id="bf-std-email" name="email" type="email" required autocomplete="email" placeholder="ton@email.com" data-i18n-placeholder="form.email.placeholder">
+              <small class="field-error" data-for="email"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-profession" data-i18n="form.profession.label">Profession actuelle *</label>
+              <select id="bf-std-profession" name="profession" required>
+                <option value="" disabled selected data-i18n="form.profession.placeholder">Choisis ta profession</option>
+                <option data-i18n="form.profession.opt.student">Étudiant(e)</option>
+                <option data-i18n="form.profession.opt.employee">Salarié(e)</option>
+                <option data-i18n="form.profession.opt.unemployed">Sans emploi</option>
+                <option data-i18n="form.profession.opt.nurse">Infirmier / Aide-soignant</option>
+                <option data-i18n="form.profession.opt.doctor">Médecin / Profession médicale</option>
+                <option data-i18n="form.profession.opt.entrepreneur">Entrepreneur / Freelance</option>
+                <option data-i18n="form.profession.opt.other">Autre</option>
+              </select>
+              <small class="field-error" data-for="profession"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-niveau" data-i18n="form.level.label">Niveau d'allemand actuel *</label>
+              <select id="bf-std-niveau" name="niveau_allemand" required>
+                <option value="" disabled selected data-i18n="form.level.placeholder">Ton niveau actuel</option>
+                <option data-i18n="form.level.opt.zero">Débutant complet</option>
+                <option data-i18n="form.level.opt.a1">Quelques bases (A1)</option>
+                <option data-i18n="form.level.opt.a2">Élémentaire (A2)</option>
+                <option data-i18n="form.level.opt.b1">Intermédiaire (B1)</option>
+                <option data-i18n="form.level.opt.b2">Avancé (B2+)</option>
+              </select>
+              <small class="field-error" data-for="niveau_allemand"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-wilaya" data-i18n="form.wilaya.label">Wilaya *</label>
+              <input id="bf-std-wilaya" name="wilaya" type="text" required placeholder="Ex : Alger, Oran, Constantine…" data-i18n-placeholder="form.wilaya.placeholder">
+              <small class="field-error" data-for="wilaya"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-adresse" data-i18n="form.adresse.label">Adresse *</label>
+              <textarea id="bf-std-adresse" name="adresse" rows="2" required placeholder="Rue, quartier, commune…" data-i18n-placeholder="form.adresse.placeholder"></textarea>
+              <small class="field-error" data-for="adresse"></small>
+            </div>
+
+            <button type="submit" class="btn btn-teal btn-lg btn-block bf-submit">
+              <span class="btn-text" data-i18n="form.submit.standard">📩 Réserver Standard →</span>
+              <span class="btn-loading" aria-hidden="true" data-i18n="form.submit.loading">Envoi en cours…</span>
+            </button>
+          </div>
+        </form>
+
+      </div>
+
+      <ul class="trust-badges trust-badges-shared">
+        <li data-i18n="form.trust.1">✓ Réponse sous 24h</li>
+        <li data-i18n="form.trust.2">✓ Aucun paiement maintenant</li>
+        <li data-i18n="form.trust.3">✓ Garantie 14 jours après inscription</li>
+      </ul>
+      <p class="form-note" data-i18n="form.note">Tes données ne seront utilisées que pour te contacter. Aucune newsletter automatique.</p>
+
+      <div class="booking-success" id="booking-success" hidden>
+        <div class="booking-success-icon">✅</div>
+        <h3 data-i18n="form.success.title">Ta réservation est bien reçue.</h3>
+        <p data-i18n="form.success.text">Aurel te rappelle sous 24h sur WhatsApp pour valider ton inscription.</p>
+        <a class="btn btn-whatsapp btn-lg" href="https://wa.me/213555290826?text=Bonjour%2C%20je%20viens%20de%20r%C3%A9server%20ma%20place%20pour%20le%20programme%20Allemand%20A1-B2" target="_blank" rel="noopener" data-i18n="form.success.cta">💬 Me contacter tout de suite sur WhatsApp →</a>
+      </div>
+
+      <div class="booking-error" id="booking-error" hidden>
+        <p data-i18n="form.error.text">Une erreur est survenue. Écris-nous directement sur WhatsApp : <strong>+213 555 290 826</strong></p>
+        <a class="btn btn-whatsapp" href="https://wa.me/213555290826?text=Bonjour%2C%20mon%20formulaire%20Allemand%20a%20eu%20une%20erreur" target="_blank" rel="noopener" data-i18n="form.error.cta">💬 Ouvrir WhatsApp</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ LE PROBLÈME ═══════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="problem.eyebrow">Le problème</span>
+        <h2 class="h2"><span data-i18n="problem.title.before">Tu veux partir en Allemagne. </span><span class="italic-accent" data-i18n="problem.title.accent">Mais l'allemand te bloque.</span></h2>
+      </div>
+
+      <div class="pain-grid">
+        <article class="pain-card fade-up">
+          <div class="pain-icon">📚</div>
+          <h3 data-i18n="problem.card1.title">Les méthodes classiques sont trop lentes</h3>
+          <p data-i18n="problem.card1.desc">Goethe Institut, manuels, apps comme Duolingo : tu progresses peut-être, mais à un rythme qui ne te mènera jamais à B2 en 8 mois.</p>
+        </article>
+        <article class="pain-card fade-up">
+          <div class="pain-icon">🌐</div>
+          <h3 data-i18n="problem.card2.title">Les cours en ligne sont génériques</h3>
+          <p data-i18n="problem.card2.desc">Ils ne parlent pas de ton projet : Ausbildung, Anerkennung, Visa Schengen, démarches consulat — silence radio.</p>
+        </article>
+        <article class="pain-card fade-up">
+          <div class="pain-icon">😶</div>
+          <h3 data-i18n="problem.card3.title">Tu apprends seul, sans pratique réelle</h3>
+          <p data-i18n="problem.card3.desc">Lire des règles de grammaire ne t'apprend pas à parler. Sans interactions live, ton oral reste figé.</p>
+        </article>
+        <article class="pain-card fade-up">
+          <div class="pain-icon">⏳</div>
+          <h3 data-i18n="problem.card4.title">Pendant ce temps, ton projet recule</h3>
+          <p data-i18n="problem.card4.desc">Chaque mois sans progression = un trimestre Ausbildung manqué, un visa différé, une opportunité ratée.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ LA SOLUTION ═══════════ -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="solution.eyebrow">La solution</span>
+        <h2 class="h2"><span data-i18n="solution.title.before">Une formation </span><span class="italic-accent" data-i18n="solution.title.accent">pensée pour ton projet algérien</span><span data-i18n="solution.title.suffix">.</span></h2>
+        <p class="section-lead" data-i18n="solution.lead">8 mois structurés en 5 phases. Chaque semaine : sessions live avec Aurel, exercices ciblés, feedback en groupe Telegram. À la fin, tu parles, tu écris, tu comprends — et ton dossier visa est prêt.</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col compare-before">
+          <div class="compare-head" data-i18n="solution.before.head">Avant</div>
+          <ul>
+            <li data-i18n="solution.before.li1">❌ Niveau zéro ou A1 figé depuis longtemps</li>
+            <li data-i18n="solution.before.li2">❌ Pas de méthode claire pour avancer</li>
+            <li data-i18n="solution.before.li3">❌ Aucune pratique orale réelle</li>
+            <li data-i18n="solution.before.li4">❌ Dossier visa et lettres en français</li>
+            <li data-i18n="solution.before.li5">❌ Pas d'idée du marché allemand</li>
+          </ul>
+        </div>
+        <div class="compare-col compare-after">
+          <div class="compare-head" data-i18n="solution.after.head">Après 8 mois</div>
+          <ul>
+            <li data-i18n="solution.after.li1">✅ Niveau B2 attesté, prêt pour Goethe</li>
+            <li data-i18n="solution.after.li2">✅ Tu écris CV + Anschreiben en allemand</li>
+            <li data-i18n="solution.after.li3">✅ Tu passes un entretien en allemand</li>
+            <li data-i18n="solution.after.li4">✅ Dossier Ausbildung / visa structuré</li>
+            <li data-i18n="solution.after.li5">✅ Cercle de 50+ Algériens placés</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ LE PROGRAMME (5 phases) ═══════════ -->
+  <section class="section" id="programme">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="prog.eyebrow">Le programme</span>
+        <h2 class="h2"><span class="italic-accent" data-i18n="prog.title.accent">5 phases</span><span data-i18n="prog.title.suffix">. 8 mois. De zéro à B2.</span></h2>
+        <p class="section-lead" data-i18n="prog.lead">Chaque phase a un objectif précis, des sessions live hebdomadaires, et des évaluations pour valider ton avancée.</p>
+      </div>
+
+      <div class="modules" id="modules-list">
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">A1</span>
+            <span class="module-title" data-i18n="prog.p1.title">Les Fondations — Mois 1 et 2</span>
+            <span class="module-meta" data-i18n="prog.p1.meta">2 mois · 24 sessions live</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.p1.l1">Alphabet, prononciation, structure des phrases simples</li>
+            <li data-i18n="prog.p1.l2">Vocabulaire du quotidien : maison, transport, alimentation</li>
+            <li data-i18n="prog.p1.l3">Conjugaison présent : verbes réguliers et irréguliers</li>
+            <li data-i18n="prog.p1.l4">Premières interactions : se présenter, demander, répondre</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">A2</span>
+            <span class="module-title" data-i18n="prog.p2.title">Autonomie — Mois 3 et 4</span>
+            <span class="module-meta" data-i18n="prog.p2.meta">2 mois · 24 sessions live</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.p2.l1">Passé composé (Perfekt) et imparfait (Präteritum)</li>
+            <li data-i18n="prog.p2.l2">Vocabulaire travail, santé, démarches administratives</li>
+            <li data-i18n="prog.p2.l3">Lire des articles courts et tenir une conversation 5 min</li>
+            <li data-i18n="prog.p2.l4">Premiers exercices CV / lettre simple</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">B1</span>
+            <span class="module-title" data-i18n="prog.p3.title">Fluidité — Mois 5 et 6</span>
+            <span class="module-meta" data-i18n="prog.p3.meta">2 mois · 24 sessions live</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.p3.l1">Subordonnées, conjonctions, déclinaisons avancées</li>
+            <li data-i18n="prog.p3.l2">Vocabulaire technique selon ton secteur (santé, BTP, IT, etc.)</li>
+            <li data-i18n="prog.p3.l3">Argumenter, négocier, exprimer une opinion en allemand</li>
+            <li data-i18n="prog.p3.l4">Préparation Ausbildung : entretien type, simulation de cas</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">B2</span>
+            <span class="module-title" data-i18n="prog.p4.title">Maîtrise — Mois 7 et 8</span>
+            <span class="module-meta" data-i18n="prog.p4.meta">2 mois · 24 sessions live</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.p4.l1">Subjonctif, passif, structures complexes</li>
+            <li data-i18n="prog.p4.l2">Compréhension d'articles longs, débats audio</li>
+            <li data-i18n="prog.p4.l3">Rédaction d'essai, de lettre formelle, de motivation</li>
+            <li data-i18n="prog.p4.l4">Préparation à l'examen Goethe / TestDaF / telc B2</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">Pro</span>
+            <span class="module-title" data-i18n="prog.p5.title">Préparation Pro — Continu sur les 8 mois</span>
+            <span class="module-meta" data-i18n="prog.p5.meta">Sessions ciblées + accompagnement individuel</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.p5.l1">Dossier Ausbildung : CV, Anschreiben, Lebenslauf, lettre motivation</li>
+            <li data-i18n="prog.p5.l2">Rendez-vous consulat : préparation, simulation, validation papiers</li>
+            <li data-i18n="prog.p5.l3">Stratégie candidature : où postuler, comment, quand relancer</li>
+            <li data-i18n="prog.p5.l4">Codes culturels professionnels en Allemagne</li>
+          </ul>
+        </details>
+
+      </div>
+
+      <div class="bonus-box">
+        <h3 class="bonus-title" data-i18n="prog.bonus.title">🎁 Inclus dans le programme</h3>
+        <ul class="bonus-list">
+          <li data-i18n="prog.bonus.l1">📱 Communauté Telegram privée 50+ étudiants actifs</li>
+          <li data-i18n="prog.bonus.l2">🎯 Sessions live hebdomadaires avec Aurel (replay disponible)</li>
+          <li data-i18n="prog.bonus.l3">📄 Templates CV + Anschreiben + lettre motivation Ausbildung</li>
+          <li data-i18n="prog.bonus.l4">📘 Guide pas-à-pas dossier visa & rendez-vous consulat</li>
+          <li data-i18n="prog.bonus.l5">🎓 Préparation à l'examen Goethe / TestDaF / telc B2</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ POUR QUI / PAS POUR QUI ═══════════ -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="forwhom.eyebrow">Pour qui</span>
+        <h2 class="h2"><span data-i18n="forwhom.title.before">Ce programme n'est </span><span class="italic-accent" data-i18n="forwhom.title.accent">pas pour tout le monde</span><span data-i18n="forwhom.title.suffix">.</span></h2>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col compare-after">
+          <div class="compare-head" data-i18n="forwhom.for.head">✅ C'est pour toi si...</div>
+          <ul>
+            <li data-i18n="forwhom.for.li1">Tu as un projet sérieux : Ausbildung, études ou emploi en Allemagne</li>
+            <li data-i18n="forwhom.for.li2">Tu peux mettre 1 à 2h par jour pendant 8 mois</li>
+            <li data-i18n="forwhom.for.li3">Tu veux apprendre en français et arabe dialectal, pas tout en allemand</li>
+            <li data-i18n="forwhom.for.li4">Tu préfères les sessions live et le feedback humain aux apps automatiques</li>
+            <li data-i18n="forwhom.for.li5">Tu veux un cadre, pas juste des vidéos à regarder seul</li>
+          </ul>
+        </div>
+        <div class="compare-col compare-before">
+          <div class="compare-head" data-i18n="forwhom.notfor.head">❌ Ce n'est pas pour toi si...</div>
+          <ul>
+            <li data-i18n="forwhom.notfor.li1">Tu cherches un cours d'allemand médical (prends plutôt Pflege)</li>
+            <li data-i18n="forwhom.notfor.li2">Tu veux apprendre seulement par curiosité, sans projet de départ</li>
+            <li data-i18n="forwhom.notfor.li3">Tu ne peux pas mettre régulièrement du temps chaque semaine</li>
+            <li data-i18n="forwhom.notfor.li4">Tu attends que la formation parle pour toi — l'effort reste le tien</li>
+            <li data-i18n="forwhom.notfor.li5">Tu veux un diplôme reconnu officiel (passe par Goethe Institut directement)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TARIFS ═══════════ -->
+  <section class="section" id="tarifs">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="pricing.eyebrow">Tarifs</span>
+        <h2 class="h2"><span data-i18n="pricing.title.before">Deux formules, </span><span class="italic-accent" data-i18n="pricing.title.accent">un même objectif</span><span data-i18n="pricing.title.suffix">.</span></h2>
+        <p class="section-lead" data-i18n="pricing.lead">Réserve une place pour la prochaine promo. Le détail des tarifs et les facilités de paiement sont envoyés sur WhatsApp après ta demande.</p>
+      </div>
+
+      <div class="tiers">
+
+        <article class="tier tier-autonome fade-up">
+          <div class="tier-head">
+            <span class="tier-pill tier-pill-teal" data-i18n="tier.std.pill">STANDARD</span>
+            <span class="tier-tag" data-i18n="tier.std.tag">Programme complet</span>
+          </div>
+          <div class="tier-price"><strong data-i18n="tier.std.price">Sur demande</strong></div>
+          <div class="tier-sub" data-i18n="tier.std.sub">Facilités de paiement disponibles</div>
+          <ul class="tier-list">
+            <li data-i18n="tier.std.li1">5 phases A1 → B2 (8 mois)</li>
+            <li data-i18n="tier.std.li2">Sessions live hebdomadaires avec Aurel</li>
+            <li data-i18n="tier.std.li3">Replays + exercices + corrections</li>
+            <li data-i18n="tier.std.li4">Communauté Telegram privée</li>
+            <li data-i18n="tier.std.li5">Préparation à l'examen B2</li>
+            <li data-i18n="tier.std.li6">Templates CV + Anschreiben</li>
+          </ul>
+          <a href="#reserver" class="btn btn-teal btn-block btn-lg" data-tier-select="Standard" data-i18n="tier.std.cta">Réserver une place →</a>
+        </article>
+
+        <article class="tier tier-accompagne fade-up">
+          <span class="tier-ribbon" data-i18n="tier.prem.ribbon">⭐ Recommandé</span>
+          <div class="tier-head">
+            <span class="tier-pill tier-pill-gold" data-i18n="tier.prem.pill">PREMIUM</span>
+            <span class="tier-tag" data-i18n="tier.prem.tag">Coaching + Visa</span>
+          </div>
+          <div class="tier-price"><strong data-i18n="tier.prem.price">Sur demande</strong></div>
+          <div class="tier-sub tier-sub-strong" data-i18n="tier.prem.sub">Coaching individuel · Accompagnement Ausbildung &amp; visa · Places ultra-limitées</div>
+          <ul class="tier-list">
+            <li data-i18n-html="tier.prem.li1"><strong>Tout ce qui est inclus dans Standard</strong></li>
+            <li data-i18n-html="tier.prem.li2"><strong>Coaching individuel</strong> 30 min / semaine avec Aurel</li>
+            <li data-i18n-html="tier.prem.li3"><strong>Accompagnement candidature Ausbildung</strong> de A à Z</li>
+            <li data-i18n-html="tier.prem.li4"><strong>Préparation visa</strong> + simulation rendez-vous consulat</li>
+            <li data-i18n-html="tier.prem.li5"><strong>Mise en relation</strong> avec alumni placés en Allemagne</li>
+            <li data-i18n-html="tier.prem.li6"><strong>Suivi prioritaire</strong> jusqu'à ton premier contrat</li>
+          </ul>
+          <a href="#reserver" class="btn btn-primary btn-block btn-lg" data-tier-select="Premium" data-i18n="tier.prem.cta">Rejoindre Premium →</a>
+          <p class="tier-note" data-i18n="tier.prem.note">Toutes les candidatures sont étudiées — objectif qualité, pas quantité.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ STORY ═══════════ -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="story.eyebrow">À propos</span>
+        <h2 class="h2"><span data-i18n="story.title.before">Pourquoi </span><span class="italic-accent" data-i18n="story.title.accent">Aurel Academy</span><span data-i18n="story.title.suffix"> ?</span></h2>
+      </div>
+
+      <div class="story">
+        <div class="story-photo" aria-hidden="true">
+          <div class="story-photo-inner">A</div>
+        </div>
+        <div class="story-text">
+          <h3 data-i18n="story.h3">2 ans à former des Algériens à l'allemand.</h3>
+          <p data-i18n="story.body">Je suis Aurel, fondateur d'Aurel Academy. J'ai commencé en aidant des amis qui voulaient partir en Allemagne. Deux ans plus tard, 50+ Algériens ont validé leur niveau B2 et décroché Ausbildung, Pflege ou emploi direct. La méthode est simple : on parle en français, on construit les bases pas-à-pas, et on s'entraîne en live chaque semaine. Pas de magie — juste un cadre, du sérieux, et une communauté qui avance ensemble.</p>
+          <ul class="story-stats">
+            <li><strong data-i18n="story.stat1.value">50+</strong><span data-i18n="story.stat1.label">Algériens placés</span></li>
+            <li><strong data-i18n="story.stat2.value">2 ans</strong><span data-i18n="story.stat2.label">d'expérience terrain</span></li>
+            <li><strong data-i18n="story.stat3.value">100%</strong><span data-i18n="story.stat3.label">focus marché DE</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TÉMOIGNAGES ═══════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="testi.eyebrow">Témoignages</span>
+        <h2 class="h2"><span data-i18n="testi.title.before">Ils ont </span><span class="italic-accent" data-i18n="testi.title.accent">commencé</span><span data-i18n="testi.title.suffix"> leur aventure.</span></h2>
+      </div>
+
+      <div class="carousel" id="carousel" aria-roledescription="carousel">
+        <div class="carousel-track">
+
+          <article class="testimonial is-active" aria-hidden="false">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#FDBA74,#F97316)">A</div>
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="testi.1.quote">J'étais bloqué au chômage à Alger. Aujourd'hui j'ai un Ausbildung en Bavière et mon allemand est B1.</blockquote>
+            <cite><strong data-i18n="testi.1.cite.name">Amine, 26 ans</strong><br/><span data-i18n="testi.1.cite.meta">Programme A1→B2 · Ausbildung en Bavière</span></cite>
+          </article>
+
+          <article class="testimonial" aria-hidden="true">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#FCA5A5,#DC2626)">S</div>
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="testi.2.quote">L'accompagnement humain fait toute la différence. Aurel et l'équipe répondent vite, ils comprennent notre réalité.</blockquote>
+            <cite><strong data-i18n="testi.2.cite.name">Sofiane, 24 ans</strong><br/><span data-i18n="testi.2.cite.meta">Programme A1→B2 · Visa Ausbildung en cours</span></cite>
+          </article>
+
+          <article class="testimonial" aria-hidden="true">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#86EFAC,#10B981)">N</div>
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="testi.3.quote">J'ai économisé les 40 000 DA de cours en présentiel et j'ai plus progressé qu'avec un prof privé. Le rapport qualité-prix est imbattable.</blockquote>
+            <cite><strong data-i18n="testi.3.cite.name">Nadia, 22 ans</strong><br/><span data-i18n="testi.3.cite.meta">Programme A1→B2 · Étudiante INFSPM Constantine</span></cite>
+          </article>
+
+        </div>
+
+        <div class="carousel-dots" role="tablist">
+          <button class="carousel-dot is-active" data-idx="0" aria-label="Témoignage 1"></button>
+          <button class="carousel-dot" data-idx="1" aria-label="Témoignage 2"></button>
+          <button class="carousel-dot" data-idx="2" aria-label="Témoignage 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section class="section section-muted" id="faq">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="faq.eyebrow">FAQ</span>
+        <h2 class="h2"><span data-i18n="faq.title.before">Questions </span><span class="italic-accent" data-i18n="faq.title.accent">fréquentes</span><span data-i18n="faq.title.suffix">.</span></h2>
+      </div>
+
+      <div class="faq" id="faq-list">
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q1">Je pars de zéro absolu, c'est possible ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a1">Oui, le programme commence en A1. Phase 1 = bases pures (alphabet, prononciation, structure). Si tu sais lire et écrire le français, tu peux commencer.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q2">Combien de temps par jour faut-il consacrer ?</summary>
+          <div class="faq-body"><p data-i18n-html="faq.a2"><strong>1 à 2h par jour</strong>, 5-6 jours par semaine. Les sessions live durent 1h. Le reste = exercices, vocabulaire, conversation Telegram. Si tu peux mettre plus, tu progresses plus vite.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q3">Quelle est la différence entre Standard et Premium ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a3">Standard = formation complète A1→B2 en groupe live + Telegram. Premium = tout ça + coaching individuel hebdo + accompagnement personnalisé sur ton dossier Ausbildung et visa jusqu'à ton premier contrat. Premium est recommandé si tu veux maximiser tes chances de partir vite.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q4">Les sessions live, c'est à quelle heure ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a4">Le soir (généralement 19h–20h heure d'Alger) pour permettre à tous de participer après le travail / études. Toutes les sessions sont enregistrées et restent accessibles si tu rates.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q5">Si je veux passer Goethe / TestDaF, est-ce inclus ?</summary>
+          <div class="faq-body"><p data-i18n-html="faq.a5">La <strong>préparation</strong> aux examens B2 (Goethe, TestDaF, telc) est incluse dans Phase B2. Le passage de l'examen lui-même se fait à l'institut Goethe ou ailleurs — frais d'inscription à l'examen non inclus.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q6">Et si je rate une session live ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a6">Toutes les sessions sont enregistrées et disponibles en replay sous 24h. Tu peux rattraper à ton rythme. Les exercices écrits restent corrigés sur Telegram.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q7">Comment se passe le paiement ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a7">Tu remplis le formulaire de réservation. On te rappelle sous 24h pour valider ton inscription, t'envoyer les tarifs détaillés et les modalités (CCP / BaridiMob / Edahabia). Facilités de paiement disponibles selon le tier choisi.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q8">Garantie satisfait ou remboursé ?</summary>
+          <div class="faq-body"><p data-i18n-html="faq.a8"><strong>14 jours</strong> : si dans les 14 jours après ton accès tu considères que la formation ne correspond pas à ce qui est promis, remboursement intégral, aucune question.</p></div>
+        </details>
+      </div>
+
+      <div class="center mt-4">
+        <a class="btn btn-whatsapp btn-lg" href="https://wa.me/213555290826?text=Bonjour%2C%20j%27ai%20une%20question%20sur%20le%20programme%20Allemand%20A1-B2" target="_blank" rel="noopener" data-i18n="faq.cta">💬 Autre question ? Écris à Aurel sur WhatsApp →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <a href="https://aurel-academy.com" class="logo">
+        <span class="logo-mark">A</span>
+        <span class="logo-text">Aurel <span class="italic-accent">Academy</span></span>
+      </a>
+      <p class="footer-tag" data-i18n="footer.tag">Former la prochaine génération d'Algériens qui réussissent en Allemagne.</p>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title" data-i18n="footer.programs.title">Programmes</h4>
+      <ul>
+        <li><a href="/pflege/inscription/">Deutsch für Pflegekräfte</a></li>
+        <li><a href="/allemand/">Allemand A1→B2</a></li>
+        <li><a href="https://cours.aurel-academy.com" data-i18n="footer.programs.student">Espace étudiant</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title" data-i18n="footer.contact.title">Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/213555290826" data-i18n="footer.contact.whatsapp">WhatsApp : +213 555 290 826</a></li>
+        <li><a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span data-i18n="footer.copyright">© 2026 Aurel Academy. Tous droits réservés.</span>
+      <span class="footer-legal">
+        · <a href="/mentions/">Mentions légales</a>
+        · <a href="/confidentialite/">Confidentialité</a>
+        · <a href="/conditions/">Conditions</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/213555290826?text=Bonjour%2C%20j%27ai%20une%20question%20sur%20le%20programme%20Allemand%20A1-B2" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M20.52 3.48A11.88 11.88 0 0 0 12 0C5.37 0 0 5.37 0 12a11.9 11.9 0 0 0 1.64 6.05L0 24l6.1-1.6A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 21.82a9.8 9.8 0 0 1-5-1.37l-.36-.22-3.62.95.97-3.53-.24-.37A9.82 9.82 0 1 1 21.82 12 9.83 9.83 0 0 1 12 21.82zm5.38-7.36c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.06 8.06 0 0 1-2.37-1.47 8.93 8.93 0 0 1-1.64-2.04c-.17-.3 0-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5l-.57-.01a1.1 1.1 0 0 0-.8.37 3.34 3.34 0 0 0-1.04 2.48c0 1.46 1.06 2.88 1.21 3.08.15.2 2.09 3.2 5.07 4.49a17 17 0 0 0 1.69.62 4.07 4.07 0 0 0 1.87.12 3.05 3.05 0 0 0 2-1.42 2.5 2.5 0 0 0 .17-1.42c-.07-.12-.27-.2-.57-.35z"/></svg>
+</a>
+
+<script src="/allemand/allemand.js?v=20260426a"></script>
+
+<script type="module">
+  // PERF: skip GSAP on mobile + reduced-motion. Saves ~200KB transfer.
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  const reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!isMobile && !reduced) {
+    const { default: gsap } = await import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm');
+    const { ScrollTrigger } = await import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm');
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.fade-up').forEach((el) => {
+      gsap.set(el, { opacity: 0, y: 40 });
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+      });
+    });
+  }
+</script>
+</body>
+</html>

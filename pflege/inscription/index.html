@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Deutsch für Pflegekräfte — Aurel Academy</title>
+<meta name="description" content="L'allemand médical pour décrocher ton poste en Pflegeheim allemand. 10 modules · 18 leçons · 4h30. Programme premium pour infirmiers et aides-soignants algériens.">
+<meta name="theme-color" content="#FFFFFF">
+
+<meta property="og:title" content="Deutsch für Pflegekräfte — Aurel Academy">
+<meta property="og:description" content="Programme premium pour infirmiers algériens. 10 modules · 18 leçons · 4h30. Accès à vie ou cercle privé avec coaching direct.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aurel-academy.com/pflege/inscription/">
+<meta property="og:image" content="https://aurel-academy.com/pflege/og.jpg">
+
+<link rel="icon" type="image/svg+xml" href="https://cours.aurel-academy.com/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/noto-arabic-arabic.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css?v=20260426a">
+<link rel="stylesheet" href="/pflege/inscription/sales.css?v=20260426a">
+
+<script>
+  // Pre-paint: pick language from URL > localStorage > default 'ar'
+  (function () {
+    var DEFAULT = 'ar'; // /pflege defaults to Arabic
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    var fromStorage = null;
+    try { fromStorage = localStorage.getItem('aurel-lang-pflege'); } catch (e) {}
+    var lang = (fromUrl === 'fr' || fromUrl === 'ar') ? fromUrl
+             : (fromStorage === 'fr' || fromStorage === 'ar') ? fromStorage
+             : DEFAULT;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    window.__aurelLang = lang;
+  })();
+</script>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="https://aurel-academy.com" class="logo">
+      <span class="logo-mark">A</span>
+      <span class="logo-text">Aurel <span class="italic-accent">Academy</span></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#programme" data-i18n="nav.programme">Programme</a>
+      <a href="#tarifs"    data-i18n="nav.tarifs">Tarifs</a>
+      <a href="#faq"       data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="fr" type="button">FR</button>
+        <button class="lang-btn" data-lang="ar" type="button">عر</button>
+      </div>
+      <a href="#reserver" class="btn btn-primary btn-sm" data-i18n="cta.reserve">Réserver ma place →</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Menu mobile">
+      <a href="#programme" data-i18n="nav.programme">Programme</a>
+      <a href="#tarifs"    data-i18n="nav.tarifs">Tarifs</a>
+      <a href="#faq"       data-i18n="nav.faq">FAQ</a>
+      <a href="#reserver" class="btn btn-primary btn-block" style="margin-top:8px" data-i18n="cta.reserve">Réserver ma place →</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <span class="badge" data-i18n="hero.badge">🏥 Formation spécialisée</span>
+        <h1 class="h1"><span data-i18n="hero.title.before">Deutsch für </span><span class="italic-accent" data-i18n="hero.title.accent">Pflegekräfte</span></h1>
+        <p class="hero-sub" data-i18n="hero.sub">L'allemand médical qui te fait décrocher ton poste en Pflegeheim allemand. Programme premium pour infirmiers et aides-soignants algériens.</p>
+        <div class="hero-stats">
+          <strong data-i18n="hero.stats.modules">10 modules</strong>
+          <span class="sep">·</span>
+          <strong data-i18n="hero.stats.lessons">18 leçons</strong>
+          <span class="sep">·</span>
+          <strong data-i18n="hero.stats.duration">4h30</strong>
+          <span data-i18n="hero.stats.suffix">de contenu premium</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#reserver" class="btn btn-primary btn-lg" data-i18n="hero.cta.primary">Réserver ma place →</a>
+          <a href="#programme" class="btn btn-ghost btn-lg" data-i18n="hero.cta.secondary">Voir le programme ▼</a>
+        </div>
+        <div class="hero-proof">
+          <span class="stars">★★★★★</span>
+          <span data-i18n="hero.proof"><strong>4.9/5</strong> · Basé sur les retours de la promo pilote</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ DUAL LEAD FORMS (above-the-fold) ═══════════ -->
+  <section class="section section-muted" id="reserver">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="form.eyebrow">Réservation</span>
+        <h2 class="h2"><span data-i18n="form.title.before">Réserve ta place </span><span class="italic-accent" data-i18n="form.title.accent">maintenant</span><span data-i18n="form.title.suffix">.</span></h2>
+        <p class="section-lead" data-i18n="form.lead">Choisis la formule qui te correspond et remplis directement le formulaire.</p>
+      </div>
+
+      <div class="dual-forms" id="dual-forms">
+
+        <!-- ── PREMIUM (Accompagné / 42 800 DA) ── -->
+        <form class="booking-form-card booking-form-card--premium" id="form-premium" data-tier="Accompagné" novalidate>
+          <input type="hidden" name="tier" value="Accompagné">
+
+          <div class="bf-head">
+            <span class="bf-ribbon" data-i18n="form.tier.ac.ribbon">⭐ Recommandé</span>
+            <h3 class="bf-title" data-i18n="form.tier.ac.title">Accompagné</h3>
+            <div class="bf-price" data-i18n="form.tier.ac.price">42800 DA</div>
+            <span class="bf-exclusive" data-i18n="form.tier.ac.exclusive">CERCLE PRIVÉ · PLACES ULTRA-LIMITÉES</span>
+            <p class="bf-desc" data-i18n="form.tier.ac.desc">Coaching direct avec Aurel · Suivi personnalisé jusqu'au premier contrat.</p>
+            <ul class="bf-feats">
+              <li data-i18n="form.tier.ac.feat.1">Tout Autonome inclus</li>
+              <li data-i18n="form.tier.ac.feat.2">8 sessions live avec Aurel (1/semaine pendant 8 semaines)</li>
+              <li data-i18n="form.tier.ac.feat.3">Suivi WhatsApp prioritaire jusqu'à signature</li>
+              <li data-i18n="form.tier.ac.feat.4">Cercle privé d'alumni placés en Allemagne</li>
+            </ul>
+          </div>
+
+          <div class="bf-body">
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="bf-prem-prenom" data-i18n="form.firstname.label">Prénom *</label>
+                <input id="bf-prem-prenom" name="prenom" type="text" required autocomplete="given-name" placeholder="Ex : Amir" data-i18n-placeholder="form.firstname.placeholder">
+                <small class="field-error" data-for="prenom"></small>
+              </div>
+              <div class="field">
+                <label for="bf-prem-nom" data-i18n="form.lastname.label">Nom *</label>
+                <input id="bf-prem-nom" name="nom" type="text" required autocomplete="family-name" placeholder="Ex : Mosbah" data-i18n-placeholder="form.lastname.placeholder">
+                <small class="field-error" data-for="nom"></small>
+              </div>
+            </div>
+            <div class="field">
+              <label for="bf-prem-whatsapp" data-i18n="form.whatsapp.label">Numéro WhatsApp *</label>
+              <input id="bf-prem-whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="+213 5XX XXX XXX" data-i18n-placeholder="form.whatsapp.placeholder">
+              <small class="field-error" data-for="whatsapp"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-email" data-i18n="form.email.label">Email *</label>
+              <input id="bf-prem-email" name="email" type="email" required autocomplete="email" placeholder="ton@email.com" data-i18n-placeholder="form.email.placeholder">
+              <small class="field-error" data-for="email"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-profession" data-i18n="form.profession.label">Profession actuelle *</label>
+              <select id="bf-prem-profession" name="profession" required>
+                <option value="" disabled selected data-i18n="form.profession.placeholder">Choisis ta profession</option>
+                <option data-i18n="form.profession.opt.nurse">Infirmier diplômé</option>
+                <option data-i18n="form.profession.opt.aide">Aide-soignant</option>
+                <option data-i18n="form.profession.opt.student">Étudiant en santé</option>
+                <option data-i18n="form.profession.opt.doctor">Médecin</option>
+                <option data-i18n="form.profession.opt.other_med">Autre profession médicale</option>
+                <option data-i18n="form.profession.opt.career_change">Reconversion</option>
+              </select>
+              <small class="field-error" data-for="profession"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-niveau" data-i18n="form.level.label">Niveau d'allemand *</label>
+              <select id="bf-prem-niveau" name="niveau_allemand" required>
+                <option value="" disabled selected data-i18n="form.level.placeholder">Ton niveau actuel</option>
+                <option data-i18n="form.level.opt.zero">Débutant complet</option>
+                <option data-i18n="form.level.opt.a1">Quelques bases (A1)</option>
+                <option data-i18n="form.level.opt.a2">Élémentaire (A2)</option>
+                <option data-i18n="form.level.opt.b1">Intermédiaire (B1)</option>
+                <option data-i18n="form.level.opt.b2">Avancé (B2+)</option>
+              </select>
+              <small class="field-error" data-for="niveau_allemand"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-wilaya" data-i18n="form.wilaya.label">Wilaya *</label>
+              <input id="bf-prem-wilaya" name="wilaya" type="text" required placeholder="Ex : Alger, Oran, Constantine…" data-i18n-placeholder="form.wilaya.placeholder">
+              <small class="field-error" data-for="wilaya"></small>
+            </div>
+            <div class="field">
+              <label for="bf-prem-adresse" data-i18n="form.adresse.label">Adresse *</label>
+              <textarea id="bf-prem-adresse" name="adresse" rows="2" required placeholder="Rue, quartier, commune…" data-i18n-placeholder="form.adresse.placeholder"></textarea>
+              <small class="field-error" data-for="adresse"></small>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block bf-submit">
+              <span class="btn-text" data-i18n="form.submit.premium">📩 Rejoindre le cercle privé →</span>
+              <span class="btn-loading" aria-hidden="true" data-i18n="form.submit.loading">Envoi en cours…</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- ── STANDARD (Autonome / 12 900 DA) ── -->
+        <form class="booking-form-card booking-form-card--standard" id="form-standard" data-tier="Autonome" novalidate>
+          <input type="hidden" name="tier" value="Autonome">
+
+          <div class="bf-head">
+            <h3 class="bf-title" data-i18n="form.tier.au.title">Autonome</h3>
+            <div class="bf-price" data-i18n="form.tier.au.price">12900 DA</div>
+            <p class="bf-desc" data-i18n="form.tier.au.desc">Self-paced · Accès à vie · Tous les bonus inclus.</p>
+            <ul class="bf-feats">
+              <li data-i18n="form.tier.au.feat.1">18 leçons vidéo (~4h30)</li>
+              <li data-i18n="form.tier.au.feat.2">Glossaire 150 termes médicaux trilingue (DE/FR/Darija)</li>
+              <li data-i18n="form.tier.au.feat.3">Guide Anerkennung Trilingue + 30 Pflegeheim</li>
+              <li data-i18n="form.tier.au.feat.4">7 bonus exclusifs · Accès à vie</li>
+            </ul>
+          </div>
+
+          <div class="bf-body">
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="bf-std-prenom" data-i18n="form.firstname.label">Prénom *</label>
+                <input id="bf-std-prenom" name="prenom" type="text" required autocomplete="given-name" placeholder="Ex : Amir" data-i18n-placeholder="form.firstname.placeholder">
+                <small class="field-error" data-for="prenom"></small>
+              </div>
+              <div class="field">
+                <label for="bf-std-nom" data-i18n="form.lastname.label">Nom *</label>
+                <input id="bf-std-nom" name="nom" type="text" required autocomplete="family-name" placeholder="Ex : Mosbah" data-i18n-placeholder="form.lastname.placeholder">
+                <small class="field-error" data-for="nom"></small>
+              </div>
+            </div>
+            <div class="field">
+              <label for="bf-std-whatsapp" data-i18n="form.whatsapp.label">Numéro WhatsApp *</label>
+              <input id="bf-std-whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="+213 5XX XXX XXX" data-i18n-placeholder="form.whatsapp.placeholder">
+              <small class="field-error" data-for="whatsapp"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-email" data-i18n="form.email.label">Email *</label>
+              <input id="bf-std-email" name="email" type="email" required autocomplete="email" placeholder="ton@email.com" data-i18n-placeholder="form.email.placeholder">
+              <small class="field-error" data-for="email"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-profession" data-i18n="form.profession.label">Profession actuelle *</label>
+              <select id="bf-std-profession" name="profession" required>
+                <option value="" disabled selected data-i18n="form.profession.placeholder">Choisis ta profession</option>
+                <option data-i18n="form.profession.opt.nurse">Infirmier diplômé</option>
+                <option data-i18n="form.profession.opt.aide">Aide-soignant</option>
+                <option data-i18n="form.profession.opt.student">Étudiant en santé</option>
+                <option data-i18n="form.profession.opt.doctor">Médecin</option>
+                <option data-i18n="form.profession.opt.other_med">Autre profession médicale</option>
+                <option data-i18n="form.profession.opt.career_change">Reconversion</option>
+              </select>
+              <small class="field-error" data-for="profession"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-niveau" data-i18n="form.level.label">Niveau d'allemand *</label>
+              <select id="bf-std-niveau" name="niveau_allemand" required>
+                <option value="" disabled selected data-i18n="form.level.placeholder">Ton niveau actuel</option>
+                <option data-i18n="form.level.opt.zero">Débutant complet</option>
+                <option data-i18n="form.level.opt.a1">Quelques bases (A1)</option>
+                <option data-i18n="form.level.opt.a2">Élémentaire (A2)</option>
+                <option data-i18n="form.level.opt.b1">Intermédiaire (B1)</option>
+                <option data-i18n="form.level.opt.b2">Avancé (B2+)</option>
+              </select>
+              <small class="field-error" data-for="niveau_allemand"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-wilaya" data-i18n="form.wilaya.label">Wilaya *</label>
+              <input id="bf-std-wilaya" name="wilaya" type="text" required placeholder="Ex : Alger, Oran, Constantine…" data-i18n-placeholder="form.wilaya.placeholder">
+              <small class="field-error" data-for="wilaya"></small>
+            </div>
+            <div class="field">
+              <label for="bf-std-adresse" data-i18n="form.adresse.label">Adresse *</label>
+              <textarea id="bf-std-adresse" name="adresse" rows="2" required placeholder="Rue, quartier, commune…" data-i18n-placeholder="form.adresse.placeholder"></textarea>
+              <small class="field-error" data-for="adresse"></small>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block bf-submit">
+              <span class="btn-text" data-i18n="form.submit.standard">📩 Réserver Autonome →</span>
+              <span class="btn-loading" aria-hidden="true" data-i18n="form.submit.loading">Envoi en cours…</span>
+            </button>
+          </div>
+        </form>
+
+      </div>
+
+      <ul class="trust-badges trust-badges-shared">
+        <li data-i18n="form.trust.1">✓ Réponse sous 24h</li>
+        <li data-i18n="form.trust.2">✓ Aucun paiement maintenant</li>
+        <li data-i18n="form.trust.3">✓ Garantie 14 jours après inscription</li>
+      </ul>
+      <p class="form-note" data-i18n="form.note">Tes données ne seront utilisées que pour te contacter. Aucune newsletter automatique.</p>
+
+      <div class="booking-success" id="booking-success" hidden>
+        <div class="booking-success-icon">✅</div>
+        <h3 data-i18n="form.success.title">Ta réservation est bien reçue.</h3>
+        <p data-i18n="form.success.text">Aurel te rappelle sous 24h sur WhatsApp pour valider ton inscription.</p>
+        <a class="btn btn-whatsapp btn-lg" href="https://wa.me/213555290826?text=Bonjour%2C%20je%20viens%20de%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20Pflege" target="_blank" rel="noopener" data-i18n="form.success.cta">💬 Me contacter tout de suite sur WhatsApp →</a>
+      </div>
+
+      <div class="booking-error" id="booking-error" hidden>
+        <p data-i18n="form.error.text">Une erreur est survenue. Écris-nous directement sur WhatsApp : <strong>+213 555 290 826</strong></p>
+        <a class="btn btn-whatsapp" href="https://wa.me/213555290826?text=Bonjour%2C%20mon%20formulaire%20Pflege%20a%20eu%20une%20erreur" target="_blank" rel="noopener" data-i18n="form.error.cta">💬 Ouvrir WhatsApp</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ LE PROBLÈME ═══════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="problem.eyebrow">Le problème</span>
+        <h2 class="h2"><span data-i18n="problem.title.before">Tu es infirmier, tu veux partir en Allemagne. </span><span class="italic-accent" data-i18n="problem.title.accent">Mais...</span></h2>
+      </div>
+
+      <div class="pain-grid">
+        <article class="pain-card fade-up">
+          <div class="pain-icon">⚠️</div>
+          <h3 data-i18n="problem.card1.title">L'allemand général ne suffit pas</h3>
+          <p data-i18n="problem.card1.desc">Goethe B1 ne t'apprend pas Dekubitus, Pflegebericht, ou Mobilisation.</p>
+        </article>
+        <article class="pain-card fade-up">
+          <div class="pain-icon">🎯</div>
+          <h3 data-i18n="problem.card2.title">Les recruteurs veulent du concret</h3>
+          <p data-i18n="problem.card2.desc">Ils ne testent pas ta grammaire. Ils te font jouer un scénario patient.</p>
+        </article>
+        <article class="pain-card fade-up">
+          <div class="pain-icon">🧩</div>
+          <h3 data-i18n="problem.card3.title">L'Anerkennung est un labyrinthe</h3>
+          <p data-i18n="problem.card3.desc">Quels papiers ? Quelle Behörde ? Combien ça coûte ? Personne ne t'explique clairement.</p>
+        </article>
+        <article class="pain-card fade-up">
+          <div class="pain-icon">💸</div>
+          <h3 data-i18n="problem.card4.title">Les agences coûtent 300–800 €</h3>
+          <p data-i18n="problem.card4.desc">Pour te donner un template générique que tu aurais pu trouver en 10 minutes de recherche.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ LA SOLUTION ═══════════ -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="solution.eyebrow">La solution</span>
+        <h2 class="h2"><span data-i18n="solution.title.p1">Une formation pensée </span><span class="italic-accent" data-i18n="solution.title.accent1">par un Algérien</span><span data-i18n="solution.title.p2">, pour </span><span class="italic-accent" data-i18n="solution.title.accent2">les Algériens</span><span data-i18n="solution.title.p3">.</span></h2>
+        <p class="section-lead" data-i18n="solution.lead">Aurel a passé 2 ans à décrypter le marché Pflege allemand. Il a vu ce qui marche, ce qui bloque, et ce que les agences ne te disent pas. Cette formation condense tout ça en 10 modules actionnables, en français et en arabe.</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col compare-before">
+          <div class="compare-head" data-i18n="solution.before.head">Avant</div>
+          <ul>
+            <li data-i18n="solution.before.li1">❌ Vocabulaire médical introuvable</li>
+            <li data-i18n="solution.before.li2">❌ Stress à l'entretien Pflegeheim</li>
+            <li data-i18n="solution.before.li3">❌ Dossier Anerkennung incomplet</li>
+            <li data-i18n="solution.before.li4">❌ Dépendance aux agences payantes</li>
+            <li data-i18n="solution.before.li5">❌ Isolement, pas de communauté</li>
+          </ul>
+        </div>
+        <div class="compare-col compare-after">
+          <div class="compare-head" data-i18n="solution.after.head">Après</div>
+          <ul>
+            <li data-i18n="solution.after.li1">✅ 150 termes médicaux maîtrisés</li>
+            <li data-i18n="solution.after.li2">✅ Simulation entretien en confiance</li>
+            <li data-i18n="solution.after.li3">✅ Guide Anerkennung pas-à-pas</li>
+            <li data-i18n="solution.after.li4">✅ Autonomie totale sur ton dossier</li>
+            <li data-i18n="solution.after.li5">✅ Cercle d'infirmiers algériens placés</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ LE PROGRAMME ═══════════ -->
+  <section class="section" id="programme">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="prog.eyebrow">Le programme</span>
+        <h2 class="h2"><span class="italic-accent" data-i18n="prog.title.accent">10 modules</span><span data-i18n="prog.title.suffix">. 18 leçons. 4h30 de contenu premium.</span></h2>
+        <p class="section-lead" data-i18n="prog.lead">Chaque module est un bloc d'action concret. Pas de remplissage.</p>
+      </div>
+
+      <div class="modules" id="modules-list">
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">0</span>
+            <span class="module-title" data-i18n="prog.m0.title">Introduction</span>
+            <span class="module-meta" data-i18n="prog.m0.meta">1 vidéo · 8 min</span>
+          </summary>
+          <ul class="module-lessons"><li data-i18n="prog.m0.l1">Bienvenue + plan d'action</li></ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">A</span>
+            <span class="module-title" data-i18n="prog.mA.title">Réalité du secteur Pflege</span>
+            <span class="module-meta" data-i18n="prog.mA.meta">2 vidéos · 26–30 min</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.mA.l1">Le marché allemand en 2026 : chiffres, salaires, demande</li>
+            <li data-i18n="prog.mA.l2">Les types de postes : Altenpflege / Krankenpflege / Betreuungskraft</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">1</span>
+            <span class="module-title" data-i18n="prog.m1.title">Vocabulaire médical essentiel</span>
+            <span class="module-meta" data-i18n="prog.m1.meta">2 vidéos · 20 min</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.m1.l1">75 termes cliniques prioritaires (trilingue DE/FR/DAR)</li>
+            <li data-i18n="prog.m1.l2">75 termes anatomie + pathologies courantes</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">2</span>
+            <span class="module-title" data-i18n="prog.m2.title">Communication avec patients</span>
+            <span class="module-meta" data-i18n="prog.m2.meta">1 vidéo · 15 min</span>
+          </summary>
+          <ul class="module-lessons"><li data-i18n="prog.m2.l1">Phrases clés pour rassurer, expliquer, anamnèse</li></ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">3</span>
+            <span class="module-title" data-i18n="prog.m3.title">Communication avec l'équipe</span>
+            <span class="module-meta" data-i18n="prog.m3.meta">1 vidéo · 15 min</span>
+          </summary>
+          <ul class="module-lessons"><li data-i18n="prog.m3.l1">Übergabe, handover, Besprechung : comment passer les consignes pro</li></ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">D</span>
+            <span class="module-title" data-i18n="prog.mD.title">Dokumentation / Pflegebericht</span>
+            <span class="module-meta" data-i18n="prog.mD.meta">2 vidéos · 26–30 min</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.mD.l1">Comment rédiger un rapport de soin qui passe l'inspection</li>
+            <li data-i18n="prog.mD.l2">Abbréviations et codes officiels utilisés dans les Pflegeheim</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">4</span>
+            <span class="module-title" data-i18n="prog.m4.title">Entretien recruteur Pflegeheim</span>
+            <span class="module-meta" data-i18n="prog.m4.meta">2 vidéos · 20 min</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.m4.l1">Les 15 questions qui reviennent systématiquement</li>
+            <li data-i18n="prog.m4.l2">Stratégie de réponse + copies types en allemand</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">C</span>
+            <span class="module-title" data-i18n="prog.mC.title">Simulations complètes</span>
+            <span class="module-meta" data-i18n="prog.mC.meta">3 vidéos · 42–51 min</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.mC.l1">Simulation 1 : entretien téléphonique recruteur</li>
+            <li data-i18n="prog.mC.l2">Simulation 2 : journée type en Pflegeheim</li>
+            <li data-i18n="prog.mC.l3">Simulation 3 : gestion conflit / situation d'urgence</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">B</span>
+            <span class="module-title" data-i18n="prog.mB.title">Anerkennung (reconnaissance diplôme)</span>
+            <span class="module-meta" data-i18n="prog.mB.meta">3 vidéos · 42–51 min</span>
+          </summary>
+          <ul class="module-lessons">
+            <li data-i18n="prog.mB.l1">Quels papiers réunir en Algérie (liste exacte)</li>
+            <li data-i18n="prog.mB.l2">Quelle Behörde contacter selon ton Land</li>
+            <li data-i18n="prog.mB.l3">Timeline réelle + coûts réels</li>
+          </ul>
+        </details>
+
+        <details class="module fade-up">
+          <summary>
+            <span class="module-num">5</span>
+            <span class="module-title" data-i18n="prog.m5.title">Conclusion &amp; plan d'action</span>
+            <span class="module-meta" data-i18n="prog.m5.meta">1 vidéo · 5 min</span>
+          </summary>
+          <ul class="module-lessons"><li data-i18n="prog.m5.l1">Ta roadmap personnelle 3–6–12 mois</li></ul>
+        </details>
+
+      </div>
+
+      <div class="bonus-box">
+        <h3 class="bonus-title" data-i18n="prog.bonus.title">🎁 Bonus inclus dans tous les tiers</h3>
+        <ul class="bonus-list">
+          <li data-i18n="prog.bonus.l1">📖 Glossaire PDF 150 termes médicaux (DE/FR/AR)</li>
+          <li data-i18n="prog.bonus.l2">🎯 Interview Prep Trainer (15 questions interactives)</li>
+          <li data-i18n="prog.bonus.l3">📄 Templates CV + Anschreiben en allemand</li>
+          <li data-i18n="prog.bonus.l4">📘 Guide Anerkennung par Land</li>
+          <li data-i18n="prog.bonus.l5">🏥 Liste de 50 Pflegeheim qui recrutent</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ POUR QUI / PAS POUR QUI ═══════════ -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="forwhom.eyebrow">Pour qui</span>
+        <h2 class="h2"><span data-i18n="forwhom.title.before">Cette formation n'est </span><span class="italic-accent" data-i18n="forwhom.title.accent">pas pour tout le monde</span><span data-i18n="forwhom.title.suffix">.</span></h2>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col compare-after">
+          <div class="compare-head" data-i18n="forwhom.for.head">✅ C'est pour toi si...</div>
+          <ul>
+            <li data-i18n="forwhom.for.li1">Tu es infirmier, aide-soignant ou étudiant en santé</li>
+            <li data-i18n="forwhom.for.li2">Tu as déjà un minimum d'allemand (A1/A2) ou tu es prêt à l'acquérir en parallèle</li>
+            <li data-i18n="forwhom.for.li3">Tu veux un poste concret en Allemagne, pas juste « voir »</li>
+            <li data-i18n="forwhom.for.li4">Tu préfères apprendre avec un Algérien qui connaît le chemin</li>
+            <li data-i18n="forwhom.for.li5">Tu es prêt à mettre 4h30 à regarder + 10–20h à pratiquer</li>
+          </ul>
+        </div>
+        <div class="compare-col compare-before">
+          <div class="compare-head" data-i18n="forwhom.notfor.head">❌ Ce n'est pas pour toi si...</div>
+          <ul>
+            <li data-i18n="forwhom.notfor.li1">Tu cherches un cours d'allemand général (prends plutôt A1→B2)</li>
+            <li data-i18n="forwhom.notfor.li2">Tu veux un diplôme reconnu immédiatement (ce n'est pas un Goethe)</li>
+            <li data-i18n="forwhom.notfor.li3">Tu n'as aucune motivation pour l'Allemagne</li>
+            <li data-i18n="forwhom.notfor.li4">Tu veux que quelqu'un fasse ton dossier Anerkennung à ta place</li>
+            <li data-i18n="forwhom.notfor.li5">Tu attends des miracles sans effort</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TARIFS ═══════════ -->
+  <section class="section" id="tarifs">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="pricing.eyebrow">Tarifs</span>
+        <h2 class="h2"><span data-i18n="pricing.title.before">Deux façons de rejoindre </span><span class="italic-accent" data-i18n="pricing.title.accent">Aurel Academy</span><span data-i18n="pricing.title.suffix">.</span></h2>
+        <p class="section-lead" data-i18n="pricing.lead">Self-paced ou cercle privé avec coaching direct. Choisis selon tes besoins.</p>
+      </div>
+
+      <div class="tiers">
+
+        <article class="tier tier-autonome fade-up">
+          <div class="tier-head">
+            <span class="tier-pill tier-pill-teal" data-i18n="tier.au.pill">AUTONOME</span>
+            <span class="tier-tag" data-i18n="tier.au.tag">Self-paced</span>
+          </div>
+          <div class="tier-price"><strong data-i18n="tier.au.price.amount">12 900</strong> <span data-i18n="tier.au.price.currency">DA</span></div>
+          <div class="tier-sub" data-i18n="tier.au.sub">Paiement unique · Accès à vie</div>
+          <ul class="tier-list">
+            <li data-i18n="tier.au.li1">18 leçons vidéo (~4h30)</li>
+            <li data-i18n="tier.au.li2">Glossaire 150 termes médicaux trilingue (DE/FR/Darija)</li>
+            <li data-i18n="tier.au.li3">Guide Anerkennung Trilingue + 30 Pflegeheim</li>
+            <li data-i18n="tier.au.li4">7 bonus exclusifs · Accès à vie</li>
+          </ul>
+          <a href="#reserver" class="btn btn-teal btn-block btn-lg" data-tier-select="Autonome" data-i18n="tier.au.cta">Réserver mon accès →</a>
+        </article>
+
+        <article class="tier tier-accompagne fade-up">
+          <span class="tier-ribbon" data-i18n="tier.ac.ribbon">⭐ Recommandé</span>
+          <div class="tier-head">
+            <span class="tier-pill tier-pill-gold" data-i18n="tier.ac.pill">ACCOMPAGNÉ</span>
+            <span class="tier-tag" data-i18n="tier.ac.tag">Cercle privé</span>
+          </div>
+          <div class="tier-price"><strong data-i18n="tier.ac.price.amount">42 800</strong> <span data-i18n="tier.ac.price.currency">DA</span></div>
+          <div class="tier-sub tier-sub-strong" data-i18n="tier.ac.sub">Cercle privé · Places ultra-limitées · Accompagnement direct par Aurel</div>
+          <ul class="tier-list">
+            <li data-i18n-html="tier.ac.li1"><strong>Tout Autonome inclus</strong></li>
+            <li data-i18n-html="tier.ac.li2"><strong>8 sessions live avec Aurel</strong> (1/semaine pendant 8 semaines)</li>
+            <li data-i18n-html="tier.ac.li3"><strong>Suivi WhatsApp prioritaire</strong> jusqu'à signature</li>
+            <li data-i18n-html="tier.ac.li4"><strong>Cercle privé d'alumni</strong> placés en Allemagne</li>
+          </ul>
+          <a href="#reserver" class="btn btn-primary btn-block btn-lg" data-tier-select="Accompagné" data-i18n="tier.ac.cta">Rejoindre le cercle →</a>
+          <p class="tier-note" data-i18n="tier.ac.note">Toutes les candidatures sont étudiées — objectif qualité, pas quantité.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ MON HISTOIRE ═══════════ -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="story.eyebrow">À propos</span>
+        <h2 class="h2"><span data-i18n="story.title.before">Pourquoi </span><span class="italic-accent" data-i18n="story.title.accent">Aurel Academy</span><span data-i18n="story.title.suffix"> ?</span></h2>
+      </div>
+
+      <div class="story">
+        <div class="story-photo" aria-hidden="true">
+          <div class="story-photo-inner">A</div>
+        </div>
+        <div class="story-text">
+          <h3 data-i18n="story.h3">2 ans à décrypter le marché Pflege.</h3>
+          <p data-i18n="story.body">Je suis Aurel, fondateur d'Aurel Academy. J'ai commencé en tâtonnant comme la plupart des Algériens qui veulent partir en Allemagne. Deux ans plus tard, j'ai aidé 50+ personnes à décrocher un contrat en Pflegeheim. J'ai vu les agences arnaquer, les méthodes génériques échouer, et les rares profils qui réussissent. Cette formation, c'est ce que j'aurais voulu avoir quand j'ai commencé.</p>
+          <ul class="story-stats">
+            <li><strong data-i18n="story.stat1.value">50+</strong><span data-i18n="story.stat1.label">Algériens placés</span></li>
+            <li><strong data-i18n="story.stat2.value">2 ans</strong><span data-i18n="story.stat2.label">d'expérience terrain</span></li>
+            <li><strong data-i18n="story.stat3.value">100%</strong><span data-i18n="story.stat3.label">focus marché DE</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TÉMOIGNAGES ═══════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="testi.eyebrow">Témoignages</span>
+        <h2 class="h2"><span data-i18n="testi.title.before">Ils ont </span><span class="italic-accent" data-i18n="testi.title.accent">fait le chemin</span><span data-i18n="testi.title.suffix">.</span></h2>
+      </div>
+
+      <div class="carousel" id="carousel" aria-roledescription="carousel">
+        <div class="carousel-track">
+
+          <article class="testimonial is-active" aria-hidden="false">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#86EFAC,#10B981)">M</div>
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="testi.1.quote">Infirmière depuis 4 ans, la formation Pflege m'a permis de maîtriser le vocabulaire médical. J'ai signé avec un Pflegeheim à Munich.</blockquote>
+            <cite><strong data-i18n="testi.1.cite.name">Meriem, 29 ans</strong><br/><span data-i18n="testi.1.cite.meta">Deutsch für Pflegekräfte · Pflegeheim Munich</span></cite>
+          </article>
+
+          <article class="testimonial" aria-hidden="true">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#FCA5A5,#F97316)">S</div>
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="testi.2.quote">L'accompagnement humain fait toute la différence. Aurel et l'équipe répondent vite, ils comprennent notre réalité.</blockquote>
+            <cite><strong data-i18n="testi.2.cite.name">Sofiane, 24 ans</strong><br/><span data-i18n="testi.2.cite.meta">Deutsch für Pflegekräfte · Visa Ausbildung en cours</span></cite>
+          </article>
+
+          <article class="testimonial" aria-hidden="true">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#FDBA74,#F97316)">A</div>
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="testi.3.quote">Le 3ᵉ témoignage sera ajouté dès validation du contenu par l'étudiant concerné.</blockquote>
+            <cite><strong data-i18n="testi.3.cite.name">À venir</strong><br/><span data-i18n="testi.3.cite.meta">Témoignage en cours de collecte</span></cite>
+          </article>
+
+        </div>
+
+        <div class="carousel-dots" role="tablist">
+          <button class="carousel-dot is-active" data-idx="0" aria-label="Témoignage 1"></button>
+          <button class="carousel-dot" data-idx="1" aria-label="Témoignage 2"></button>
+          <button class="carousel-dot" data-idx="2" aria-label="Témoignage 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section class="section section-muted" id="faq">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="faq.eyebrow">FAQ</span>
+        <h2 class="h2"><span data-i18n="faq.title.before">Questions </span><span class="italic-accent" data-i18n="faq.title.accent">fréquentes</span><span data-i18n="faq.title.suffix">.</span></h2>
+      </div>
+
+      <div class="faq" id="faq-list">
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q1">Il faut déjà parler allemand pour suivre ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a1">Un niveau A1/A2 est recommandé mais pas obligatoire. Les modules sont en français, le vocabulaire est traduit. Si tu es débutant complet, on te conseille de suivre A1→B2 en parallèle.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q2">Combien de temps pour être prêt à passer un entretien ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a2">1 à 3 mois selon ton niveau de départ et ton temps de pratique. Les alumni les plus rapides ont décroché un contrat en 6 semaines.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q3">Je suis aide-soignant et pas infirmier diplômé, ça marche pour moi ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a3">Oui. Le marché Pflege allemand recrute massivement les Altenpfleger (aides-soignants en soins aux personnes âgées). La formation couvre les deux profils.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q4">Quelle est la différence entre Autonome et Accompagné ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a4">Autonome = tu suis les vidéos à ton rythme, accès à vie. Accompagné = tout ça + 8 sessions live avec Aurel + coaching personnalisé sur ton dossier Anerkennung + communauté privée. Recommandé si tu veux un résultat rapide et certain.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q5">Comment se passe le paiement ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a5">Tu remplis le formulaire de réservation. On te rappelle sous 24h pour valider et t'envoyer les infos virement (CCP / BaridiMob / Edahabia). Dès confirmation, tu reçois tes accès dans les minutes.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q6">Les vidéos sont en français ou en allemand ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a6">Explications en français (avec quelques passages en arabe dialectal quand c'est utile). Vocabulaire, phrases clés et simulations en allemand. C'est le meilleur mix pour apprendre vite.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q7">Il y a un certificat à la fin ?</summary>
+          <div class="faq-body"><p data-i18n="faq.a7">Oui, un certificat de complétion Aurel Academy. Ce n'est pas un diplôme officiel Goethe, mais un document professionnel qui montre ton engagement spécifique pour le secteur Pflege.</p></div>
+        </details>
+        <details class="faq-item fade-up">
+          <summary data-i18n="faq.q8">Si ça ne me convient pas, je peux me faire rembourser ?</summary>
+          <div class="faq-body"><p data-i18n-html="faq.a8"><strong>Garantie 14 jours</strong> : si dans les 14 jours après ton accès tu considères que la formation ne correspond pas à ce qui est promis, remboursement intégral, aucune question.</p></div>
+        </details>
+      </div>
+
+      <div class="center mt-4">
+        <a class="btn btn-whatsapp btn-lg" href="https://wa.me/213555290826?text=Bonjour%2C%20j%27ai%20une%20question%20sur%20la%20formation%20Pflege" target="_blank" rel="noopener" data-i18n="faq.cta">💬 Autre question ? Écris à Aurel sur WhatsApp →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <a href="https://aurel-academy.com" class="logo">
+        <span class="logo-mark">A</span>
+        <span class="logo-text">Aurel <span class="italic-accent">Academy</span></span>
+      </a>
+      <p class="footer-tag" data-i18n="footer.tag">Former la prochaine génération d'Algériens qui réussissent en Allemagne.</p>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title" data-i18n="footer.programs.title">Programmes</h4>
+      <ul>
+        <li><a href="/pflege/inscription/">Deutsch für Pflegekräfte</a></li>
+        <li><a href="/allemand/">Allemand A1→B2</a></li>
+        <li><a href="https://cours.aurel-academy.com" data-i18n="footer.programs.student">Espace étudiant</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title" data-i18n="footer.contact.title">Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/213555290826" data-i18n="footer.contact.whatsapp">WhatsApp : +213 555 290 826</a></li>
+        <li><a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span data-i18n="footer.copyright">© 2026 Aurel Academy. Tous droits réservés.</span>
+      <span class="footer-legal">
+        · <a href="/mentions/">Mentions légales</a>
+        · <a href="/confidentialite/">Confidentialité</a>
+        · <a href="/conditions/">Conditions</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a class="whatsapp-float" href="https://wa.me/213555290826?text=Bonjour%2C%20j%27ai%20une%20question%20sur%20la%20formation%20Pflege" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M20.52 3.48A11.88 11.88 0 0 0 12 0C5.37 0 0 5.37 0 12a11.9 11.9 0 0 0 1.64 6.05L0 24l6.1-1.6A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 21.82a9.8 9.8 0 0 1-5-1.37l-.36-.22-3.62.95.97-3.53-.24-.37A9.82 9.82 0 1 1 21.82 12 9.83 9.83 0 0 1 12 21.82zm5.38-7.36c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.06 8.06 0 0 1-2.37-1.47 8.93 8.93 0 0 1-1.64-2.04c-.17-.3 0-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5l-.57-.01a1.1 1.1 0 0 0-.8.37 3.34 3.34 0 0 0-1.04 2.48c0 1.46 1.06 2.88 1.21 3.08.15.2 2.09 3.2 5.07 4.49a17 17 0 0 0 1.69.62 4.07 4.07 0 0 0 1.87.12 3.05 3.05 0 0 0 2-1.42 2.5 2.5 0 0 0 .17-1.42c-.07-.12-.27-.2-.57-.35z"/></svg>
+</a>
+
+<script src="/pflege/inscription/sales.js?v=20260426a"></script>
+
+<script type="module">
+  // PERF: skip GSAP entirely on mobile (<768px) and reduced-motion — saves ~200KB transfer.
+  // Hero entry uses CSS animation. .fade-up baseline = visible on mobile (CSS rule).
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  const reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!isMobile && !reduced) {
+    const { default: gsap } = await import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm');
+    const { ScrollTrigger } = await import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm');
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.fade-up').forEach((el) => {
+      gsap.set(el, { opacity: 0, y: 40 });
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+      });
+    });
+  }
+</script>
+</body>
+</html>

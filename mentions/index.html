@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mentions légales — Aurel Academy</title>
+<meta name="description" content="Mentions légales — Aurel Academy.">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="robots" content="index,follow">
+
+<link rel="icon" type="image/svg+xml" href="https://cours.aurel-academy.com/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css?v=1">
+<link rel="stylesheet" href="/legal/legal.css?v=1">
+
+<script>
+  (function () {
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    var fromStorage = null;
+    try { fromStorage = localStorage.getItem('aurel-lang-legal'); } catch (e) {}
+    var lang = (fromUrl === 'fr' || fromUrl === 'ar') ? fromUrl
+             : (fromStorage === 'fr' || fromStorage === 'ar') ? fromStorage : 'fr';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    window.__aurelLang = lang;
+  })();
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/">Aurel Academy<span class="dot">.</span></a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang-set="fr">FR</button>
+      <button type="button" data-lang-set="ar">عربي</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="kicker" data-i18n="kicker"></div>
+  <h1 data-i18n="title"></h1>
+  <p class="updated" data-i18n="updated"></p>
+
+  <article id="content"></article>
+</main>
+
+<footer>
+  <span data-i18n="foot"></span><br>
+  <a href="/mentions/" data-i18n="nav.mentions"></a>
+  <a href="/confidentialite/" data-i18n="nav.priv"></a>
+  <a href="/conditions/" data-i18n="nav.cgv"></a>
+</footer>
+
+<script>
+(function () {
+  var I18N = {
+    fr: {
+      kicker: 'Informations légales',
+      title: 'Mentions légales',
+      updated: 'Dernière mise à jour : avril 2026',
+      'nav.mentions': 'Mentions légales',
+      'nav.priv': 'Confidentialité',
+      'nav.cgv': 'Conditions',
+      foot: '© Aurel Academy — Tous droits réservés.',
+      content: '\
+        <h2>1. Éditeur du site</h2>\
+        <p>Le présent site <strong>aurel-academy.com</strong> (ci-après « le Site ») est édité par <strong>Aurel Academy</strong>, organisme privé de formation à la langue allemande basé en Algérie.</p>\
+        <ul>\
+          <li><strong>Dénomination commerciale :</strong> Aurel Academy</li>\
+          <li><strong>Activité :</strong> Formation linguistique en allemand (général A1→B2 et allemand médical pour personnel soignant).</li>\
+          <li><strong>Pays :</strong> Algérie</li>\
+          <li><strong>Contact :</strong> <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a></li>\
+        </ul>\
+        <div class="notice">Les informations administratives complètes (adresse postale, registre du commerce, numéro fiscal le cas échéant) sont disponibles sur simple demande à l’adresse contact ci-dessus.</div>\
+\
+        <h2>2. Directeur de la publication</h2>\
+        <p>Le directeur de la publication du Site est le fondateur d’Aurel Academy. Toute demande relative au contenu du Site peut être adressée par email à <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a>.</p>\
+\
+        <h2>3. Hébergement</h2>\
+        <p>Le Site est hébergé par un prestataire d’hébergement web mutualisé. Le nom et les coordonnées de l’hébergeur sont communiqués sur demande, conformément à la pratique en matière de protection des opérateurs techniques.</p>\
+\
+        <h2>4. Propriété intellectuelle</h2>\
+        <p>L’ensemble des éléments composant le Site (textes, graphismes, logos, vidéos, photographies, sons, icônes, codes sources, structure générale) sont la propriété exclusive d’Aurel Academy ou de ses partenaires, et sont protégés par les législations algérienne et internationale relatives à la propriété intellectuelle.</p>\
+        <p>Toute reproduction, représentation, modification, publication, transmission ou exploitation, totale ou partielle, du Site ou de l’un de ses éléments, par quelque procédé que ce soit, sans autorisation écrite préalable d’Aurel Academy, est strictement interdite et constituerait une contrefaçon sanctionnée par la loi.</p>\
+\
+        <h2>5. Marques et logos</h2>\
+        <p>La marque « Aurel Academy » ainsi que les logos figurant sur le Site sont la propriété exclusive d’Aurel Academy. Toute utilisation à des fins commerciales sans autorisation expresse est interdite.</p>\
+\
+        <h2>6. Liens hypertextes</h2>\
+        <p>Le Site peut contenir des liens vers d’autres sites web (WhatsApp, Google, Telegram, plateformes de paiement, etc.). Aurel Academy ne saurait être tenue responsable du contenu, des pratiques ou de la disponibilité de ces sites tiers.</p>\
+\
+        <h2>7. Responsabilité</h2>\
+        <p>Aurel Academy met tout en œuvre pour offrir aux utilisateurs des informations exactes et à jour. Toutefois, des erreurs ou omissions peuvent survenir. L’utilisateur reconnaît utiliser ces informations sous sa responsabilité exclusive.</p>\
+        <p>Aurel Academy ne saurait être tenue responsable des dommages directs ou indirects, matériels ou immatériels, résultant de l’utilisation du Site, en particulier en cas d’interruption, d’indisponibilité ou de présence de virus.</p>\
+\
+        <h2>8. Données personnelles et cookies</h2>\
+        <p>Le traitement des données personnelles collectées par le Site est détaillé dans la <a href="/confidentialite/">Politique de confidentialité</a>. L’utilisation de cookies et traceurs est précisée dans cette même politique.</p>\
+\
+        <h2>9. Droit applicable</h2>\
+        <p>Les présentes mentions légales sont soumises au droit algérien. Tout litige relatif au Site relèvera de la compétence des juridictions algériennes, sauf disposition légale impérative contraire.</p>\
+\
+        <h2>10. Contact</h2>\
+        <p>Pour toute question relative aux présentes mentions légales, vous pouvez nous écrire à <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a>.</p>\
+      ',
+    },
+    ar: {
+      kicker: 'المعلومات القانونية',
+      title: 'الشروط القانونية',
+      updated: 'آخر تحديث: أفريل 2026',
+      'nav.mentions': 'الشروط القانونية',
+      'nav.priv': 'الخصوصية',
+      'nav.cgv': 'الشروط',
+      foot: '© Aurel Academy — جميع الحقوق محفوظة.',
+      content: '\
+        <h2>1. ناشر الموقع</h2>\
+        <p>الموقع <strong>aurel-academy.com</strong> (المُشار إليه فيما يلي بـ «الموقع») هو من نشر <strong>Aurel Academy</strong>، مؤسسة خاصة لتعليم اللغة الألمانية مقرها في الجزائر.</p>\
+        <ul>\
+          <li><strong>الاسم التجاري:</strong> Aurel Academy</li>\
+          <li><strong>النشاط:</strong> تعليم اللغة الألمانية (عام من A1 إلى B2 + ألمانية طبية لطاقم التمريض).</li>\
+          <li><strong>البلد:</strong> الجزائر</li>\
+          <li><strong>التواصل:</strong> <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a></li>\
+        </ul>\
+        <div class="notice">المعلومات الإدارية الكاملة (العنوان البريدي، السجل التجاري، الرقم الجبائي إن وُجد) متاحة عند الطلب عبر العنوان أعلاه.</div>\
+\
+        <h2>2. مدير النشر</h2>\
+        <p>مدير نشر الموقع هو مؤسس Aurel Academy. أي طلب يتعلق بمحتوى الموقع يمكن إرساله عبر البريد إلى <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a>.</p>\
+\
+        <h2>3. الاستضافة</h2>\
+        <p>الموقع مستضاف لدى مزود خدمة استضافة ويب. اسم وبيانات المستضيف تُقدَّم عند الطلب.</p>\
+\
+        <h2>4. الملكية الفكرية</h2>\
+        <p>جميع العناصر المكوّنة للموقع (نصوص، رسومات، شعارات، فيديوهات، صور، أصوات، أيقونات، أكواد، البنية العامة) هي ملكية حصرية لـ Aurel Academy أو لشركائها، وهي محمية بموجب التشريعات الجزائرية والدولية المتعلقة بالملكية الفكرية.</p>\
+        <p>أي إعادة إنتاج أو تمثيل أو تعديل أو نشر أو نقل أو استغلال، كلي أو جزئي، للموقع أو لأي من عناصره، بأي وسيلة كانت، دون إذن خطي مسبق من Aurel Academy، ممنوع منعاً باتاً ويُشكّل تعدياً يُعاقب عليه القانون.</p>\
+\
+        <h2>5. العلامات التجارية والشعارات</h2>\
+        <p>علامة «Aurel Academy» وكذلك الشعارات الواردة على الموقع هي ملكية حصرية لـ Aurel Academy. أي استعمال لأغراض تجارية بدون إذن صريح ممنوع.</p>\
+\
+        <h2>6. الروابط التشعبية</h2>\
+        <p>قد يحتوي الموقع على روابط إلى مواقع أخرى (واتساب، غوغل، تلغرام، منصات الدفع، إلخ). لا تتحمل Aurel Academy أي مسؤولية عن محتوى هذه المواقع أو ممارساتها أو توفرها.</p>\
+\
+        <h2>7. المسؤولية</h2>\
+        <p>تبذل Aurel Academy كل جهد لتقديم معلومات دقيقة ومحدّثة، غير أن أخطاء أو سهواً قد تحدث. يستخدم المستخدم هذه المعلومات تحت مسؤوليته الخاصة.</p>\
+        <p>لا تتحمل Aurel Academy المسؤولية عن أي أضرار مباشرة أو غير مباشرة، مادية أو معنوية، تنجم عن استخدام الموقع، خصوصاً في حالات الانقطاع أو عدم التوفر أو وجود فيروسات.</p>\
+\
+        <h2>8. البيانات الشخصية والكوكيز</h2>\
+        <p>معالجة البيانات الشخصية التي يجمعها الموقع موضّحة في <a href="/confidentialite/">سياسة الخصوصية</a>. استخدام الكوكيز والمتعقبات مشروح في نفس السياسة.</p>\
+\
+        <h2>9. القانون المُطبَّق</h2>\
+        <p>تخضع هذه الشروط القانونية للقانون الجزائري. أي نزاع يتعلق بالموقع يكون من اختصاص المحاكم الجزائرية، ما لم تنص أحكام قانونية آمرة على خلاف ذلك.</p>\
+\
+        <h2>10. التواصل</h2>\
+        <p>لأي سؤال يخص هذه الشروط القانونية، يمكنك مراسلتنا على <a href="mailto:contact@aurel-academy.com">contact@aurel-academy.com</a>.</p>\
+      ',
+    },
+  };
+
+  function applyLang(l) {
+    document.documentElement.lang = l;
+    document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+    var t = I18N[l];
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key]) el.textContent = t[key];
+    });
+    document.getElementById('content').innerHTML = t.content;
+    document.title = (l === 'ar') ? 'الشروط القانونية — Aurel Academy' : 'Mentions légales — Aurel Academy';
+    document.querySelectorAll('[data-lang-set]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-lang-set') === l);
+    });
+    try { localStorage.setItem('aurel-lang-legal', l); } catch (e) {}
+  }
+
+  applyLang(window.__aurelLang || 'fr');
+
+  document.querySelectorAll('[data-lang-set]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var l = btn.getAttribute('data-lang-set');
+      applyLang(l);
+      var url = new URL(location.href);
+      url.searchParams.set('lang', l);
+      history.replaceState(null, '', url.toString());
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
