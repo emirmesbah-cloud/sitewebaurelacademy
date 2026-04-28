@@ -63,7 +63,7 @@ jobs:
           FTP_PASSWORD:   ${{ secrets.FTP_PASSWORD }}
           FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
 
-      - name: Sync files to cPanel via FTPS
+      - name: Sync files to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server:           ${{ secrets.FTP_SERVER }}
@@ -71,10 +71,16 @@ jobs:
           password:         ${{ secrets.FTP_PASSWORD }}
           server-dir:       ${{ secrets.FTP_SERVER_DIR }}
           local-dir:        ./
-          protocol:         ftps          # FTP avec TLS implicite. Si Octenium ne supporte pas, mettre "ftp"
+          # Plain FTP : Octenium / Pure-FTPd a un bug TLS data channel
+          # (ECONNRESET sur le passive socket). Le contenu uploadé est 100%
+          # public (HTML/CSS/JS du site web) donc seul le password FTP doit
+          # rester secret — il est dans GitHub Secrets, jamais transmis en clair
+          # depuis la machine runner ailleurs que vers le serveur destination.
+          protocol:         ftp
           port:             21
           dangerous-clean-slate: false    # NE JAMAIS effacer le serveur entièrement
           log-level:        standard
+          timeout:          30000          # 30 s timeout par opération
           # Exclure tout ce qui ne doit pas être uploadé sur le serveur web
           exclude: |
             **/.git*
