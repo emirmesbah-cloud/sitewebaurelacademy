@@ -63,6 +63,19 @@ jobs:
           FTP_PASSWORD:   ${{ secrets.FTP_PASSWORD }}
           FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
 
+      # Supprime le state file foireux qu'un run précédent a pu laisser
+      # (sinon SamKirkland croit que tout est déjà synchro et n'upload rien).
+      - name: Clear stale FTP sync state file
+        continue-on-error: true
+        run: |
+          echo "→ Tentative de suppression de .ftp-deploy-sync-state.json sur le serveur..."
+          curl --silent --show-error \
+            --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}" \
+            --request DELE \
+            "ftp://${{ secrets.FTP_SERVER }}/.ftp-deploy-sync-state.json" \
+            && echo "✅ state file supprimé" \
+            || echo "⚠️ pas de state file à supprimer (ou suppression échouée — pas grave, on continue)"
+
       - name: Sync files to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -79,7 +92,7 @@ jobs:
           protocol:         ftp
           port:             21
           dangerous-clean-slate: false    # NE JAMAIS effacer le serveur entièrement
-          log-level:        standard
+          log-level:        verbose       # logs détaillés pour debug
           timeout:          30000          # 30 s timeout par opération
           # Exclure tout ce qui ne doit pas être uploadé sur le serveur web
           exclude: |
