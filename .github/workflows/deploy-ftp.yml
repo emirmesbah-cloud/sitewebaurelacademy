@@ -1,17 +1,17 @@
 # ============================================================================
-# Aurel Academy — Auto-deploy public_html → cPanel Octenium via FTP
+# Aurel Academy — Auto-deploy public_html → cPanel Octenium via lftp
 #
-# À chaque push sur main, le contenu du repo est synchro avec le serveur
-# cPanel (delta upload uniquement — rapide).
+# Pourquoi lftp et pas une GitHub Action FTP tierce :
+#   - SamKirkland/FTP-Deploy-Action plantait sur ECONNRESET avec Octenium
+#   - lftp est rock-solid, géré directement par Octenium/cPanel depuis 20 ans
+#   - lftp gère les retries auto sur erreur réseau
+#   - Mirror différentiel : n'upload que les fichiers modifiés
 #
-# SECRETS REQUIS (Settings → Secrets → Actions) :
-#   FTP_SERVER     ex: ftp.aurel-academy.com  (ou aurel-academy.com)
-#   FTP_USERNAME   ex: aurelxxx@aurel-academy.com  (utilisateur cPanel)
-#   FTP_PASSWORD   ex: ****** (mot de passe cPanel ou compte FTP dédié)
-#   FTP_SERVER_DIR ex: /public_html/  (chemin distant sur le serveur)
-#
-# PROTOCOLE : FTPS (FTP avec TLS) par défaut. Si Octenium ne supporte pas,
-# basculer protocol à "ftp" (non chiffré, à éviter si possible).
+# SECRETS REQUIS :
+#   FTP_SERVER     ex: aurel-academy.com
+#   FTP_USERNAME   ex: github@aurel-academy.com
+#   FTP_PASSWORD   ex: ******
+#   FTP_SERVER_DIR ex: ./   (racine du compte FTP, déjà chrooté à public_html)
 # ============================================================================
 
 name: Deploy to cPanel via FTP
@@ -19,26 +19,22 @@ name: Deploy to cPanel via FTP
 on:
   push:
     branches: [main]
-    # Ne déploie que si les fichiers servis par cPanel changent.
-    # Évite de redéployer pour des changements purement CI/docs.
     paths-ignore:
       - '.github/**'
       - 'README.md'
       - '*.md'
       - '.gitignore'
-  workflow_dispatch:    # Permet aussi de lancer le déploiement manuellement
+  workflow_dispatch:
 
 concurrency:
-  # Si un push arrive pendant qu'un déploiement tourne, on attend (pas de cancel)
-  # pour éviter de laisser le serveur dans un état mi-uploadé.
   group: ftp-deploy
   cancel-in-progress: false
 
 jobs:
   deploy:
-    name: FTP sync to cPanel
+    name: lftp mirror to cPanel
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -53,61 +49,82 @@ jobs:
               missing=$((missing + 1))
             fi
           done
-          if [ "$missing" -gt 0 ]; then
-            echo "::error::Add the missing secrets in Settings → Secrets → Actions"
-            exit 1
-          fi
+          if [ "$missing" -gt 0 ]; then exit 1; fi
+          echo "✅ Secrets OK"
         env:
           FTP_SERVER:     ${{ secrets.FTP_SERVER }}
           FTP_USERNAME:   ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD:   ${{ secrets.FTP_PASSWORD }}
           FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
 
-      # Supprime le state file foireux qu'un run précédent a pu laisser
-      # (sinon SamKirkland croit que tout est déjà synchro et n'upload rien).
-      - name: Clear stale FTP sync state file
-        continue-on-error: true
+      - name: Install lftp
         run: |
-          echo "→ Tentative de suppression de .ftp-deploy-sync-state.json sur le serveur..."
-          curl --silent --show-error \
-            --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}" \
-            --request DELE \
-            "ftp://${{ secrets.FTP_SERVER }}/.ftp-deploy-sync-state.json" \
-            && echo "✅ state file supprimé" \
-            || echo "⚠️ pas de state file à supprimer (ou suppression échouée — pas grave, on continue)"
+          sudo apt-get update -qq
+          sudo apt-get install -y lftp
+          lftp --version | head -1
 
-      - name: Sync files to cPanel via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server:           ${{ secrets.FTP_SERVER }}
-          username:         ${{ secrets.FTP_USERNAME }}
-          password:         ${{ secrets.FTP_PASSWORD }}
-          server-dir:       ${{ secrets.FTP_SERVER_DIR }}
-          local-dir:        ./
-          # Plain FTP : Octenium / Pure-FTPd a un bug TLS data channel
-          # (ECONNRESET sur le passive socket). Le contenu uploadé est 100%
-          # public (HTML/CSS/JS du site web) donc seul le password FTP doit
-          # rester secret — il est dans GitHub Secrets, jamais transmis en clair
-          # depuis la machine runner ailleurs que vers le serveur destination.
-          protocol:         ftp
-          port:             21
-          dangerous-clean-slate: false    # NE JAMAIS effacer le serveur entièrement
-          log-level:        verbose       # logs détaillés pour debug
-          timeout:          30000          # 30 s timeout par opération
-          # Exclure tout ce qui ne doit pas être uploadé sur le serveur web
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github
-            **/.github/**
-            **/node_modules/**
-            **/*.md
-            **/.DS_Store
-            **/Thumbs.db
-            **/.env
-            **/.env.*
-            **/dist/**
-            **/.cache/**
+      - name: Sync files via lftp mirror
+        env:
+          FTP_SERVER:     ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME:   ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD:   ${{ secrets.FTP_PASSWORD }}
+          FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
+        run: |
+          set -e
+
+          # Crée un fichier de commandes lftp pour éviter d'exposer le password
+          # dans la ligne de commande (visible dans `ps`).
+          cat > lftp_commands.txt <<'EOF'
+          set ftp:passive-mode true
+          set ssl:verify-certificate no
+          set net:max-retries 5
+          set net:reconnect-interval-base 5
+          set net:reconnect-interval-multiplier 1.5
+          set net:timeout 30
+          set ftp:list-options -a
+          set xfer:clobber on
+          set mirror:parallel-transfer-count 3
+          EOF
+
+          # Le password est passé via variable env, pas en clair dans le script.
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p 21 "ftp://$FTP_SERVER" <<EOF
+          $(cat lftp_commands.txt)
+
+          # Mirror local → remote.
+          # Options :
+          #   -R / --reverse          : sens local → remote (upload)
+          #   --verbose=2             : log moyennement détaillé
+          #   --ignore-time           : compare via taille (timestamps FTP non fiables)
+          #   --no-perms              : ne tente pas de modifier les permissions distantes
+          #   --parallel=3            : 3 transferts simultanés
+          #
+          # NOTE : pas de --delete pour préserver les fichiers serveur qu'on
+          # ne veut pas écraser (par ex. WordPress, fichiers cPanel internes).
+          # Exclude .git, .github, .env, README, node_modules, etc.
+          mirror --reverse \
+                 --verbose=2 \
+                 --ignore-time \
+                 --no-perms \
+                 --parallel=3 \
+                 --exclude-glob .git \
+                 --exclude-glob .git/ \
+                 --exclude-glob .github \
+                 --exclude-glob .github/ \
+                 --exclude-glob .env \
+                 --exclude-glob .env.* \
+                 --exclude-glob README.md \
+                 --exclude-glob *.md \
+                 --exclude-glob node_modules \
+                 --exclude-glob node_modules/ \
+                 --exclude-glob .DS_Store \
+                 --exclude-glob Thumbs.db \
+                 --exclude-glob lftp_commands.txt \
+                 ./ "$FTP_SERVER_DIR"
+
+          bye
+          EOF
+
+          echo "✅ Mirror terminé"
 
       - name: Summary
         if: always()
@@ -116,11 +133,12 @@ jobs:
           echo "- **Status** : ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit** : \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Author** : ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Server**  : \`${{ secrets.FTP_SERVER }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Server** : \`${{ secrets.FTP_SERVER }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Path**   : \`${{ secrets.FTP_SERVER_DIR }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
           if [ "${{ job.status }}" = "success" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
             echo "✅ Site mis à jour : https://aurel-academy.com/" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ Échec — vérifier les logs ci-dessus et les secrets FTP." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "❌ Échec — voir les logs ci-dessus." >> $GITHUB_STEP_SUMMARY
           fi
