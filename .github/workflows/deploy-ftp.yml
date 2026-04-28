@@ -1,0 +1,107 @@
+# ============================================================================
+# Aurel Academy — Auto-deploy public_html → cPanel Octenium via FTP
+#
+# À chaque push sur main, le contenu du repo est synchro avec le serveur
+# cPanel (delta upload uniquement — rapide).
+#
+# SECRETS REQUIS (Settings → Secrets → Actions) :
+#   FTP_SERVER     ex: ftp.aurel-academy.com  (ou aurel-academy.com)
+#   FTP_USERNAME   ex: aurelxxx@aurel-academy.com  (utilisateur cPanel)
+#   FTP_PASSWORD   ex: ****** (mot de passe cPanel ou compte FTP dédié)
+#   FTP_SERVER_DIR ex: /public_html/  (chemin distant sur le serveur)
+#
+# PROTOCOLE : FTPS (FTP avec TLS) par défaut. Si Octenium ne supporte pas,
+# basculer protocol à "ftp" (non chiffré, à éviter si possible).
+# ============================================================================
+
+name: Deploy to cPanel via FTP
+
+on:
+  push:
+    branches: [main]
+    # Ne déploie que si les fichiers servis par cPanel changent.
+    # Évite de redéployer pour des changements purement CI/docs.
+    paths-ignore:
+      - '.github/**'
+      - 'README.md'
+      - '*.md'
+      - '.gitignore'
+  workflow_dispatch:    # Permet aussi de lancer le déploiement manuellement
+
+concurrency:
+  # Si un push arrive pendant qu'un déploiement tourne, on attend (pas de cancel)
+  # pour éviter de laisser le serveur dans un état mi-uploadé.
+  group: ftp-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: FTP sync to cPanel
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required secrets
+        run: |
+          missing=0
+          for var in FTP_SERVER FTP_USERNAME FTP_PASSWORD FTP_SERVER_DIR; do
+            if [ -z "${!var}" ]; then
+              echo "::error::Missing secret $var"
+              missing=$((missing + 1))
+            fi
+          done
+          if [ "$missing" -gt 0 ]; then
+            echo "::error::Add the missing secrets in Settings → Secrets → Actions"
+            exit 1
+          fi
+        env:
+          FTP_SERVER:     ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME:   ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD:   ${{ secrets.FTP_PASSWORD }}
+          FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
+
+      - name: Sync files to cPanel via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server:           ${{ secrets.FTP_SERVER }}
+          username:         ${{ secrets.FTP_USERNAME }}
+          password:         ${{ secrets.FTP_PASSWORD }}
+          server-dir:       ${{ secrets.FTP_SERVER_DIR }}
+          local-dir:        ./
+          protocol:         ftps          # FTP avec TLS implicite. Si Octenium ne supporte pas, mettre "ftp"
+          port:             21
+          dangerous-clean-slate: false    # NE JAMAIS effacer le serveur entièrement
+          log-level:        standard
+          # Exclure tout ce qui ne doit pas être uploadé sur le serveur web
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github
+            **/.github/**
+            **/node_modules/**
+            **/*.md
+            **/.DS_Store
+            **/Thumbs.db
+            **/.env
+            **/.env.*
+            **/dist/**
+            **/.cache/**
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Deployment summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status** : ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit** : \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Author** : ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Server**  : \`${{ secrets.FTP_SERVER }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Path**   : \`${{ secrets.FTP_SERVER_DIR }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ job.status }}" = "success" ]; then
+            echo "✅ Site mis à jour : https://aurel-academy.com/" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Échec — vérifier les logs ci-dessus et les secrets FTP." >> $GITHUB_STEP_SUMMARY
+          fi
