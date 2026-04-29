@@ -1,0 +1,54 @@
+# =================================================================
+# Aurel Academy — gitleaks config (sitewebaurelacademy repo)
+# =================================================================
+
+title = "Aurel Academy site web — gitleaks"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "supabase-service-role-jwt"
+description = "Supabase service_role legacy JWT (eyJ...)"
+regex = '''eyJhbGciOi[A-Za-z0-9_-]{120,}'''
+keywords = ["service_role", "supabase", "eyJhbGci"]
+
+[[rules]]
+id = "supabase-secret-key"
+description = "Supabase new-format secret key"
+regex = '''sb_secret_[A-Za-z0-9_-]{30,}'''
+keywords = ["sb_secret_"]
+
+[[rules]]
+id = "supabase-pat"
+description = "Supabase Personal Access Token"
+regex = '''sbp_[a-z0-9]{40,}'''
+keywords = ["sbp_"]
+
+[[rules]]
+id = "resend-api-key"
+description = "Resend API key"
+regex = '''re_[A-Za-z0-9_]{30,}'''
+keywords = ["re_", "resend"]
+
+[[rules]]
+id = "ftp-credential"
+description = "FTP password / cPanel credential pattern"
+regex = '''(?i)(ftp_password|cpanel_pass|smtp_pass)\s*[:=]\s*['"][^'"]{8,}['"]'''
+keywords = ["ftp_password", "cpanel"]
+
+[allowlist]
+description = "Public Apps Script URL etc."
+paths = [
+    '''(.*?)(test|tests|examples|fixtures|node_modules|dist|build|.git|README|.env\.example)(.*)''',
+    '''.*\.lock''',
+]
+
+regexes = [
+    '''AKfycb[A-Za-z0-9_-]+''',  # Apps Script URL public
+    '''sb_publishable_[A-Za-z0-9_-]+''',
+]
+
+stopwords = [
+    "AKfycbyjgOtm7NHglrwuH_f8L3PSNlIB8ijSMOGb9a2Za4tA21FfINat6NuZq0Fg7jtwVx8B",
+]
