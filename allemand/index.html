@@ -17,7 +17,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/noto-arabic-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css?v=20260426a">
-<link rel="stylesheet" href="/allemand/allemand.css?v=20260426a">
+<link rel="stylesheet" href="/allemand/allemand.css?v=20260429b">
 
 <script>
   (function () {
@@ -540,7 +540,7 @@
             <li data-i18n-html="tier.prem.li2"><strong>Coaching individuel</strong> 30 min / semaine avec Aurel</li>
             <li data-i18n-html="tier.prem.li3"><strong>Accompagnement candidature Ausbildung</strong> de A à Z</li>
             <li data-i18n-html="tier.prem.li4"><strong>Préparation visa</strong> + simulation rendez-vous consulat</li>
-            <li data-i18n-html="tier.prem.li5"><strong>Mise en relation</strong> avec alumni placés en Allemagne</li>
+            <li data-i18n-html="tier.prem.li5"><strong>Communauté privée</strong> entre apprenants Aurel</li>
             <li data-i18n-html="tier.prem.li6"><strong>Suivi prioritaire</strong> jusqu'à ton premier contrat</li>
           </ul>
           <a href="#reserver" class="btn btn-primary btn-block btn-lg" data-tier-select="Premium" data-i18n="tier.prem.cta">Rejoindre Premium →</a>
@@ -703,6 +703,11 @@
   </div>
 </footer>
 
+<!-- Mobile sticky CTA (mobile only) -->
+<div class="mobile-sticky-cta" aria-hidden="false">
+  <a href="#reserver" class="btn btn-primary btn-block" data-i18n="cta.reserve">Réserver ma place →</a>
+</div>
+
 <a class="whatsapp-float" href="https://wa.me/213555290826?text=Bonjour%2C%20j%27ai%20une%20question%20sur%20le%20programme%20Allemand%20A1-B2" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M20.52 3.48A11.88 11.88 0 0 0 12 0C5.37 0 0 5.37 0 12a11.9 11.9 0 0 0 1.64 6.05L0 24l6.1-1.6A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 21.82a9.8 9.8 0 0 1-5-1.37l-.36-.22-3.62.95.97-3.53-.24-.37A9.82 9.82 0 1 1 21.82 12 9.83 9.83 0 0 1 12 21.82zm5.38-7.36c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.06 8.06 0 0 1-2.37-1.47 8.93 8.93 0 0 1-1.64-2.04c-.17-.3 0-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5l-.57-.01a1.1 1.1 0 0 0-.8.37 3.34 3.34 0 0 0-1.04 2.48c0 1.46 1.06 2.88 1.21 3.08.15.2 2.09 3.2 5.07 4.49a17 17 0 0 0 1.69.62 4.07 4.07 0 0 0 1.87.12 3.05 3.05 0 0 0 2-1.42 2.5 2.5 0 0 0 .17-1.42c-.07-.12-.27-.2-.57-.35z"/></svg>
 </a>
@@ -725,6 +730,21 @@
       });
     });
   }
+</script>
+
+<!-- Hide WhatsApp float when an inline WhatsApp CTA is visible -->
+<script>
+(function () {
+  const floatBtn = document.querySelector('.whatsapp-float');
+  const inlineCtas = document.querySelectorAll('a.btn-whatsapp[href*="wa.me"]');
+  if (!floatBtn || !inlineCtas.length || !('IntersectionObserver' in window)) return;
+  let visibleCount = 0;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { visibleCount += e.isIntersecting ? 1 : -1; });
+    floatBtn.classList.toggle('is-near-cta', visibleCount > 0);
+  }, { threshold: 0.3 });
+  inlineCtas.forEach((cta) => io.observe(cta));
+})();
 </script>
 </body>
 </html>

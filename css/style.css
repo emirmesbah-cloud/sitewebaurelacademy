@@ -215,6 +215,20 @@ body.menu-open { overflow: hidden; }
 }
 .whatsapp-float:hover { transform: scale(1.1); }
 
+/* Hide WhatsApp float when an inline WhatsApp CTA is visible (Sprint 2 item 5) */
+.whatsapp-float.is-near-cta {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Mobile : float plus petit + au-dessus de la safe area */
+@media (max-width: 767px) {
+  .whatsapp-float { width: 52px; height: 52px; bottom: 20px; }
+  .btn-whatsapp { white-space: normal; width: 100%; max-width: 100%; padding-left: 14px; padding-right: 14px; font-size: 0.98rem; line-height: 1.3; }
+}
+
 @keyframes waEntry {
   0%   { transform: scale(0); }
   60%  { transform: scale(1.2); }

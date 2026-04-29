@@ -12,7 +12,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin />
   <link rel="stylesheet" href="/assets/fonts/fonts.css?v=20260426a" />
 
-  <link rel="stylesheet" href="css/style.css?v=20260426a" />
+  <link rel="stylesheet" href="css/style.css?v=20260429b" />
 </head>
 <body>
 
@@ -617,5 +617,20 @@
   <script src="js/lead-form.js?v=20260426a" defer></script>
   <script src="js/ui.js?v=20260426a" defer></script>
   <script src="js/animations.js?v=20260426b" defer></script>
+
+  <!-- Hide WhatsApp float when an inline WhatsApp CTA is visible -->
+  <script>
+  (function () {
+    const floatBtn = document.querySelector('.whatsapp-float');
+    const inlineCtas = document.querySelectorAll('a.btn-whatsapp[href*="wa.me"]');
+    if (!floatBtn || !inlineCtas.length || !('IntersectionObserver' in window)) return;
+    let visibleCount = 0;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { visibleCount += e.isIntersecting ? 1 : -1; });
+      floatBtn.classList.toggle('is-near-cta', visibleCount > 0);
+    }, { threshold: 0.3 });
+    inlineCtas.forEach((cta) => io.observe(cta));
+  })();
+  </script>
 </body>
 </html>
