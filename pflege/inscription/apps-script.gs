@@ -1,7 +1,7 @@
 // ============================================================
 // AUREL ACADEMY — Réservations + Routing closers (Pflege + Allemand)
 // Apps Script bound au Sheet « Aurel Academy — Réservations »
-// v5 — Friendly email + appel direct (tel: link) + form 3 champs
+// v7 — Sheet 13 cols + placeholder cells + cond. formatting + protection Closer col
 // ============================================================
 //
 // FONCTIONNALITÉS
@@ -15,9 +15,13 @@
 // SETUP — REMPLIR CETTE SECTION
 // ============================================================
 
-// Ton email principal (tu reçois TOUS les leads en CC, même ceux assignés à un closer).
-// Mets '' pour désactiver complètement les notifs.
-const NOTIFY_EMAIL = 'aurel@aurel-academy.com';  // ← REMPLACE par ton vrai email
+// Liste des managers qui reçoivent TOUS les leads en CC (même ceux assignés à un closer).
+// Utile pour : toi (owner) + un closer manager qui supervise toute l'équipe.
+// Mets [] pour désactiver complètement les notifs CC.
+const NOTIFY_EMAILS = [
+  'amirmesbah510@gmail.com',  // Toi (owner)
+  'aminetbalia6@gmail.com',   // Closer manager
+];
 
 // Liste des closers de ton équipe.
 //   - name      : prénom du closer (affiché dans le Sheet + email)
@@ -31,6 +35,8 @@ const CLOSERS = [
   { name: 'Hana',    email: 'hanabenabderrahim0@gmail.com', whatsapp: '', programs: ['Pflege', 'Allemand'] },
   { name: 'Aymen',   email: 'aymanesido09@gmail.com',       whatsapp: '', programs: ['Pflege', 'Allemand'] },
   { name: 'Djihane', email: 'Djihanesedour@gmail.com',      whatsapp: '', programs: ['Pflege', 'Allemand'] },
+  { name: 'Hadjer',  email: 'mezdourhadjer7@gmail.com',     whatsapp: '', programs: ['Pflege', 'Allemand'] },
+  { name: 'Ryma',    email: 'Messyryma@gmail.com',          whatsapp: '', programs: ['Pflege', 'Allemand'] },
 ];
 
 // ============================================================
@@ -43,25 +49,33 @@ const TAB_BY_PROGRAM = {
 };
 const FALLBACK_TAB = 'Leads';
 
+// Nouvelle structure 13 colonnes (v7)
+//   A:Timestamp  B:Programme  C:Nom complet  D:WhatsApp  E:Email
+//   F:Profession  G:Niveau DE  H:Tier  I:Statut  J:Wilaya
+//   K:Adresse  L:Closer assigné  M:Lang
 const HEADERS = [
-  'Timestamp',
-  'Programme',
-  'Prénom',
-  'Nom',
-  'WhatsApp',
-  'Email',
-  'Profession',
-  'Niveau DE',
-  'Tier',
-  'Wilaya',
-  'Adresse',
-  'Statut',
-  'Closer assigné',
-  'Lang',
-  'URL landing',
-  'Referrer',
-  'User Agent',
+  'Timestamp',      // A
+  'Programme',      // B
+  'Nom complet',    // C
+  'WhatsApp',       // D
+  'Email',          // E (placeholder closer)
+  'Profession',     // F (placeholder closer)
+  'Niveau DE',      // G
+  'Tier',           // H
+  'Statut',         // I
+  'Wilaya',         // J (placeholder closer)
+  'Adresse',        // K (placeholder closer)
+  'Closer assigné', // L (protected)
+  'Lang',           // M
 ];
+
+// Colonnes à pré-remplir avec "À remplir par le closer" (en gris/italique/petit)
+const PLACEHOLDER_TEXT = 'À remplir par le closer';
+const PLACEHOLDER_COLUMNS = [5, 6, 10, 11]; // E, F, J, K
+
+// Colonne protégée : seuls les emails ci-dessous peuvent l'éditer
+const PROTECTED_COLUMN = 12; // L (Closer assigné)
+const ALLOWED_EDITORS = ['aminetbalia6@gmail.com', 'emirmesbah@gmail.com'];
 
 // ─────────────────────────────────────────────────────────────
 // Round-robin équitable
@@ -207,7 +221,10 @@ function notifyByEmail(program, data, closer) {
   const bodyText = buildEmailBodyText(program, data, closer);
   const bodyHtml = buildEmailBodyHtml(program, data, closer);
 
-  // Cas 1 : closer assigné → email au closer + CC toi
+  // Liste CC : tous les managers (toi + closer manager)
+  const ccList = (NOTIFY_EMAILS || []).filter(Boolean).join(',');
+
+  // Cas 1 : closer assigné → email au closer + CC managers
   if (closer && closer.email) {
     try {
       const opts = {
@@ -217,17 +234,17 @@ function notifyByEmail(program, data, closer) {
         htmlBody: bodyHtml,
         name: 'Aurel Academy — Leads',
       };
-      if (NOTIFY_EMAIL) opts.cc = NOTIFY_EMAIL;
+      if (ccList) opts.cc = ccList;
       MailApp.sendEmail(opts);
     } catch (err) { console.error('Closer mail error', err); }
     return;
   }
 
-  // Cas 2 : pas de closer → email direct à toi
-  if (NOTIFY_EMAIL) {
+  // Cas 2 : pas de closer → email direct aux managers
+  if (ccList) {
     try {
       MailApp.sendEmail({
-        to: NOTIFY_EMAIL,
+        to: ccList,
         subject: subject,
         body: bodyText,
         htmlBody: bodyHtml,
@@ -264,26 +281,31 @@ function doPost(e) {
     // Assign a closer (round-robin équitable)
     const closer = pickCloserRoundRobin(program);
 
+    const fullName = ((data.prenom || '') + ' ' + (data.nom || '')).trim() || (data.nom_complet || '');
+
+    // Si la cellule du form est vide → mettre le placeholder pour le closer
+    const ph = (val) => val && String(val).trim() !== '' ? val : PLACEHOLDER_TEXT;
+
     const row = [
-      data.timestamp || new Date().toISOString(),
-      program,
-      data.prenom || '',
-      data.nom || '',
-      data.whatsapp || '',
-      data.email || '',
-      data.profession || '',
-      data.niveau_allemand || '',
-      data.tier || '',
-      data.wilaya || '',
-      data.adresse || '',
-      'Nouveau',
-      closer ? closer.name : '',
-      data.lang || '',
-      data.landing_url || '',
-      data.referrer || '',
-      data.user_agent || '',
+      data.timestamp || new Date().toISOString(), // A Timestamp
+      program,                                     // B Programme
+      fullName,                                    // C Nom complet
+      data.whatsapp || '',                         // D WhatsApp
+      ph(data.email),                              // E Email (placeholder si vide)
+      ph(data.profession),                         // F Profession (placeholder si vide)
+      data.niveau_allemand || '',                  // G Niveau DE
+      data.tier || '',                             // H Tier
+      'Nouveau',                                   // I Statut
+      ph(data.wilaya),                             // J Wilaya (placeholder si vide)
+      ph(data.adresse),                            // K Adresse (placeholder si vide)
+      closer ? closer.name : '',                   // L Closer assigné
+      data.lang || '',                             // M Lang
     ];
     sheet.appendRow(row);
+
+    // Applique le style "placeholder" (gris/italique/petit) aux cellules E F J K de la nouvelle ligne
+    const newRowIdx = sheet.getLastRow();
+    applyPlaceholderStyleToRow(sheet, newRowIdx);
 
     // Send notifications
     notifyByEmail(program, data, closer);
@@ -303,10 +325,10 @@ function doGet() {
   return ContentService
     .createTextOutput(JSON.stringify({
       status: 'ok',
-      service: 'aurel-bookings-v4',
+      service: 'aurel-bookings-v7',
       tabs: TAB_BY_PROGRAM,
       closers_configured: CLOSERS.length,
-      notify_email_set: !!NOTIFY_EMAIL,
+      managers_configured: (NOTIFY_EMAILS || []).filter(Boolean).length,
     }))
     .setMimeType(ContentService.MimeType.JSON);
 }
@@ -328,6 +350,204 @@ function _showCloserStats() {
     const count = parseInt(props.getProperty('closerCount_' + c.email) || '0', 10);
     console.log(c.name + ' (' + c.email + ') : ' + count + ' lead(s)');
   });
+}
+
+// ─────────────────────────────────────────────────────────────
+// FORMATTING — placeholder (gris/italique/petit) sur cellules E F J K
+// ─────────────────────────────────────────────────────────────
+function applyPlaceholderStyleToRow(sheet, rowIdx) {
+  PLACEHOLDER_COLUMNS.forEach((col) => {
+    const cell = sheet.getRange(rowIdx, col);
+    const val = cell.getValue();
+    if (val === PLACEHOLDER_TEXT) {
+      cell.setFontColor('#9CA3AF')   // gris clair
+          .setFontStyle('italic')
+          .setFontSize(10);
+    } else {
+      // Reset au cas où le closer a déjà rempli — texte normal noir
+      cell.setFontColor('#000000')
+          .setFontStyle('normal')
+          .setFontSize(10);
+    }
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+// CONDITIONAL FORMATTING — cellule rouge si Statut = "closed"
+// ET la cellule contient encore le placeholder (donc pas remplie)
+// ─────────────────────────────────────────────────────────────
+function applyConditionalFormatting(sheet) {
+  sheet.clearConditionalFormatRules();
+
+  const lastRow = Math.max(1000, sheet.getLastRow() + 200); // marge pour les futures lignes
+  const rules = [];
+
+  PLACEHOLDER_COLUMNS.forEach((col) => {
+    const colLetter = String.fromCharCode(64 + col); // 5 → 'E', 6 → 'F', etc.
+    const range = sheet.getRange(2, col, lastRow - 1, 1);
+
+    // Formule : Statut (col I) = "closed" ET cellule contient placeholder ou est vide
+    const formula = '=AND(LOWER($I2)="closed",OR($' + colLetter + '2="' + PLACEHOLDER_TEXT + '",$' + colLetter + '2=""))';
+
+    const rule = SpreadsheetApp.newConditionalFormatRule()
+      .whenFormulaSatisfied(formula)
+      .setBackground('#FECACA')   // rouge clair
+      .setFontColor('#991B1B')    // rouge foncé
+      .setRanges([range])
+      .build();
+
+    rules.push(rule);
+  });
+
+  sheet.setConditionalFormatRules(rules);
+}
+
+// ─────────────────────────────────────────────────────────────
+// PROTECTION — colonne L (Closer assigné) éditable seulement par
+// aminetbalia6@gmail.com et emirmesbah@gmail.com
+// ─────────────────────────────────────────────────────────────
+function protectCloserColumn(sheet) {
+  const lastRow = Math.max(1000, sheet.getLastRow() + 200);
+  const range = sheet.getRange(2, PROTECTED_COLUMN, lastRow - 1, 1);
+
+  // Supprime les protections existantes sur cette colonne pour éviter les doublons
+  const existing = sheet.getProtections(SpreadsheetApp.ProtectionType.RANGE);
+  existing.forEach((p) => {
+    try {
+      const r = p.getRange();
+      if (r && r.getColumn() === PROTECTED_COLUMN && r.getSheet().getName() === sheet.getName()) {
+        p.remove();
+      }
+    } catch (e) {}
+  });
+
+  const protection = range.protect();
+  protection.setDescription('Closer assigné — édition réservée managers (' + sheet.getName() + ')');
+
+  // Étape 1 : ajoute les éditeurs autorisés (idempotent — pas d'erreur si déjà présents)
+  ALLOWED_EDITORS.forEach((email) => {
+    try { protection.addEditor(email); } catch (e) { console.log('Cannot add editor ' + email + ': ' + e); }
+  });
+
+  // Étape 2 : retire tous les autres éditeurs (Google retient automatiquement
+  // le propriétaire du fichier, donc pas besoin de l'identifier nous-mêmes)
+  const allEditors = protection.getEditors().map(u => u.getEmail()).filter(Boolean);
+  const toRemove = allEditors.filter(e => !ALLOWED_EDITORS.includes(e));
+  if (toRemove.length) {
+    try { protection.removeEditors(toRemove); } catch (e) { console.log('removeEditors error: ' + e); }
+  }
+
+  if (protection.canDomainEdit && protection.canDomainEdit()) {
+    protection.setDomainEdit(false);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// MIGRATION — convertit l'ancienne structure 17 cols vers nouvelle 13 cols
+// + applique placeholder + conditional formatting + protection
+// SAFE : à exécuter une seule fois après mise à jour du script.
+// ─────────────────────────────────────────────────────────────
+function _migrateAndFormatSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const tabsToMigrate = Object.values(TAB_BY_PROGRAM).concat([FALLBACK_TAB]);
+
+  tabsToMigrate.forEach((tabName) => {
+    const sheet = ss.getSheetByName(tabName);
+    if (!sheet) {
+      console.log('⏭️  Onglet introuvable, skip : ' + tabName);
+      return;
+    }
+    console.log('🔄 Migration onglet : ' + tabName);
+    migrateOneSheet(sheet);
+    console.log('✅ Onglet migré : ' + tabName);
+  });
+
+  console.log('🎉 Migration terminée. Recharge le Sheet pour voir le résultat.');
+}
+
+function migrateOneSheet(sheet) {
+  const lastRow = sheet.getLastRow();
+  const lastCol = sheet.getLastColumn();
+
+  // Si onglet vide → juste écrire les nouveaux headers
+  if (lastRow === 0) {
+    sheet.appendRow(HEADERS);
+    formatHeaderRow(sheet);
+    applyConditionalFormatting(sheet);
+    protectCloserColumn(sheet);
+    return;
+  }
+
+  // Lit toute la donnée existante
+  const allValues = sheet.getRange(1, 1, lastRow, lastCol).getValues();
+  const oldHeaders = allValues[0].map(h => String(h).trim());
+  const dataRows = allValues.slice(1);
+
+  // Construit un index ancien-header → ancienne colonne (zero-based)
+  const oldIdx = {};
+  oldHeaders.forEach((h, i) => { oldIdx[h] = i; });
+
+  // Helper : récupère une valeur par nom de colonne (ancienne ou nouvelle)
+  const getOld = (row, key) => oldIdx[key] !== undefined ? row[oldIdx[key]] : '';
+
+  // Détecte si c'est l'ancienne structure (avec Prénom/Nom séparés) ou la nouvelle
+  const wasAlreadyMigrated = oldIdx['Nom complet'] !== undefined;
+
+  // Reconstruit chaque ligne dans la nouvelle structure
+  const newRows = dataRows.map((row) => {
+    const fullName = wasAlreadyMigrated
+      ? String(getOld(row, 'Nom complet') || '').trim()
+      : ((String(getOld(row, 'Prénom') || '') + ' ' + String(getOld(row, 'Nom') || '')).trim());
+
+    const ph = (val) => val && String(val).trim() !== '' ? val : PLACEHOLDER_TEXT;
+
+    return [
+      getOld(row, 'Timestamp'),
+      getOld(row, 'Programme'),
+      fullName,
+      getOld(row, 'WhatsApp'),
+      ph(getOld(row, 'Email')),
+      ph(getOld(row, 'Profession')),
+      getOld(row, 'Niveau DE'),
+      getOld(row, 'Tier'),
+      getOld(row, 'Statut') || 'Nouveau',
+      ph(getOld(row, 'Wilaya')),
+      ph(getOld(row, 'Adresse')),
+      getOld(row, 'Closer assigné'),
+      getOld(row, 'Lang'),
+    ];
+  });
+
+  // Clear l'onglet et réécrit avec la nouvelle structure
+  sheet.clear();
+  sheet.clearConditionalFormatRules();
+  sheet.appendRow(HEADERS);
+  if (newRows.length > 0) {
+    sheet.getRange(2, 1, newRows.length, HEADERS.length).setValues(newRows);
+  }
+
+  // Format header
+  formatHeaderRow(sheet);
+  sheet.setColumnWidths(1, HEADERS.length, 160);
+
+  // Applique le style placeholder à toutes les lignes
+  for (let r = 2; r <= sheet.getLastRow(); r++) {
+    applyPlaceholderStyleToRow(sheet, r);
+  }
+
+  // Conditional formatting (rouge si closed + placeholder)
+  applyConditionalFormatting(sheet);
+
+  // Protection colonne L
+  protectCloserColumn(sheet);
+}
+
+function formatHeaderRow(sheet) {
+  sheet.getRange(1, 1, 1, HEADERS.length)
+    .setFontWeight('bold')
+    .setBackground('#0A0A0A')
+    .setFontColor('#F97316');
+  sheet.setFrozenRows(1);
 }
 
 // Test rapide — exécute depuis l'éditeur Apps Script pour voir un email exemple

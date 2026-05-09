@@ -1648,6 +1648,100 @@ body.menu-open { overflow: hidden; }
   .booking-form-card, .tier, .pain-card, .module {
     transition: none;
   }
+
+  /* ─── BOOKING FORM CARDS — fix overflow horizontal sur mobile ─── */
+  /* Les 2 badges (bf-ribbon "Recommandé par 9 inscrits sur 10" et
+     bf-exclusive "Cercle privé · 7 places restantes sur 30") avaient
+     white-space:nowrap qui forçait la card à dépasser la largeur écran.
+     Fix : autoriser le wrap proprement. */
+
+  /* Ribbon (qui dépasse en haut de la card) — wrap sur 2 lignes propres */
+  .bf-ribbon {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
+    font-size: 0.6rem;
+    padding: 5px 14px;
+    max-width: calc(100% - 24px);
+    text-wrap: balance;
+  }
+
+  /* Plus d'espace en haut de la premium card pour accueillir un ribbon 2 lignes */
+  .booking-form-card--premium {
+    padding-top: 38px;
+  }
+
+  /* Badge "exclusive" sous le prix — wrap autorisé */
+  .bf-exclusive {
+    white-space: normal;
+    line-height: 1.4;
+    max-width: 100%;
+    font-size: 0.66rem;
+    padding: 6px 12px;
+    text-wrap: balance;
+  }
+
+  .bf-title { font-size: 1.45rem; }
+  .bf-price { font-size: 1.7rem; }
+  .bf-desc  { font-size: 0.88rem; }
+  .bf-feats li { font-size: 0.85rem; line-height: 1.45; }
+
+  /* Submit button : autorise le wrap pour les longs CTA
+     (ex: "📩 Rejoindre le cercle privé Accompagné →") */
+  .bf-submit { white-space: normal; line-height: 1.3; padding: 14px 16px; }
+  .bf-submit .btn-text { white-space: normal; }
+
+  /* Garde-fous contre tout débordement HORIZONTAL résiduel.
+     IMPORTANT : pas overflow:hidden (couperait le ribbon qui dépasse en haut),
+     mais min-width:0 et max-width:100% sur les cards + leurs enfants. */
+  .booking-form-card,
+  .tier {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .booking-form-card .bf-head,
+  .booking-form-card .bf-body,
+  .booking-form-card .bf-feats,
+  .booking-form-card .field {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* ─── FIX MOBILE : page qui bouge horizontalement pendant le scroll ─── */
+  /* Symptôme : iOS rubber-banding horizontal + repaint backdrop-filter
+     coûteux qui crée du jitter visuel.
+     Causes neutralisées : */
+
+  /* 1. Empêche le rubber-banding horizontal (iOS Safari) */
+  html, body {
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 2. Les 2 blobs décoratifs en position:fixed (orange + green) dépassent
+     le viewport (top:-200px right:-200px / bottom:-250px left:-250px) et
+     provoquent un horizontal-shift sur certains mobiles. On les cache. */
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  /* 3. Le backdrop-filter du header qui se déclenche au scroll est très cher
+     en GPU sur mobile → repaint qui décale visuellement le contenu.
+     On désactive backdrop-filter sur mobile, on garde un fond opaque. */
+  .header.is-scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.97);
+  }
+
+  /* 4. Idem pour la sticky CTA en bas — backdrop-filter coûteux */
+  .mobile-sticky-cta {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 1);
+  }
 }
 
 /* ═══════════════════════════════════════════════

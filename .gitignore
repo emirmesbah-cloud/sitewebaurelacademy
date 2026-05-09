@@ -1,3 +1,16 @@
+# ─── Secrets (NEVER commit) ───
+cours/api/_secrets.php
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ─── User data (coupons, logs, progress) ───
+cours/data/coupons.json
+cours/data/logs.json
+cours/data/progress/
+
 # OS
 .DS_Store
 Thumbs.db

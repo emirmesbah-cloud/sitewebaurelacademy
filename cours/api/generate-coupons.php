@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+require_once __DIR__ . '/_secrets.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false]);
@@ -11,7 +12,7 @@ $password = isset($input['password']) ? $input['password'] : '';
 $countAU = isset($input['countAU']) ? (int)$input['countAU'] : 0;
 $countAC = isset($input['countAC']) ? (int)$input['countAC'] : 0;
 
-if ($password !== 'aurelacademy2026') {
+if ($password !== ADMIN_PWD) {
     echo json_encode(['success' => false, 'error' => 'unauthorized']);
     exit;
 }

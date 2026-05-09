@@ -34,9 +34,9 @@ if (!function_exists('curl_init')) {
     exit;
 }
 
-// VDOCipher API secret — shared account with Naim Keys
-// TODO: replace with dedicated Aurel account secret when available
-$apiSecret = 'kwY47RVctb3rWoL6Ov00MB2r6lCLRVX5gYadPd3tJCMJgRKQ9QApoxH0iTxq4yb4';
+// VDOCipher API secret — chargé depuis _secrets.php (hors git)
+require_once __DIR__ . '/_secrets.php';
+$apiSecret = VDOCIPHER_API_SECRET;
 
 $ch = curl_init();
 curl_setopt_array($ch, [

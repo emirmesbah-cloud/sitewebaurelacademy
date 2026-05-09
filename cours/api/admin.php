@@ -6,10 +6,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+require_once __DIR__ . '/_secrets.php';
+
 $input = json_decode(file_get_contents('php://input'), true);
 $password = isset($input['password']) ? $input['password'] : '';
 
-if ($password !== 'aurelacademy2026') {
+if ($password !== ADMIN_PWD) {
     echo json_encode(['success' => false, 'error' => 'unauthorized']);
     exit;
 }

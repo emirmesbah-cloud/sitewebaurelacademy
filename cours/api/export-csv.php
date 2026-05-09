@@ -1,7 +1,8 @@
 <?php
+require_once __DIR__ . '/_secrets.php';
 $password = isset($_GET['password']) ? $_GET['password'] : '';
 
-if ($password !== 'aurelacademy2026') {
+if ($password !== ADMIN_PWD) {
     http_response_code(403);
     echo 'Unauthorized';
     exit;

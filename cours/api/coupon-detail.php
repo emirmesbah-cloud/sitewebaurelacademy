@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+require_once __DIR__ . '/_secrets.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false]);
@@ -10,7 +11,7 @@ $input = json_decode(file_get_contents('php://input'), true);
 $password = isset($input['password']) ? $input['password'] : '';
 $code = isset($input['code']) ? strtoupper(trim($input['code'])) : '';
 
-if ($password !== 'aurelacademy2026') {
+if ($password !== ADMIN_PWD) {
     echo json_encode(['success' => false, 'error' => 'unauthorized']);
     exit;
 }
