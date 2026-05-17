@@ -70,11 +70,14 @@ if ($entry['status'] === 'revoked') {
     exit;
 }
 
+// Première activation : marque le coupon comme "used" sans binder l'IP.
+// On garde l'IP juste pour info dans le Sheet admin (auditing), pas pour bloquer.
 if ($entry['status'] === 'available') {
     $coupons[$coupon] = [
         'status' => 'used',
         'tier' => $tier,
-        'ip' => $clientIP,
+        'ip' => $clientIP,           // info only — pas utilisé pour blocage
+        'firstSeenIP' => $clientIP,  // historique : 1ère IP qui a activé
         'activated' => date('c'),
         'lastActivity' => date('c')
     ];
@@ -87,32 +90,36 @@ if ($entry['status'] === 'available') {
         mkdir($progressDir, 0755, true);
     }
     $progressFile = $progressDir . $hash . '.json';
-    $progress = [
-        'coupon' => $coupon,
-        'tier' => $tier,
-        'courses' => new \stdClass(),
-        'lastCourse' => null,
-        'lastWatched' => date('c')
-    ];
-    file_put_contents($progressFile, json_encode($progress, JSON_PRETTY_PRINT), LOCK_EX);
+    if (!file_exists($progressFile)) {
+        $progress = [
+            'coupon' => $coupon,
+            'tier' => $tier,
+            'courses' => new \stdClass(),
+            'lastCourse' => null,
+            'lastWatched' => date('c')
+        ];
+        file_put_contents($progressFile, json_encode($progress, JSON_PRETTY_PRINT), LOCK_EX);
+    }
 
-    aurel_log('login_activated', ['code' => $coupon, 'tier' => $tier]);
+    aurel_log('login_activated', ['code' => $coupon, 'tier' => $tier, 'ip' => $clientIP]);
     echo json_encode(['success' => true, 'tier' => $tier]);
     exit;
 
+// Coupon déjà utilisé : on autorise depuis n'importe quelle IP (plus de blocage).
+// On met juste à jour lastActivity + on log l'IP courante pour traçabilité.
 } elseif ($entry['status'] === 'used') {
-    if ($entry['ip'] === $clientIP) {
-        $coupons[$coupon]['lastActivity'] = date('c');
-        file_put_contents($couponsFile, json_encode($coupons, JSON_PRETTY_PRINT), LOCK_EX);
-
-        aurel_log('login_success', ['code' => $coupon]);
-        echo json_encode(['success' => true, 'tier' => $tier]);
-        exit;
-    } else {
-        aurel_log('login_ip_mismatch', ['code' => $coupon, 'boundIP' => $entry['ip']]);
-        echo json_encode(['success' => false, 'error' => 'ip_mismatch']);
-        exit;
+    $coupons[$coupon]['lastActivity'] = date('c');
+    // Log si l'IP change vs la 1ère activation (utile pour détecter du partage)
+    $firstIP = isset($entry['firstSeenIP']) ? $entry['firstSeenIP'] : $entry['ip'];
+    if ($clientIP !== $firstIP) {
+        $coupons[$coupon]['lastIP'] = $clientIP;
+        aurel_log('login_new_ip', ['code' => $coupon, 'firstIP' => $firstIP, 'newIP' => $clientIP]);
     }
+    file_put_contents($couponsFile, json_encode($coupons, JSON_PRETTY_PRINT), LOCK_EX);
+
+    aurel_log('login_success', ['code' => $coupon]);
+    echo json_encode(['success' => true, 'tier' => $tier]);
+    exit;
 }
 
 echo json_encode(['success' => false, 'error' => 'server']);

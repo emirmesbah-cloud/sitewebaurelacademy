@@ -1,4 +1,4 @@
-var CACHE_NAME = 'aurel-v3';
+var CACHE_NAME = 'aurel-v4';
 var urlsToCache = [
   '/',
   '/index.html',
