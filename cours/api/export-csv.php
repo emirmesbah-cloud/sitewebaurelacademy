@@ -1,8 +1,15 @@
 <?php
 require_once __DIR__ . '/_secrets.php';
+require_once __DIR__ . '/_log.php';
+require_once __DIR__ . '/_rate_limit.php';
+
+// SHERLOCK R13 — rate-limit before reading password (10 attempts / 5 min / IP)
+aurel_rate_limit_or_die('admin', 10, 300);
+
 $password = isset($_GET['password']) ? $_GET['password'] : '';
 
-if ($password !== ADMIN_PWD) {
+// SHERLOCK R13 — timing-safe password compare
+if (!hash_equals(ADMIN_PWD, $password ?? '')) {
     http_response_code(403);
     echo 'Unauthorized';
     exit;

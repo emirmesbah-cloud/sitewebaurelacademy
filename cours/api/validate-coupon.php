@@ -1,9 +1,22 @@
 <?php
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
+
+// SHERLOCK R13 — A3: strict CORS allowlist (was wildcard *).
+$allowedOrigins = [
+    'https://aurel-academy.com',
+    'https://app.aurel-academy.com',
+    'http://localhost:5173',
+    'http://localhost:4173',
+];
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+$corsOrigin = in_array($origin, $allowedOrigins, true) ? $origin : 'https://aurel-academy.com';
+header('Access-Control-Allow-Origin: ' . $corsOrigin);
+header('Vary: Origin');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
+
 require_once __DIR__ . '/_log.php';
+require_once __DIR__ . '/_cf_ips.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -44,14 +57,9 @@ if (!isset($coupons[$coupon])) {
 }
 
 function getClientIP() {
-    if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
-        return $_SERVER['HTTP_CF_CONNECTING_IP'];
-    }
-    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-        return trim($ips[0]);
-    }
-    return $_SERVER['REMOTE_ADDR'];
+    // SHERLOCK R13 — A4: only trust CF-Connecting-IP when peer is a Cloudflare edge.
+    if (function_exists('aurel_client_ip')) return aurel_client_ip();
+    return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'unknown';
 }
 
 function getTier($code) {

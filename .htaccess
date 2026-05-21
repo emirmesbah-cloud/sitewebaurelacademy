@@ -35,3 +35,16 @@
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml font/woff2
 </IfModule>
+
+# ============================================================
+# Redirections — anciens liens vers la bonne URL
+# ============================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Ancien chemin /inscription/pflege/ → /pflege/inscription/
+  RewriteRule ^inscription/pflege/?$ /pflege/inscription/ [R=301,L]
+
+  # Ancien chemin /inscription → /pflege/inscription/ (au cas où)
+  RewriteRule ^inscription/?$ /pflege/inscription/ [R=301,L]
+</IfModule>

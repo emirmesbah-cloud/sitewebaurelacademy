@@ -2,29 +2,41 @@
 // Activity logger — included by other endpoints
 // Logs events to data/logs.json (keeps last 500)
 
+require_once __DIR__ . '/_cf_ips.php';
+
 if (!function_exists('aurel_log')) {
     function aurel_log($event, $details = []) {
         $logFile = __DIR__ . '/../data/logs.json';
-        $logs = [];
-        if (file_exists($logFile)) {
-            $logs = json_decode(file_get_contents($logFile), true) ?: [];
-        }
-        $ip = 'unknown';
-        if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) $ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
-        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-            $ip = trim($ips[0]);
-        } elseif (!empty($_SERVER['REMOTE_ADDR'])) $ip = $_SERVER['REMOTE_ADDR'];
 
-        $logs[] = array_merge([
+        // SHERLOCK R13 — only trust CF-Connecting-IP when REMOTE_ADDR is a CF edge IP.
+        $ip = function_exists('aurel_client_ip') ? aurel_client_ip() : ($_SERVER['REMOTE_ADDR'] ?? 'unknown');
+
+        $entry = array_merge([
             'ts' => date('c'),
             'event' => $event,
             'ip' => $ip,
             'ua' => isset($_SERVER['HTTP_USER_AGENT']) ? substr($_SERVER['HTTP_USER_AGENT'], 0, 150) : ''
         ], $details);
 
-        // Keep only last 500 entries
+        // SHERLOCK R13 — atomic read-modify-write via flock on a single handle.
+        $fp = @fopen($logFile, 'c+');
+        if (!$fp) return;
+        if (!flock($fp, LOCK_EX)) {
+            fclose($fp);
+            return;
+        }
+        $raw = stream_get_contents($fp);
+        $logs = json_decode($raw ?: '[]', true);
+        if (!is_array($logs)) $logs = [];
+
+        $logs[] = $entry;
         if (count($logs) > 500) $logs = array_slice($logs, -500);
-        file_put_contents($logFile, json_encode($logs, JSON_PRETTY_PRINT), LOCK_EX);
+
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, json_encode($logs, JSON_PRETTY_PRINT));
+        fflush($fp);
+        flock($fp, LOCK_UN);
+        fclose($fp);
     }
 }
