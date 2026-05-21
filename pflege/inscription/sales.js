@@ -823,6 +823,18 @@
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        // SHERLOCK R14 — M9 : honeypot check. Si le field name="website"
+        // (caché, hors viewport, aria-hidden) a une valeur, c'est un bot.
+        // On retourne silencieusement sans submit ET sans error visible —
+        // les bots ne savent pas qu'ils sont détectés et ne réessaient pas.
+        const honeypot = form.querySelector('input[name="website"]');
+        if (honeypot && honeypot.value && honeypot.value.trim() !== '') {
+          // Silent drop. Pas d'event, pas de toast — l'absence d'erreur
+          // est le signal le moins coûteux : le bot pense que c'est passé.
+          return;
+        }
+
         const values = collectValues();
         const firstInvalid = validate(values);
         if (firstInvalid) {

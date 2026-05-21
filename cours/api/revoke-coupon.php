@@ -28,15 +28,29 @@ if (!file_exists($couponsFile)) {
     exit;
 }
 
-$coupons = json_decode(file_get_contents($couponsFile), true);
-if (!isset($coupons[$code])) {
-    echo json_encode(['success' => false, 'error' => 'not_found']);
+// SHERLOCK R14 — C2 : atomic revoke. Sans ça un admin qui revoke pendant
+// qu'un étudiant active le même code pouvait perdre la revoke (last write
+// wins → état 'used' final). Maintenant on lock, on check existence, on
+// flip status, on release.
+$notFound = false;
+$ok = aurel_atomic_json($couponsFile, function($coupons) use ($code, &$notFound) {
+    if (!isset($coupons[$code])) {
+        $notFound = true;
+        return null;
+    }
+    $coupons[$code]['status'] = 'revoked';
+    $coupons[$code]['revokedAt'] = date('c');
+    return $coupons;
+});
+
+if (!$ok) {
+    if ($notFound) {
+        echo json_encode(['success' => false, 'error' => 'not_found']);
+        exit;
+    }
+    echo json_encode(['success' => false, 'error' => 'server']);
     exit;
 }
-
-$coupons[$code]['status'] = 'revoked';
-$coupons[$code]['revokedAt'] = date('c');
-file_put_contents($couponsFile, json_encode($coupons, JSON_PRETTY_PRINT), LOCK_EX);
 
 aurel_log('admin_revoke', ['code' => $code]);
 

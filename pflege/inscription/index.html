@@ -113,6 +113,11 @@
         <!-- ── PREMIUM (Accompagné / 42 800 DA) ── -->
         <form class="booking-form-card booking-form-card--premium" id="form-premium" data-tier="Accompagné" novalidate>
           <input type="hidden" name="tier" value="Accompagné">
+          <!-- SHERLOCK R14 — M9 : honeypot anti-bot. Off-screen + tabindex=-1 +
+               aria-hidden : invisible aux users + ignoré par les screen readers,
+               mais les bots remplissent tous les fields name="..." → si non-vide
+               on drop silencieusement la submission côté sales.js. -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
 
           <div class="bf-head">
             <span class="bf-ribbon" data-i18n="form.tier.ac.ribbon">⭐ Recommandé</span>
@@ -162,6 +167,8 @@
         <!-- ── STANDARD (Autonome / 12 900 DA) ── -->
         <form class="booking-form-card booking-form-card--standard" id="form-standard" data-tier="Autonome" novalidate>
           <input type="hidden" name="tier" value="Autonome">
+          <!-- SHERLOCK R14 — M9 : honeypot anti-bot (voir form-premium). -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
 
           <div class="bf-head">
             <h3 class="bf-title" data-i18n="form.tier.au.title">Autonome</h3>

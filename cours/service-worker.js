@@ -1,4 +1,13 @@
-var CACHE_NAME = 'aurel-v4';
+// SHERLOCK R14 — M10 : versioning explicite. Le cours/ legacy n'a PAS de
+// pipeline build, donc pas de cache-busting auto via hash. Le SW garde
+// l'ancien bundle tant que le CACHE_NAME ne change pas.
+//
+// ▶ À CHAQUE DEPLOY du dossier cours/, INCRÉMENTE LE NUMÉRO + LA DATE.
+//   Format : `aurel-vN-YYYY-MM-DD`. La date dans le nom de cache aide
+//   à diagnostiquer en prod (DevTools > Application > Cache Storage)
+//   quelle build de SW un user a actuellement.
+var DEPLOY_DATE = '2026-05-19';
+var CACHE_NAME = 'aurel-v4-' + DEPLOY_DATE;
 var urlsToCache = [
   '/',
   '/index.html',

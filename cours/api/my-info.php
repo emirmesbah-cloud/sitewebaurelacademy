@@ -27,6 +27,11 @@ if (!isset($coupons[$coupon]) || $coupons[$coupon]['status'] !== 'used') {
 }
 
 $entry = $coupons[$coupon];
+// SHERLOCK R14 — M11 : on ne retourne PLUS l'IP au client. Le student n'a
+// aucun besoin de la voir, et l'exposer permet à un script tournant dans
+// le browser (extension malveillante, XSS futur) d'extraire l'IP de tous
+// les users d'un coupon partagé. L'IP reste en DB pour l'audit admin
+// (logs.json + coupons.json côté serveur).
 echo json_encode([
     'success' => true,
     'code' => $coupon,
@@ -34,5 +39,4 @@ echo json_encode([
     'status' => $entry['status'],
     'activated' => isset($entry['activated']) ? $entry['activated'] : null,
     'lastActivity' => isset($entry['lastActivity']) ? $entry['lastActivity'] : null,
-    'ip' => isset($entry['ip']) ? $entry['ip'] : null
 ]);

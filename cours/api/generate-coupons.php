@@ -31,11 +31,6 @@ if ($countAU < 0 || $countAU > 500 || $countAC < 0 || $countAC > 500) {
 $dataDir = __DIR__ . '/../data/';
 $couponsFile = $dataDir . 'coupons.json';
 
-$coupons = [];
-if (file_exists($couponsFile)) {
-    $coupons = json_decode(file_get_contents($couponsFile), true) ?: [];
-}
-
 function genCode($prefix, $existing) {
     do {
         $hex = strtoupper(bin2hex(random_bytes(3)));
@@ -44,18 +39,28 @@ function genCode($prefix, $existing) {
     return $code;
 }
 
+// SHERLOCK R14 — C2 : atomic generation. Avant : 2 admins (ou 1 admin
+// double-click) pouvaient passer les codes générés du 2e write par-dessus
+// le 1er → perte silencieuse de codes vendus. Maintenant on lock, on lit
+// le state existant DANS la closure (pas avant), on append, on release.
 $newCodes = [];
-for ($i = 0; $i < $countAU; $i++) {
-    $code = genCode('AU', $coupons);
-    $coupons[$code] = ['status' => 'available', 'tier' => 'AU', 'ip' => null, 'activated' => null, 'lastActivity' => null];
-    $newCodes[] = $code;
-}
-for ($i = 0; $i < $countAC; $i++) {
-    $code = genCode('AC', $coupons);
-    $coupons[$code] = ['status' => 'available', 'tier' => 'AC', 'ip' => null, 'activated' => null, 'lastActivity' => null];
-    $newCodes[] = $code;
-}
+$ok = aurel_atomic_json($couponsFile, function($coupons) use ($countAU, $countAC, &$newCodes) {
+    for ($i = 0; $i < $countAU; $i++) {
+        $code = genCode('AU', $coupons);
+        $coupons[$code] = ['status' => 'available', 'tier' => 'AU', 'ip' => null, 'activated' => null, 'lastActivity' => null];
+        $newCodes[] = $code;
+    }
+    for ($i = 0; $i < $countAC; $i++) {
+        $code = genCode('AC', $coupons);
+        $coupons[$code] = ['status' => 'available', 'tier' => 'AC', 'ip' => null, 'activated' => null, 'lastActivity' => null];
+        $newCodes[] = $code;
+    }
+    return $coupons;
+});
 
-file_put_contents($couponsFile, json_encode($coupons, JSON_PRETTY_PRINT), LOCK_EX);
+if (!$ok) {
+    echo json_encode(['success' => false, 'error' => 'server']);
+    exit;
+}
 
 echo json_encode(['success' => true, 'generated' => count($newCodes), 'codes' => $newCodes]);
