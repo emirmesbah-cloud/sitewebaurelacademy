@@ -1,7 +1,19 @@
 # ============================================================
-# AUREL ACADEMY — Cache rules
-# Place this in public_html/. If you already have a .htaccess
-# (e.g. from WordPress), just APPEND the content below.
+# AUREL ACADEMY — Cache + redirects + security headers
+# ============================================================
+# CACHE STRATEGY (revised after R13 cache-hell incident) :
+#   - HTML / manifests / service-workers : never cached. Always fresh.
+#   - JS / CSS on legacy paths (cours/, pflege/, allemand/) : 5 minutes
+#     edge cache. cPanel doesn't hash filenames → can't cache forever.
+#     5 min = good perf + any deploy is visible within 5 min worst case.
+#   - Fonts / images / icons / SVG : 1 year (these rarely change).
+#
+# Why not the old 1y cache on JS/CSS ?
+#   Old config assumed HTML used ?v=YYYYMMDD cache-busting on script
+#   tags. None of the legacy HTML actually does that, so updates to
+#   sales.js / allemand.js stayed invisible for browsers that had
+#   already cached them. We pay 5 min staleness, we gain : every push
+#   is visible quickly with zero "purge cache" ritual.
 # ============================================================
 
 <IfModule mod_headers.c>
@@ -12,9 +24,23 @@
     Header set Expires "0"
   </FilesMatch>
 
-  # CSS / JS / fonts / images : long cache.
-  # Cache invalidation is handled by ?v=YYYYMMDDx in HTML.
-  <FilesMatch "\.(css|js|woff2|woff|ttf|otf|svg|png|jpg|jpeg|webp|gif|ico)$">
+  # Service workers + manifests : never cache. Updates must be picked up
+  # within seconds, otherwise the SW takes 24h to refresh in browsers.
+  <FilesMatch "(service-worker\.js|manifest\.json|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # JS / CSS : 5 min edge cache. Frequent enough deploys = short TTL.
+  # If we ever switch to hashed filenames, bump this back to 1y.
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=300, must-revalidate"
+  </FilesMatch>
+
+  # Fonts / images / icons : 1 year. These rarely change ; if they do,
+  # rename the file (e.g. logo-v2.svg) — that's basic asset versioning.
+  <FilesMatch "\.(woff2|woff|ttf|otf|svg|png|jpg|jpeg|webp|gif|ico)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 </IfModule>
@@ -22,8 +48,8 @@
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/html                 "access plus 0 seconds"
-  ExpiresByType text/css                  "access plus 1 year"
-  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType text/css                  "access plus 5 minutes"
+  ExpiresByType application/javascript    "access plus 5 minutes"
   ExpiresByType font/woff2                "access plus 1 year"
   ExpiresByType image/svg+xml             "access plus 1 year"
   ExpiresByType image/png                 "access plus 1 year"
