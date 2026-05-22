@@ -24,14 +24,6 @@
     Header set Expires "0"
   </FilesMatch>
 
-  # Service workers + manifests : never cache. Updates must be picked up
-  # within seconds, otherwise the SW takes 24h to refresh in browsers.
-  <FilesMatch "(service-worker\.js|manifest\.json|manifest\.webmanifest)$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires "0"
-  </FilesMatch>
-
   # JS / CSS : 5 min edge cache. Frequent enough deploys = short TTL.
   # If we ever switch to hashed filenames, bump this back to 1y.
   <FilesMatch "\.(css|js)$">
@@ -42,6 +34,17 @@
   # rename the file (e.g. logo-v2.svg) — that's basic asset versioning.
   <FilesMatch "\.(woff2|woff|ttf|otf|svg|png|jpg|jpeg|webp|gif|ico)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Service workers + manifests : MUST be LAST in this block. Apache's
+  # <FilesMatch> later rules override earlier ones — service-worker.js
+  # also matches the \.(js)$ block above, so we need this AFTER to
+  # win the override. Updates must be picked up within seconds,
+  # otherwise the SW takes 24h to refresh in browsers.
+  <FilesMatch "(service-worker\.js|manifest\.json|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
   </FilesMatch>
 </IfModule>
 
