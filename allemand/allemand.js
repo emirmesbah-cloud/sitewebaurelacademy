@@ -251,7 +251,7 @@
       'why.f1.title': 'Cours structuré A1 → B2',
       'why.f1.desc': "Progression pédagogique alignée sur le Cadre Européen des Langues (CECRL), avec préparation aux examens Goethe / TestDaF / telc.",
       'why.f2.title': 'Allemand médical Pflege',
-      'why.f2.desc': "Programme dédié au vocabulaire des soins en Pflegeheim : 10 modules, 18 leçons vidéo, 4h30 de contenu, glossaire complet.",
+      'why.f2.desc': "Programme dédié au vocabulaire des soins en Pflegeheim : 10 modules, 18 leçons vidéo, glossaire complet.",
       'why.f3.title': 'Trilingue : FR — DE — Darija',
       'why.f3.desc': "Explications en français, contenus en allemand, glossaire médical en darija. Une triple lecture pour ancrer le vocabulaire.",
       'why.f4.title': '100% en ligne',

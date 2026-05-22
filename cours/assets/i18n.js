@@ -22,12 +22,11 @@ window.AurelI18n = {
     'course.aVenir': 'À venir',
     'course.voir': 'Voir la formation →',
     'course.pflege.title': "Deutsch für Pflegekräfte",
-    'course.pflege.desc': "L'allemand médical pour décrocher ton poste Pflege en Allemagne. 10 modules, 4h30, 4 bonus.",
+    'course.pflege.desc': "L'allemand médical pour décrocher ton poste Pflege en Allemagne. 10 modules, 4 bonus.",
     'course.allemand.title': "Allemand général",
     'course.allemand.desc': "Prépare ton B1/B2 pour la vie quotidienne, les études et le travail en Allemagne.",
     'course.ausbildung.title': "Ausbildung",
     'course.ausbildung.desc': "Le parcours complet pour trouver, décrocher et réussir ton Ausbildung en Allemagne.",
-    'course.pflege.duration': "~4h30",
     'course.pflege.modules': "10 modules",
 
     // WHY PLATFORM
