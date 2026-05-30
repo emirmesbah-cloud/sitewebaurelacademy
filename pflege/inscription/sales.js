@@ -38,7 +38,7 @@
       'form.title.before': 'Bloque ta place ',
       'form.title.accent': 'avant fermeture',
       'form.title.suffix': '.',
-      'form.lead': "Cohorte limitée. Aurel suit personnellement chaque membre Accompagné jusqu'à signature de ton contrat allemand. Au-delà, la qualité tombe — c'est non-négociable.",
+      'form.lead': "Paiement unique, accès à vie. Cohorte limitée — Aurel et son équipe te rappellent sous 24h pour valider ton inscription.",
 
       'form.fullname.label': 'Nom complet *',
       'form.fullname.placeholder': 'Ex : Amir Mosbah',
@@ -272,7 +272,7 @@
       'faq.q1': 'Il faut déjà parler allemand pour suivre ?',
       'faq.a1': "A1 vraiment basique suffit pour démarrer. Si tu es totalement débutant, on te recommande 6-8 semaines de Goethe A1 en parallèle (gratuit sur YouTube, on te donne la playlist). À partir d'A2, tu peux entrer dans la formation.",
       'faq.q2': 'Combien de temps pour décrocher mon premier entretien Pflegeheim ?',
-      'faq.a2': "La moyenne de nos inscrits Accompagné : 3 à 5 mois. Certains plus tôt (Yacine en 4 mois), d'autres plus tard selon leur niveau de départ et leur rythme.",
+      'faq.a2': "La moyenne de nos inscrits : 3 à 5 mois. Certains plus tôt (Yacine en 4 mois), d'autres plus tard selon leur niveau de départ et leur rythme.",
       'faq.q3': 'Je suis aide-soignant, pas infirmier diplômé. Ça marche pour moi ?',
       'faq.a3': "Oui — et c'est même un avantage. L'Allemagne manque cruellement d'aides-soignants. Ton profil est demandé, on adapte ta stratégie de candidature.",
       'faq.q4': 'Quelle est la vraie différence entre Autonome et Accompagné ?',
@@ -316,7 +316,7 @@
       'form.title.before': 'احجز مكانك ',
       'form.title.accent': 'قبل الإغلاق',
       'form.title.suffix': '.',
-      'form.lead': 'دفعة محدودة. يتابع أوريل شخصياً كل عضو في باقة « مرافَق » حتى توقيع عقدك الألماني. بعد ذلك، تنخفض الجودة — هذا غير قابل للتفاوض.',
+      'form.lead': 'دفع واحد · وصول مدى الحياة. دفعة محدودة — يتصل بك أوريل وفريقه خلال 24 ساعة لتأكيد تسجيلك.',
 
       'form.fullname.label': 'الاسم الكامل *',
       'form.fullname.placeholder': 'مثال : أمير مصباح',
@@ -550,7 +550,7 @@
       'faq.q1': 'هل يجب أن أتحدث الألمانية للمتابعة ؟',
       'faq.a1': 'A1 بسيط جداً يكفي للبدء. إذا كنت مبتدئاً تماماً، ننصحك بـ6-8 أسابيع من Goethe A1 بالتوازي (مجاني على YouTube، نعطيك الـplaylist). ابتداءً من A2، يمكنك الدخول إلى التكوين.',
       'faq.q2': 'كم من الوقت لأحصل على أول مقابلة Pflegeheim ؟',
-      'faq.a2': 'متوسط مسجلي « مرافَق » : من 3 إلى 5 أشهر. بعضهم أبكر (ياسين في 4 أشهر)، آخرون أبطأ حسب مستواهم الأولي وإيقاعهم.',
+      'faq.a2': 'متوسط مسجلينا : من 3 إلى 5 أشهر. بعضهم أبكر (ياسين في 4 أشهر)، آخرون أبطأ حسب مستواهم الأولي وإيقاعهم.',
       'faq.q3': 'أنا مساعد ممرض ولست ممرضاً مختصاً، هل يصلح لي ؟',
       'faq.a3': 'نعم — وهذه ميزة. ألمانيا تنقصها بشدة مساعدي التمريض. ملفك مطلوب، نكيّف استراتيجية ترشيحك.',
       'faq.q4': 'ما الفرق الحقيقي بين مستقل ومرافَق ؟',
@@ -868,31 +868,63 @@
           user_agent: navigator.userAgent || '',
         };
 
+        // PERF FIX : "fire and forget" + redirection immédiate.
+        //
+        // Avant : on `await`-ait la réponse de Google Apps Script avant de
+        // rediriger. Apps Script Web Apps prennent typiquement 2-8s, parfois
+        // 10+s sur cold start. Résultat : user bloqué sur "Envoi en cours…"
+        // pendant 5-10s alors que tout ce qu'il fait c'est attendre que GAS
+        // écrive 1 ligne dans un Sheet. Mauvaise UX et risque de double-clic.
+        //
+        // Après : on envoie le payload SANS attendre, on redirige
+        // immédiatement. Le navigateur garde la requête vivante via
+        // `keepalive: true` (et `sendBeacon` en fallback) même pendant la
+        // navigation vers /merci/. Le lead arrive dans le Sheet pareil,
+        // l'user voit /merci/ en ~200ms au lieu de 3-10s.
         try {
           if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'REPLACE_WITH_APPS_SCRIPT_URL') {
             console.warn('[aurel] APPS_SCRIPT_URL not set — payload NOT sent.', payload);
-            setLoading(false);
             showSuccess(payload);
             return;
           }
-          const res = await fetch(APPS_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'cors',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify(payload),
-          });
-          let ok = res.ok;
-          try {
-            const data = await res.json();
-            ok = ok && data && data.success !== false;
-          } catch {}
-          setLoading(false);
-          if (ok) showSuccess(payload);
-          else showError();
+
+          const body = JSON.stringify(payload);
+
+          // Method 1 (preferred) : sendBeacon. Designed exactly for this case
+          // (fire analytics/leads as the page is about to navigate away).
+          // Guaranteed to be sent by the browser even after the page unloads.
+          let sent = false;
+          if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+            try {
+              const blob = new Blob([body], { type: 'text/plain;charset=utf-8' });
+              sent = navigator.sendBeacon(APPS_SCRIPT_URL, blob);
+            } catch (_) { /* fall through to fetch keepalive */ }
+          }
+
+          // Method 2 (fallback) : fetch with keepalive flag. Same effect —
+          // the request survives the page navigation.
+          if (!sent) {
+            fetch(APPS_SCRIPT_URL, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+              body,
+              keepalive: true,
+            }).catch((e) => console.warn('[aurel] background submit error (non-blocking):', e));
+          }
+
+          // Redirection immédiate. L'user voit /merci/ tout de suite,
+          // le pixel y déclenche le Lead event, et le Sheet reçoit la
+          // donnée en parallèle dans les 2-10s qui suivent.
+          showSuccess(payload);
         } catch (err) {
           console.error('[aurel] submit failed', err);
-          setLoading(false);
-          showError();
+          // Même en cas d'erreur JS dans le code ci-dessus, on essaie
+          // quand même de rediriger vers /merci/. Pire des cas : le user
+          // arrive sur /merci/ et le Sheet rate cette ligne — c'est
+          // mieux que de bloquer le user sur la page d'inscription.
+          try { showSuccess(payload); }
+          catch { setLoading(false); showError(); }
         }
       });
     }
