@@ -6,6 +6,8 @@
   <meta name="theme-color" content="#f97316">
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Simulateur Allemagne Aurel Academy : découvrez immédiatement si votre profil est accepté.">
+  <link rel="dns-prefetch" href="https://dvrqtqghgaxhhgkoihcj.supabase.co">
+  <link rel="preconnect" href="https://dvrqtqghgaxhhgkoihcj.supabase.co" crossorigin>
   <title>Simulateur Allemagne | Aurel Academy</title>
   <style>
     *{box-sizing:border-box;}
@@ -365,26 +367,26 @@
 
       <div class="ee-langBox" id="ee-langBox">
         <div class="ee-langTitle">
-          <span>✅ Votre profil répond aux critères d'Aurel Academy.</span>
+          <span>✅ Votre profil répond aux critères de l'immigration vers l'Allemagne.</span>
           <span class="ee-tag">Profil accepté</span>
         </div>
-        <p class="ee-langHelp">Vous pouvez maintenant réserver votre place afin qu'un conseiller analyse votre dossier.</p>
+        <p class="ee-langHelp">Vous pouvez maintenant retourner au Live YouTube pour découvrir la suite de votre parcours.</p>
         <div id="ee-langOptions" class="ee-langOptions" aria-hidden="true"></div>
       </div>
 
       <div id="ee-ctaBottomWrap" class="ee-ctaBottomWrap">
-        <a id="ee-ctaBottom" class="ee-ctaBottom" href="https://app.aurel-academy.com" target="_blank" rel="noopener">
-          Réserver ma place
+        <a id="ee-ctaBottom" class="ee-ctaBottom" href="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live" rel="noreferrer">
+          Retour au Live YouTube
         </a>
       </div>
 
-      <p class="ee-disclaimer">Outil interne de qualification Aurel Academy. Ce résultat ne constitue pas une décision officielle d’éligibilité.</p>
+      <p class="ee-disclaimer">Simulation indicative. Ce résultat ne constitue pas une décision officielle d’éligibilité des autorités allemandes.</p>
     </div>
   </main>
 
   <script>
     document.addEventListener("DOMContentLoaded",function(){
-      var FORM_LINK="https://app.aurel-academy.com";
+      var LIVE_REDIRECT_URL="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live";
       var PASS_MARK=60;
 
       var AGE={
@@ -470,7 +472,7 @@
         document.getElementById("ee-expPts").textContent=expPts;
         document.getElementById("ee-germanPts").textContent=germanPts;
         document.getElementById("ee-startPts").textContent=startPts;
-        ctaBottom.href=FORM_LINK;
+        ctaBottom.href=LIVE_REDIRECT_URL;
 
         if(!allFilled()){
           hideResult();
@@ -487,6 +489,11 @@
 
       [elAge,elDip,elExp,elGerman,elStart].forEach(function(element){
         element.addEventListener("change",eeUpdateAll);
+      });
+
+      ctaBottom.addEventListener("click",function(event){
+        event.preventDefault();
+        window.location.replace(LIVE_REDIRECT_URL);
       });
 
       hideResult();
