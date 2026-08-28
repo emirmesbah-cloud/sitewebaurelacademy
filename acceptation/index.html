@@ -218,8 +218,6 @@
       box-shadow:var(--shadow-soft);
     }
 
-    .aa-question:last-child{grid-column:1/-1;}
-
     .aa-question-top{
       display:flex;
       align-items:flex-start;
@@ -425,7 +423,6 @@
       .aa-form-head{padding:18px; align-items:flex-start;}
       .aa-form-head h2{font-size:16px;}
       .aa-questions{grid-template-columns:1fr; padding:12px; gap:10px;}
-      .aa-question,.aa-question:last-child{grid-column:auto;}
       .aa-question{padding:15px; border-radius:19px;}
       .aa-question-top{min-height:auto;}
       .aa-question label{font-size:15px;}
@@ -477,7 +474,7 @@
           <h2 id="simulator-form-title">معلومات الملف</h2>
           <p>اختار إجابة واحدة في كل خانة.</p>
         </div>
-        <span class="aa-count">5 أسئلة</span>
+        <span class="aa-count">4 أسئلة</span>
       </div>
 
       <div class="aa-questions">
@@ -555,21 +552,6 @@
           </div>
         </div>
 
-        <div class="aa-question" style="--delay:240ms">
-          <div class="aa-question-top">
-            <span class="aa-number" aria-hidden="true">05</span>
-            <label for="aa-start">إمتى حاب تبدأ مشروعك؟</label>
-          </div>
-          <div class="aa-select-wrap">
-            <select class="aa-select" id="aa-start">
-              <option value="">— اختر الإجابة —</option>
-              <option>فوراً</option>
-              <option>خلال 3 أشهر</option>
-              <option>خلال 6 أشهر</option>
-              <option>بعد أكثر من 6 أشهر</option>
-            </select>
-          </div>
-        </div>
       </div>
 
       <div class="aa-result-wrap">
@@ -593,52 +575,44 @@
   <script>
     document.addEventListener("DOMContentLoaded",function(){
       var LIVE_REDIRECT_URL="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live";
-      var PASS_MARK=14;
+      var PASS_MARK=62;
 
       var AGE={
         "أقل من 18 سنة":0,
-        "من 18 إلى 24 سنة":5,
-        "من 25 إلى 29 سنة":5,
-        "من 30 إلى 34 سنة":4,
-        "من 35 إلى 39 سنة":3,
-        "من 40 إلى 49 سنة":2,
-        "50 سنة فما فوق":1
+        "من 18 إلى 24 سنة":24,
+        "من 25 إلى 29 سنة":24,
+        "من 30 إلى 34 سنة":22,
+        "من 35 إلى 39 سنة":18,
+        "من 40 إلى 49 سنة":10,
+        "50 سنة فما فوق":4
       };
 
       var DIPLOMA={
         "بدون شهادة":0,
-        "مستوى ثانوي بدون بكالوريا":2,
-        "شهادة البكالوريا":4,
-        "شهادة تكوين مهني":5,
-        "تقني أو تقني سامي (TS)":5,
-        "ليسانس":5,
-        "ماستر أو مهندس":5,
-        "دكتوراه":5
+        "مستوى ثانوي بدون بكالوريا":5,
+        "شهادة البكالوريا":14,
+        "شهادة تكوين مهني":18,
+        "تقني أو تقني سامي (TS)":20,
+        "ليسانس":23,
+        "ماستر أو مهندس":25,
+        "دكتوراه":26
       };
 
       var EXPERIENCE={
         "بدون خبرة":0,
-        "أقل من سنة":1,
-        "1 إلى 2 سنوات":3,
-        "3 إلى 5 سنوات":4,
-        "أكثر من 5 سنوات":5
+        "أقل من سنة":4,
+        "1 إلى 2 سنوات":10,
+        "3 إلى 5 سنوات":17,
+        "أكثر من 5 سنوات":22
       };
 
-      var GERMAN={"A0":0,"A1":1,"A2":3,"B1":5,"B2":5,"C1":5};
-
-      var START={
-        "فوراً":5,
-        "خلال 3 أشهر":4,
-        "خلال 6 أشهر":3,
-        "بعد أكثر من 6 أشهر":1
-      };
+      var GERMAN={"A0":0,"A1":7,"A2":16,"B1":28,"B2":33,"C1":35};
 
       var age=document.getElementById("aa-age");
       var diploma=document.getElementById("aa-diploma");
       var experience=document.getElementById("aa-experience");
       var german=document.getElementById("aa-german");
-      var start=document.getElementById("aa-start");
-      var selects=[age,diploma,experience,german,start];
+      var selects=[age,diploma,experience,german];
       var result=document.getElementById("aa-result");
       var resultTitle=document.getElementById("aa-result-title");
       var resultSubtitle=document.getElementById("aa-result-subtitle");
@@ -695,10 +669,39 @@
           points(AGE,age.value)+
           points(DIPLOMA,diploma.value)+
           points(EXPERIENCE,experience.value)+
-          points(GERMAN,german.value)+
-          points(START,start.value);
+          points(GERMAN,german.value);
 
-        showResult(internalScore>=PASS_MARK);
+        var ageBelow40=[
+          "من 18 إلى 24 سنة",
+          "من 25 إلى 29 سنة",
+          "من 30 إلى 34 سنة",
+          "من 35 إلى 39 سنة"
+        ].indexOf(age.value)!==-1;
+        var advancedDiploma=[
+          "تقني أو تقني سامي (TS)",
+          "ليسانس",
+          "ماستر أو مهندس",
+          "دكتوراه"
+        ].indexOf(diploma.value)!==-1;
+        var seniorDiploma=[
+          "شهادة تكوين مهني",
+          "تقني أو تقني سامي (TS)",
+          "ليسانس",
+          "ماستر أو مهندس",
+          "دكتوراه"
+        ].indexOf(diploma.value)!==-1;
+        var strongExperience=["3 إلى 5 سنوات","أكثر من 5 سنوات"].indexOf(experience.value)!==-1;
+        var veryStrongExperience=experience.value==="أكثر من 5 سنوات";
+        var strongGerman=["B1","B2","C1"].indexOf(german.value)!==-1;
+        var exceptionalA0=ageBelow40&&advancedDiploma&&veryStrongExperience;
+
+        var blocked=
+          age.value==="أقل من 18 سنة"||
+          (german.value==="A0"&&!exceptionalA0)||
+          (age.value==="من 40 إلى 49 سنة"&&german.value==="A0")||
+          (age.value==="50 سنة فما فوق"&&!(strongGerman&&strongExperience&&seniorDiploma));
+
+        showResult(!blocked&&internalScore>=PASS_MARK);
 
         if(!wasComplete){
           wasComplete=true;
