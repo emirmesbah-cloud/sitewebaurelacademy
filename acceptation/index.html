@@ -1,487 +1,689 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f97316">
+  <meta name="theme-color" content="#F97316">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Simulateur Allemagne Aurel Academy : découvrez immédiatement si votre profil est accepté.">
-  <link rel="dns-prefetch" href="https://dvrqtqghgaxhhgkoihcj.supabase.co">
-  <link rel="preconnect" href="https://dvrqtqghgaxhhgkoihcj.supabase.co" crossorigin>
-  <title>Simulateur Allemagne | Aurel Academy</title>
+  <meta name="description" content="محاكي القبول في ألمانيا من Aurel Academy.">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <title>محاكي القبول في ألمانيا | Aurel Academy</title>
   <style>
+    :root{
+      --orange:#F97316;
+      --orange-dark:#EA580C;
+      --orange-soft:#FFF2E8;
+      --ink:#171717;
+      --muted:#6B7280;
+      --line:#E7E5E4;
+      --surface:#FFFFFF;
+      --warm:#FAF9F7;
+      --green:#15803D;
+      --green-soft:#F0FDF4;
+      --green-line:#BBF7D0;
+      --red:#B91C1C;
+      --red-soft:#FEF2F2;
+      --red-line:#FECACA;
+      --shadow:0 18px 50px rgba(28,25,23,.08);
+      --shadow-soft:0 8px 24px rgba(28,25,23,.06);
+    }
+
     *{box-sizing:border-box;}
-    html{background:#f7f7f5;}
+
+    html{
+      min-width:0;
+      background:var(--warm);
+      scroll-behavior:smooth;
+    }
+
     body{
       margin:0;
       min-width:0;
       min-height:100vh;
-      padding:clamp(16px,4vw,48px);
+      color:var(--ink);
       background:
-        radial-gradient(circle at top right, rgba(249,115,22,.10), transparent 34rem),
-        #f7f7f5;
-      color:#111827;
-      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+        radial-gradient(circle at 92% 0%,rgba(249,115,22,.13),transparent 28rem),
+        radial-gradient(circle at 4% 38%,rgba(249,115,22,.06),transparent 24rem),
+        var(--warm);
+      font-family:"Noto Sans Arabic","Inter",system-ui,sans-serif;
+      text-align:right;
     }
-    .ee-wrap{max-width:1100px; margin:0 auto;}
-    .ee-card{
-      background:#ffffff;
-      border:1px solid #e5e7eb;
-      border-radius:18px;
-      box-shadow:0 10px 30px rgba(0,0,0,.10);
-      overflow:hidden;
-      position:relative;
+
+    button,select,a{font:inherit;}
+
+    [hidden]{display:none !important;}
+
+    .aa-page{
+      width:min(100% - 28px,960px);
+      margin-inline:auto;
+      padding:18px 0 48px;
     }
-    .ee-card::before{
-      content:"";
-      position:absolute;
-      inset:-40px -60px auto auto;
-      width:320px;
-      height:320px;
-      border-radius:999px;
-      background:radial-gradient(circle,rgba(249,115,22,.12),rgba(249,115,22,0) 68%);
-      pointer-events:none;
-    }
-    .ee-hero{
-      padding:18px 18px 14px 18px;
-      border-bottom:1px solid #e5e7eb;
-      background:linear-gradient(135deg,rgba(249,115,22,.14),rgba(17,24,39,.04));
-      position:relative;
-    }
-    .ee-heroTop{
+
+    .aa-nav{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+      gap:14px;
+      min-height:58px;
     }
-    .ee-brand{
+
+    .aa-brand{
       display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:260px;
-    }
-    .ee-logo{
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(180deg,#ff7a18,#ea580c);
-      box-shadow:0 10px 24px rgba(249,115,22,.28);
-      color:#fff;
-      font-size:17px;
-      font-weight:1000;
-      letter-spacing:.5px;
-    }
-    .ee-title{
-      margin:0;
-      font-size:20px;
-      line-height:1.2;
-      letter-spacing:.2px;
-      color:#111827;
-    }
-    .ee-sub{
-      margin:4px 0 0 0;
-      max-width:650px;
-      color:#6b7280;
-      font-size:13px;
-      font-weight:600;
-    }
-    .ee-badge{
-      display:inline-flex;
       align-items:center;
       gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(0,0,0,.08);
-      background:#fff;
-      box-shadow:0 6px 18px rgba(0,0,0,.06);
-      font-weight:900;
-      font-size:12px;
-      color:#111;
-      user-select:none;
-      white-space:nowrap;
+      color:var(--ink);
+      text-decoration:none;
     }
-    .ee-badge .ee-dot{
-      width:10px;
-      height:10px;
-      border-radius:999px;
-      background:#f97316;
-      box-shadow:0 0 0 4px rgba(249,115,22,.14);
-    }
-    .ee-grid{
+
+    .aa-logo{
       display:grid;
-      grid-template-columns:220px minmax(0,520px);
-      justify-content:center;
-    }
-    .ee-cell{
-      padding:10px 12px;
-      border-bottom:1px solid #e5e7eb;
-      border-right:1px solid #e5e7eb;
-      display:flex;
-      align-items:center;
+      width:42px;
+      height:42px;
+      place-items:center;
+      border-radius:13px;
+      color:#fff;
+      background:linear-gradient(145deg,#FB923C,var(--orange-dark));
+      box-shadow:0 9px 22px rgba(249,115,22,.26);
+      font-family:"Inter",sans-serif;
       font-size:14px;
-      color:#111827;
-    }
-    .ee-cell:nth-last-child(-n+3){border-bottom:none;}
-    .ee-label{font-weight:900; justify-content:center;}
-    .ee-pointsHead,.ee-points{display:none !important;}
-    .ee-selectWrap{width:100%; max-width:520px;}
-    .ee-card select{
-      width:100%;
-      padding:9px 42px 9px 12px;
-      font-size:15px;
       font-weight:900;
-      border-radius:999px;
-      border:1px solid rgba(0,0,0,.10);
-      outline:none;
-      background:#fff;
-      box-shadow:0 6px 16px rgba(0,0,0,.06);
-      cursor:pointer;
+      letter-spacing:.04em;
     }
-    .ee-card select:focus-visible{outline:3px solid rgba(249,115,22,.28); outline-offset:2px;}
-    .ee-age select{background:#ea580c; color:#fff;}
-    .ee-diplome select{background:#ffedd5; color:#9a3412;}
-    .ee-exp select{background:#fff7ed; color:#c2410c;}
-    .ee-sf select{background:#fef3c7; color:#92400e;}
-    .ee-banner{
-      margin:14px 18px 10px 18px;
-      padding:18px 16px;
-      border-radius:16px;
-      font-weight:1000;
-      font-size:20px;
-      line-height:1.45;
-      text-align:center;
-      border:1px solid #e5e7eb;
-      background:#fafafa;
-      color:#333;
-      display:none;
-      box-shadow:0 10px 24px rgba(0,0,0,.08);
-      animation:eeFadeUp .28s ease both;
-    }
-    .ee-langBox{
-      margin:12px 18px 14px 18px;
-      padding:22px;
-      border-radius:18px;
-      border:2px solid #86efac;
-      background:linear-gradient(180deg,#f0fdf4,#dcfce7);
-      display:none;
-      box-shadow:0 12px 28px rgba(34,197,94,.16);
-      animation:eeFadeUp .32s ease both;
-    }
-    .ee-langTitle{
-      font-weight:1000;
-      margin-bottom:10px;
-      font-size:22px;
+
+    .aa-wordmark{
       display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      color:#166534;
+      gap:5px;
+      align-items:baseline;
+      direction:ltr;
+      font-family:"Inter",sans-serif;
+      line-height:1;
     }
-    .ee-langTitle .ee-tag{
+
+    .aa-wordmark strong{font-size:16px; font-weight:800;}
+    .aa-wordmark em{color:var(--orange); font-size:15px; font-weight:600;}
+
+    .aa-mini{
+      color:#A8A29E;
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .aa-hero{
+      padding:54px 16px 34px;
+      text-align:center;
+    }
+
+    .aa-badge{
       display:inline-flex;
       align-items:center;
-      padding:8px 12px;
+      gap:8px;
+      min-height:34px;
+      padding:7px 13px;
+      border:1px solid #FED7AA;
       border-radius:999px;
-      border:1px solid rgba(22,101,52,.14);
-      background:#fff;
+      color:#9A3412;
+      background:rgba(255,247,237,.88);
       font-size:12px;
-      font-weight:1000;
-      color:#166534;
-    }
-    .ee-langHelp{
-      margin:0;
-      font-size:15px;
       font-weight:800;
-      color:#166534;
-      line-height:1.65;
+      box-shadow:0 6px 18px rgba(249,115,22,.08);
+      backdrop-filter:blur(8px);
     }
-    .ee-langOptions{display:none;}
-    .ee-ctaBottomWrap{
-      display:none;
-      padding:18px 18px 22px 18px;
-      border-top:1px solid #e5e7eb;
-      background:linear-gradient(180deg,#fff,#fafafa);
-      text-align:center;
-      animation:eeFadeUp .36s ease both;
+
+    .aa-hero h1{
+      margin:18px auto 0;
+      max-width:760px;
+      font-size:clamp(32px,6vw,52px);
+      font-weight:900;
+      line-height:1.3;
+      letter-spacing:-.035em;
     }
-    .ee-ctaBottom{
+
+    .aa-hero p{
+      max-width:640px;
+      margin:12px auto 0;
+      color:var(--muted);
+      font-size:clamp(15px,2.4vw,18px);
+      font-weight:600;
+      line-height:1.9;
+    }
+
+    .aa-form-shell{
+      overflow:hidden;
+      border:1px solid rgba(231,229,228,.9);
+      border-radius:32px;
+      background:rgba(255,255,255,.92);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(16px);
+    }
+
+    .aa-form-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:22px 24px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#fff,#FEFDFC);
+    }
+
+    .aa-form-head h2{
+      margin:0;
+      font-size:18px;
+      font-weight:900;
+    }
+
+    .aa-form-head p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:600;
+    }
+
+    .aa-count{
+      flex:0 0 auto;
+      padding:7px 11px;
+      border-radius:999px;
+      color:var(--orange-dark);
+      background:var(--orange-soft);
+      font-family:"Inter",sans-serif;
+      font-size:11px;
+      font-weight:800;
+      direction:ltr;
+    }
+
+    .aa-questions{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      padding:18px;
+    }
+
+    .aa-question{
+      min-width:0;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:var(--surface);
+      box-shadow:0 1px 0 rgba(28,25,23,.02);
+      animation:aa-rise .5s cubic-bezier(.22,1,.36,1) both;
+      animation-delay:var(--delay,0ms);
+      transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+    }
+
+    .aa-question:hover{
+      transform:translateY(-1px);
+      border-color:#FDBA74;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .aa-question:last-child{grid-column:1/-1;}
+
+    .aa-question-top{
+      display:flex;
+      align-items:flex-start;
+      gap:11px;
+      min-height:54px;
+    }
+
+    .aa-number{
+      display:grid;
+      flex:0 0 auto;
+      width:31px;
+      height:31px;
+      place-items:center;
+      border-radius:10px;
+      color:var(--orange-dark);
+      background:var(--orange-soft);
+      font-family:"Inter",sans-serif;
+      font-size:11px;
+      font-weight:900;
+      direction:ltr;
+    }
+
+    .aa-question label{
       display:block;
+      padding-top:3px;
+      font-size:15px;
+      font-weight:850;
+      line-height:1.6;
+    }
+
+    .aa-select-wrap{
+      position:relative;
+      margin-top:12px;
+    }
+
+    .aa-select-wrap::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:17px;
+      width:8px;
+      height:8px;
+      border-right:2px solid #78716C;
+      border-bottom:2px solid #78716C;
+      transform:translateY(-70%) rotate(45deg);
+      pointer-events:none;
+    }
+
+    .aa-select{
       width:100%;
-      max-width:680px;
-      margin:0 auto;
-      padding:20px 22px;
-      border-radius:18px;
-      font-weight:1000;
-      font-size:22px;
-      text-decoration:none;
-      border:1px solid rgba(0,0,0,.08);
-      background:linear-gradient(180deg,#ff7a18,#ea580c);
+      min-height:54px;
+      padding:12px 16px 12px 46px;
+      border:1.5px solid #E7E5E4;
+      border-radius:16px;
+      outline:none;
+      color:#78716C;
+      background:#FAFAF9;
+      font-size:14px;
+      font-weight:700;
+      line-height:1.5;
+      appearance:none;
+      cursor:pointer;
+      transition:border-color .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;
+    }
+
+    .aa-select:hover{border-color:#FDBA74;}
+
+    .aa-select:focus-visible{
+      border-color:var(--orange);
+      box-shadow:0 0 0 4px rgba(249,115,22,.13);
+    }
+
+    .aa-select.is-filled{
+      border-color:#FDBA74;
+      color:var(--ink);
+      background:#FFF7ED;
+    }
+
+    .aa-result-wrap{
+      padding:0 18px 18px;
+    }
+
+    .aa-result{
+      overflow:hidden;
+      padding:28px;
+      border-radius:24px;
+      animation:aa-result .45s cubic-bezier(.22,1,.36,1) both;
+      text-align:center;
+    }
+
+    .aa-result.is-accepted{
+      border:1px solid var(--green-line);
+      color:var(--green);
+      background:
+        radial-gradient(circle at 12% 0%,rgba(34,197,94,.14),transparent 16rem),
+        var(--green-soft);
+      box-shadow:0 12px 32px rgba(21,128,61,.10);
+    }
+
+    .aa-result.is-refused{
+      border:1px solid var(--red-line);
+      color:var(--red);
+      background:
+        radial-gradient(circle at 12% 0%,rgba(239,68,68,.11),transparent 16rem),
+        var(--red-soft);
+      box-shadow:0 12px 32px rgba(185,28,28,.08);
+    }
+
+    .aa-result h2{
+      margin:0;
+      font-size:clamp(26px,4.5vw,36px);
+      font-weight:950;
+      line-height:1.35;
+    }
+
+    .aa-result p{
+      max-width:610px;
+      margin:9px auto 0;
+      color:currentColor;
+      font-size:15px;
+      font-weight:700;
+      line-height:1.8;
+      opacity:.9;
+    }
+
+    .aa-cta{
+      display:flex;
+      width:min(100%,520px);
+      min-height:58px;
+      margin:22px auto 0;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      padding:14px 24px;
+      border-radius:17px;
       color:#fff;
+      background:linear-gradient(180deg,#FB923C,var(--orange-dark));
       box-shadow:0 14px 30px rgba(249,115,22,.28);
+      font-size:17px;
+      font-weight:900;
+      text-decoration:none;
       transition:transform .18s ease,box-shadow .18s ease;
     }
-    .ee-ctaBottom:hover{transform:translateY(-1px); box-shadow:0 17px 34px rgba(249,115,22,.32);}
-    .ee-ctaBottom:active{transform:scale(.99);}
-    .ee-disclaimer{
-      margin:0;
-      padding:0 18px 18px;
-      color:#9ca3af;
+
+    .aa-cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 36px rgba(249,115,22,.34);
+    }
+
+    .aa-cta:active{transform:scale(.99);}
+
+    .aa-cta-arrow{
+      font-family:"Inter",sans-serif;
+      font-size:18px;
+      direction:ltr;
+    }
+
+    .aa-footer{
+      padding:22px 16px 0;
+      color:#A8A29E;
       font-size:11px;
       font-weight:600;
       text-align:center;
     }
-    @keyframes eeFadeUp{
-      from{opacity:0; transform:translateY(8px);}
+
+    @keyframes aa-rise{
+      from{opacity:0; transform:translateY(12px);}
       to{opacity:1; transform:translateY(0);}
     }
-    @media (prefers-reduced-motion:reduce){
-      *,*::before,*::after{scroll-behavior:auto !important; animation-duration:.01ms !important; transition-duration:.01ms !important;}
+
+    @keyframes aa-result{
+      from{opacity:0; transform:translateY(10px) scale(.99);}
+      to{opacity:1; transform:translateY(0) scale(1);}
     }
-    @media (max-width:900px),(hover:none) and (pointer:coarse){
-      body{padding:12px;}
-      .ee-heroTop{flex-direction:column; align-items:flex-start;}
-      .ee-title{font-size:22px;}
-      .ee-sub{font-size:14px; line-height:1.45;}
-      .ee-logo{width:46px; height:46px; border-radius:16px; font-size:18px;}
-      .ee-grid{grid-template-columns:1fr; justify-content:stretch;}
-      .ee-cell{border-right:none; border-bottom:none; padding:0;}
-      .ee-label{
-        justify-content:flex-start;
-        font-size:16px;
-        padding:12px 14px 6px 14px;
-        border-top:1px solid #e5e7eb;
+
+    @media (max-width:700px){
+      .aa-page{width:min(100% - 20px,960px); padding-top:10px;}
+      .aa-nav{min-height:52px;}
+      .aa-mini{display:none;}
+      .aa-hero{padding:34px 8px 25px;}
+      .aa-hero h1{font-size:32px;}
+      .aa-form-shell{border-radius:25px;}
+      .aa-form-head{padding:18px; align-items:flex-start;}
+      .aa-form-head h2{font-size:16px;}
+      .aa-questions{grid-template-columns:1fr; padding:12px; gap:10px;}
+      .aa-question,.aa-question:last-child{grid-column:auto;}
+      .aa-question{padding:15px; border-radius:19px;}
+      .aa-question-top{min-height:auto;}
+      .aa-question label{font-size:15px;}
+      .aa-select{min-height:56px; font-size:15px;}
+      .aa-result-wrap{padding:0 12px 12px;}
+      .aa-result{padding:24px 17px; border-radius:20px;}
+      .aa-result p{font-size:14px;}
+      .aa-cta{min-height:58px; font-size:16px;}
+    }
+
+    @media (max-width:360px){
+      .aa-wordmark em{display:none;}
+      .aa-hero h1{font-size:29px;}
+      .aa-count{display:none;}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto;}
+      *,*::before,*::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
       }
-      .ee-age,.ee-diplome,.ee-exp,.ee-sf{padding:0 14px 12px 14px; border-bottom:1px solid #e5e7eb;}
-      .ee-selectWrap{max-width:100%;}
-      .ee-card select{font-size:16px; padding:12px 42px 12px 14px; min-height:52px;}
-      .ee-banner{margin:12px 12px 10px 12px; font-size:18px; padding:16px 14px;}
-      .ee-langBox{margin:12px; padding:18px;}
-      .ee-langTitle{font-size:20px;}
-      .ee-ctaBottomWrap{padding:16px 12px 18px 12px;}
-      .ee-ctaBottom{font-size:20px; padding:18px; min-height:60px;}
-      .ee-badge{white-space:normal;}
     }
   </style>
 </head>
 <body>
-  <main class="ee-wrap">
-    <div class="ee-card">
-      <div class="ee-hero">
-        <div class="ee-heroTop">
-          <div class="ee-brand">
-            <div class="ee-logo" aria-label="Aurel Academy">AA</div>
-            <div>
-              <h1 class="ee-title">Simulateur Allemagne</h1>
-              <p class="ee-sub">Remplissez toutes les informations pour savoir immédiatement si votre profil est accepté.</p>
-            </div>
+  <main class="aa-page">
+    <nav class="aa-nav" aria-label="Aurel Academy">
+      <a class="aa-brand" href="https://aurel-academy.com" aria-label="Aurel Academy">
+        <span class="aa-logo" aria-hidden="true">AA</span>
+        <span class="aa-wordmark"><strong>Aurel</strong><em>Academy</em></span>
+      </a>
+      <span class="aa-mini">محاكي توجيهي سريع</span>
+    </nav>
+
+    <header class="aa-hero">
+      <div class="aa-badge">الدراسة والعمل في ألمانيا 🇩🇪</div>
+      <h1>محاكي القبول في ألمانيا</h1>
+      <p>جاوب على الأسئلة واعرف فوراً إذا كان ملفك مقبول أو مرفوض.</p>
+    </header>
+
+    <section class="aa-form-shell" aria-labelledby="simulator-form-title">
+      <div class="aa-form-head">
+        <div>
+          <h2 id="simulator-form-title">معلومات الملف</h2>
+          <p>اختار إجابة واحدة في كل خانة.</p>
+        </div>
+        <span class="aa-count">5 أسئلة</span>
+      </div>
+
+      <div class="aa-questions">
+        <div class="aa-question" style="--delay:40ms">
+          <div class="aa-question-top">
+            <span class="aa-number" aria-hidden="true">01</span>
+            <label for="aa-age">شحال عمرك؟</label>
           </div>
-          <div class="ee-badge">
-            <span class="ee-dot"></span>
-            Aurel Academy &bull; Allemagne
+          <div class="aa-select-wrap">
+            <select class="aa-select" id="aa-age">
+              <option value="">— اختر الإجابة —</option>
+              <option>أقل من 18 سنة</option>
+              <option>من 18 إلى 24 سنة</option>
+              <option>من 25 إلى 29 سنة</option>
+              <option>من 30 إلى 34 سنة</option>
+              <option>من 35 إلى 39 سنة</option>
+              <option>من 40 إلى 49 سنة</option>
+              <option>50 سنة فما فوق</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="aa-question" style="--delay:90ms">
+          <div class="aa-question-top">
+            <span class="aa-number" aria-hidden="true">02</span>
+            <label for="aa-diploma">ما هو آخر مستوى دراسي وصلت له؟</label>
+          </div>
+          <div class="aa-select-wrap">
+            <select class="aa-select" id="aa-diploma">
+              <option value="">— اختر الإجابة —</option>
+              <option>بدون شهادة</option>
+              <option>مستوى ثانوي بدون بكالوريا</option>
+              <option>شهادة البكالوريا</option>
+              <option>شهادة تكوين مهني</option>
+              <option>تقني أو تقني سامي (TS)</option>
+              <option>ليسانس</option>
+              <option>ماستر أو مهندس</option>
+              <option>دكتوراه</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="aa-question" style="--delay:140ms">
+          <div class="aa-question-top">
+            <span class="aa-number" aria-hidden="true">03</span>
+            <label for="aa-experience">كم سنة عندك خبرة في العمل؟</label>
+          </div>
+          <div class="aa-select-wrap">
+            <select class="aa-select" id="aa-experience">
+              <option value="">— اختر الإجابة —</option>
+              <option>بدون خبرة</option>
+              <option>أقل من سنة</option>
+              <option>1 إلى 2 سنوات</option>
+              <option>3 إلى 5 سنوات</option>
+              <option>أكثر من 5 سنوات</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="aa-question" style="--delay:190ms">
+          <div class="aa-question-top">
+            <span class="aa-number" aria-hidden="true">04</span>
+            <label for="aa-german">واش هو مستواك الحالي في اللغة الألمانية؟</label>
+          </div>
+          <div class="aa-select-wrap">
+            <select class="aa-select" id="aa-german">
+              <option value="">— اختر الإجابة —</option>
+              <option dir="ltr">A0</option>
+              <option dir="ltr">A1</option>
+              <option dir="ltr">A2</option>
+              <option dir="ltr">B1</option>
+              <option dir="ltr">B2</option>
+              <option dir="ltr">C1</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="aa-question" style="--delay:240ms">
+          <div class="aa-question-top">
+            <span class="aa-number" aria-hidden="true">05</span>
+            <label for="aa-start">إمتى حاب تبدأ مشروعك؟</label>
+          </div>
+          <div class="aa-select-wrap">
+            <select class="aa-select" id="aa-start">
+              <option value="">— اختر الإجابة —</option>
+              <option>فوراً</option>
+              <option>خلال 3 أشهر</option>
+              <option>خلال 6 أشهر</option>
+              <option>بعد أكثر من 6 أشهر</option>
+            </select>
           </div>
         </div>
       </div>
 
-      <div class="ee-grid">
-        <div class="ee-cell ee-label"></div>
-        <div class="ee-cell"></div>
-        <div class="ee-cell ee-pointsHead" aria-hidden="true">Points</div>
-
-        <div class="ee-cell ee-label"><label for="ee-age">Âge</label></div>
-        <div class="ee-cell ee-age"><div class="ee-selectWrap">
-          <select id="ee-age">
-            <option value="">&mdash; Choisir &mdash;</option>
-            <option>Moins de 18 ans</option>
-            <option>18-25 ans</option>
-            <option>26-30 ans</option>
-            <option>31-35 ans</option>
-            <option>36-40 ans</option>
-            <option>41-45 ans</option>
-            <option>46 ans et plus</option>
-          </select>
-        </div></div>
-        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-agePts">0</span></div>
-
-        <div class="ee-cell ee-label"><label for="ee-diplome">Plus haut diplôme</label></div>
-        <div class="ee-cell ee-diplome"><div class="ee-selectWrap">
-          <select id="ee-diplome">
-            <option value="">&mdash; Choisir &mdash;</option>
-            <option>Aucun diplôme</option>
-            <option>Niveau secondaire sans BAC</option>
-            <option>Baccalauréat (BAC)</option>
-            <option>Formation professionnelle (CAP / BEP)</option>
-            <option>Technicien / TS / BTS</option>
-            <option>Licence</option>
-            <option>Master / Ingénieur</option>
-            <option>Doctorat</option>
-          </select>
-        </div></div>
-        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-dipPts">0</span></div>
-
-        <div class="ee-cell ee-label"><label for="ee-exp">Années d’expérience</label></div>
-        <div class="ee-cell ee-exp"><div class="ee-selectWrap">
-          <select id="ee-exp">
-            <option value="">&mdash; Choisir &mdash;</option>
-            <option>Aucune expérience</option>
-            <option>Moins d’un an</option>
-            <option>1-2 ans</option>
-            <option>3-5 ans</option>
-            <option>6 ans ou plus</option>
-          </select>
-        </div></div>
-        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-expPts">0</span></div>
-
-        <div class="ee-cell ee-label"><label for="ee-german">Niveau actuel en allemand</label></div>
-        <div class="ee-cell ee-sf"><div class="ee-selectWrap">
-          <select id="ee-german">
-            <option value="">&mdash; Choisir &mdash;</option>
-            <option>A0</option>
-            <option>A1</option>
-            <option>A2</option>
-            <option>B1</option>
-            <option>B2</option>
-            <option>C1</option>
-          </select>
-        </div></div>
-        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-germanPts">0</span></div>
-
+      <div class="aa-result-wrap">
+        <section id="aa-result" class="aa-result" role="status" aria-live="polite" hidden>
+          <h2 id="aa-result-title"></h2>
+          <p id="aa-result-text"></p>
+          <a id="aa-cta" class="aa-cta" href="https://app.aurel-academy.com" target="_blank" rel="noopener" hidden>
+            <span>احجز مكانك الآن</span>
+            <span class="aa-cta-arrow" aria-hidden="true">↗</span>
+          </a>
+        </section>
       </div>
+    </section>
 
-      <div id="ee-banner" class="ee-banner" role="status" aria-live="polite"></div>
-
-      <div class="ee-langBox" id="ee-langBox">
-        <div class="ee-langTitle">
-          <span>✅ Votre profil répond aux critères de l'immigration vers l'Allemagne.</span>
-          <span class="ee-tag">Profil accepté</span>
-        </div>
-        <p class="ee-langHelp">Vous pouvez maintenant retourner au Live YouTube pour découvrir la suite de votre parcours.</p>
-        <div id="ee-langOptions" class="ee-langOptions" aria-hidden="true"></div>
-      </div>
-
-      <div id="ee-ctaBottomWrap" class="ee-ctaBottomWrap">
-        <a id="ee-ctaBottom" class="ee-ctaBottom" href="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live" rel="noreferrer">
-          Retour au Live YouTube
-        </a>
-      </div>
-
-      <p class="ee-disclaimer">Simulation indicative. Ce résultat ne constitue pas une décision officielle d’éligibilité des autorités allemandes.</p>
-    </div>
+    <footer class="aa-footer">Aurel Academy · ألمانيا</footer>
   </main>
 
   <script>
     document.addEventListener("DOMContentLoaded",function(){
-      var LIVE_REDIRECT_URL="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live";
-      var PASS_MARK=50;
+      var CTA_URL="https://app.aurel-academy.com";
+      var PASS_MARK=14;
 
       var AGE={
-        "Moins de 18 ans":0,
-        "18-25 ans":25,
-        "26-30 ans":23,
-        "31-35 ans":20,
-        "36-40 ans":14,
-        "41-45 ans":10,
-        "46 ans et plus":6
+        "أقل من 18 سنة":0,
+        "من 18 إلى 24 سنة":5,
+        "من 25 إلى 29 سنة":5,
+        "من 30 إلى 34 سنة":4,
+        "من 35 إلى 39 سنة":3,
+        "من 40 إلى 49 سنة":2,
+        "50 سنة فما فوق":1
       };
-      var DIPLOME={
-        "Aucun diplôme":0,
-        "Niveau secondaire sans BAC":10,
-        "Baccalauréat (BAC)":18,
-        "Formation professionnelle (CAP / BEP)":19,
-        "Technicien / TS / BTS":20,
-        "Licence":22,
-        "Master / Ingénieur":24,
-        "Doctorat":24
+
+      var DIPLOMA={
+        "بدون شهادة":0,
+        "مستوى ثانوي بدون بكالوريا":2,
+        "شهادة البكالوريا":4,
+        "شهادة تكوين مهني":5,
+        "تقني أو تقني سامي (TS)":5,
+        "ليسانس":5,
+        "ماستر أو مهندس":5,
+        "دكتوراه":5
       };
-      var EXP={
-        "Aucune expérience":6,
-        "Moins d’un an":8,
-        "1-2 ans":12,
-        "3-5 ans":15,
-        "6 ans ou plus":15
+
+      var EXPERIENCE={
+        "بدون خبرة":0,
+        "أقل من سنة":1,
+        "1 إلى 2 سنوات":3,
+        "3 إلى 5 سنوات":4,
+        "أكثر من 5 سنوات":5
       };
-      var GERMAN={"A0":4,"A1":8,"A2":13,"B1":18,"B2":20,"C1":20};
 
-      var elAge=document.getElementById("ee-age");
-      var elDip=document.getElementById("ee-diplome");
-      var elExp=document.getElementById("ee-exp");
-      var elGerman=document.getElementById("ee-german");
-      var banner=document.getElementById("ee-banner");
-      var successBox=document.getElementById("ee-langBox");
-      var ctaBottomWrap=document.getElementById("ee-ctaBottomWrap");
-      var ctaBottom=document.getElementById("ee-ctaBottom");
+      var GERMAN={"A0":0,"A1":1,"A2":3,"B1":5,"B2":5,"C1":5};
 
-      function valueOf(map,key){return map[key]||0;}
+      var START={
+        "فوراً":5,
+        "خلال 3 أشهر":4,
+        "خلال 6 أشهر":3,
+        "بعد أكثر من 6 أشهر":1
+      };
 
-      function allFilled(){
-        return elAge.value&&elDip.value&&elExp.value&&elGerman.value;
+      var age=document.getElementById("aa-age");
+      var diploma=document.getElementById("aa-diploma");
+      var experience=document.getElementById("aa-experience");
+      var german=document.getElementById("aa-german");
+      var start=document.getElementById("aa-start");
+      var selects=[age,diploma,experience,german,start];
+      var result=document.getElementById("aa-result");
+      var resultTitle=document.getElementById("aa-result-title");
+      var resultText=document.getElementById("aa-result-text");
+      var cta=document.getElementById("aa-cta");
+      var wasComplete=false;
+
+      function points(map,key){
+        return Object.prototype.hasOwnProperty.call(map,key)?map[key]:0;
+      }
+
+      function isComplete(){
+        return selects.every(function(select){return Boolean(select.value);});
+      }
+
+      function updateFilledState(){
+        selects.forEach(function(select){
+          select.classList.toggle("is-filled",Boolean(select.value));
+        });
       }
 
       function hideResult(){
-        banner.style.display="none";
-        successBox.style.display="none";
-        ctaBottomWrap.style.display="none";
+        result.hidden=true;
+        result.classList.remove("is-accepted","is-refused");
+        cta.hidden=true;
       }
 
-      function showAccepted(){
-        banner.innerHTML="🟢 Félicitations !<br>Votre profil est accepté.";
-        banner.style.display="block";
-        banner.style.background="#dcfce7";
-        banner.style.border="1px solid #86efac";
-        banner.style.color="#166534";
-        successBox.style.display="block";
-        ctaBottomWrap.style.display="block";
+      function showResult(accepted){
+        result.hidden=false;
+        result.classList.toggle("is-accepted",accepted);
+        result.classList.toggle("is-refused",!accepted);
+        resultTitle.textContent=accepted?"✅ مقبول":"❌ مرفوض حالياً";
+        resultText.textContent=accepted
+          ?"ملفك مؤهل مبدئياً للانضمام إلى برنامج Aurel Academy."
+          :"ملفك لا يستوفي الشروط المطلوبة حالياً.";
+        cta.hidden=!accepted;
+        cta.href=CTA_URL;
       }
 
-      function showRefused(){
-        banner.textContent="🔴 Votre profil n'est actuellement pas accepté.";
-        banner.style.display="block";
-        banner.style.background="#fee2e2";
-        banner.style.border="1px solid #fca5a5";
-        banner.style.color="#991b1b";
-        successBox.style.display="none";
-        ctaBottomWrap.style.display="none";
-      }
+      function calculate(){
+        updateFilledState();
 
-      function eeUpdateAll(){
-        var agePts=valueOf(AGE,elAge.value);
-        var dipPts=valueOf(DIPLOME,elDip.value);
-        var expPts=valueOf(EXP,elExp.value);
-        var germanPts=valueOf(GERMAN,elGerman.value);
-
-        document.getElementById("ee-agePts").textContent=agePts;
-        document.getElementById("ee-dipPts").textContent=dipPts;
-        document.getElementById("ee-expPts").textContent=expPts;
-        document.getElementById("ee-germanPts").textContent=germanPts;
-        ctaBottom.href=LIVE_REDIRECT_URL;
-
-        if(!allFilled()){
+        if(!isComplete()){
+          wasComplete=false;
           hideResult();
           return;
         }
 
-        var internalScore=agePts+dipPts+expPts+germanPts;
-        var hardStop=elAge.value==="Moins de 18 ans"||elDip.value==="Aucun diplôme";
-        var accepted=!hardStop&&internalScore>=PASS_MARK;
+        var internalScore=
+          points(AGE,age.value)+
+          points(DIPLOMA,diploma.value)+
+          points(EXPERIENCE,experience.value)+
+          points(GERMAN,german.value)+
+          points(START,start.value);
 
-        if(accepted){showAccepted();}
-        else{showRefused();}
+        showResult(internalScore>=PASS_MARK);
+
+        if(!wasComplete){
+          wasComplete=true;
+          window.requestAnimationFrame(function(){
+            result.scrollIntoView({
+              behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",
+              block:"nearest"
+            });
+          });
+        }
       }
 
-      [elAge,elDip,elExp,elGerman].forEach(function(element){
-        element.addEventListener("change",eeUpdateAll);
-      });
-
-      ctaBottom.addEventListener("click",function(event){
-        event.preventDefault();
-        window.location.replace(LIVE_REDIRECT_URL);
+      selects.forEach(function(select){
+        select.addEventListener("change",calculate);
       });
 
       hideResult();
-      eeUpdateAll();
+      updateFilledState();
     });
   </script>
 </body>
