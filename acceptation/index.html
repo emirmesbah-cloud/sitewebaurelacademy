@@ -145,7 +145,6 @@
     .ee-diplome select{background:#ffedd5; color:#9a3412;}
     .ee-exp select{background:#fff7ed; color:#c2410c;}
     .ee-sf select{background:#fef3c7; color:#92400e;}
-    .ee-fam select{background:#ffedd5; color:#9a3412;}
     .ee-banner{
       margin:14px 18px 10px 18px;
       padding:18px 16px;
@@ -256,7 +255,7 @@
         padding:12px 14px 6px 14px;
         border-top:1px solid #e5e7eb;
       }
-      .ee-age,.ee-diplome,.ee-exp,.ee-sf,.ee-fam{padding:0 14px 12px 14px; border-bottom:1px solid #e5e7eb;}
+      .ee-age,.ee-diplome,.ee-exp,.ee-sf{padding:0 14px 12px 14px; border-bottom:1px solid #e5e7eb;}
       .ee-selectWrap{max-width:100%;}
       .ee-card select{font-size:16px; padding:12px 42px 12px 14px; min-height:52px;}
       .ee-banner{margin:12px 12px 10px 12px; font-size:18px; padding:16px 14px;}
@@ -350,17 +349,6 @@
         </div></div>
         <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-germanPts">0</span></div>
 
-        <div class="ee-cell ee-label"><label for="ee-start">Prêt à démarrer votre projet</label></div>
-        <div class="ee-cell ee-fam"><div class="ee-selectWrap">
-          <select id="ee-start">
-            <option value="">&mdash; Choisir &mdash;</option>
-            <option>Immédiatement</option>
-            <option>1-3 mois</option>
-            <option>3-6 mois</option>
-            <option>Plus de 6 mois</option>
-          </select>
-        </div></div>
-        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-startPts">0</span></div>
       </div>
 
       <div id="ee-banner" class="ee-banner" role="status" aria-live="polite"></div>
@@ -387,7 +375,7 @@
   <script>
     document.addEventListener("DOMContentLoaded",function(){
       var LIVE_REDIRECT_URL="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live";
-      var PASS_MARK=60;
+      var PASS_MARK=50;
 
       var AGE={
         "Moins de 18 ans":0,
@@ -416,13 +404,11 @@
         "6 ans ou plus":15
       };
       var GERMAN={"A0":4,"A1":8,"A2":13,"B1":18,"B2":20,"C1":20};
-      var START={"Immédiatement":16,"1-3 mois":15,"3-6 mois":12,"Plus de 6 mois":5};
 
       var elAge=document.getElementById("ee-age");
       var elDip=document.getElementById("ee-diplome");
       var elExp=document.getElementById("ee-exp");
       var elGerman=document.getElementById("ee-german");
-      var elStart=document.getElementById("ee-start");
       var banner=document.getElementById("ee-banner");
       var successBox=document.getElementById("ee-langBox");
       var ctaBottomWrap=document.getElementById("ee-ctaBottomWrap");
@@ -431,7 +417,7 @@
       function valueOf(map,key){return map[key]||0;}
 
       function allFilled(){
-        return elAge.value&&elDip.value&&elExp.value&&elGerman.value&&elStart.value;
+        return elAge.value&&elDip.value&&elExp.value&&elGerman.value;
       }
 
       function hideResult(){
@@ -465,13 +451,11 @@
         var dipPts=valueOf(DIPLOME,elDip.value);
         var expPts=valueOf(EXP,elExp.value);
         var germanPts=valueOf(GERMAN,elGerman.value);
-        var startPts=valueOf(START,elStart.value);
 
         document.getElementById("ee-agePts").textContent=agePts;
         document.getElementById("ee-dipPts").textContent=dipPts;
         document.getElementById("ee-expPts").textContent=expPts;
         document.getElementById("ee-germanPts").textContent=germanPts;
-        document.getElementById("ee-startPts").textContent=startPts;
         ctaBottom.href=LIVE_REDIRECT_URL;
 
         if(!allFilled()){
@@ -479,7 +463,7 @@
           return;
         }
 
-        var internalScore=agePts+dipPts+expPts+germanPts+startPts;
+        var internalScore=agePts+dipPts+expPts+germanPts;
         var hardStop=elAge.value==="Moins de 18 ans"||elDip.value==="Aucun diplôme";
         var accepted=!hardStop&&internalScore>=PASS_MARK;
 
@@ -487,7 +471,7 @@
         else{showRefused();}
       }
 
-      [elAge,elDip,elExp,elGerman,elStart].forEach(function(element){
+      [elAge,elDip,elExp,elGerman].forEach(function(element){
         element.addEventListener("change",eeUpdateAll);
       });
 
