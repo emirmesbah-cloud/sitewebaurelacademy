@@ -575,7 +575,7 @@
   <script>
     document.addEventListener("DOMContentLoaded",function(){
       var LIVE_REDIRECT_URL="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live";
-      var PASS_MARK=62;
+      var PASS_MARK=36;
 
       var AGE={
         "أقل من 18 سنة":0,
@@ -605,8 +605,6 @@
         "3 إلى 5 سنوات":17,
         "أكثر من 5 سنوات":22
       };
-
-      var GERMAN={"A0":0,"A1":7,"A2":16,"B1":28,"B2":33,"C1":35};
 
       var age=document.getElementById("aa-age");
       var diploma=document.getElementById("aa-diploma");
@@ -668,21 +666,8 @@
         var internalScore=
           points(AGE,age.value)+
           points(DIPLOMA,diploma.value)+
-          points(EXPERIENCE,experience.value)+
-          points(GERMAN,german.value);
+          points(EXPERIENCE,experience.value);
 
-        var ageBelow40=[
-          "من 18 إلى 24 سنة",
-          "من 25 إلى 29 سنة",
-          "من 30 إلى 34 سنة",
-          "من 35 إلى 39 سنة"
-        ].indexOf(age.value)!==-1;
-        var advancedDiploma=[
-          "تقني أو تقني سامي (TS)",
-          "ليسانس",
-          "ماستر أو مهندس",
-          "دكتوراه"
-        ].indexOf(diploma.value)!==-1;
         var seniorDiploma=[
           "شهادة تكوين مهني",
           "تقني أو تقني سامي (TS)",
@@ -691,15 +676,10 @@
           "دكتوراه"
         ].indexOf(diploma.value)!==-1;
         var strongExperience=["3 إلى 5 سنوات","أكثر من 5 سنوات"].indexOf(experience.value)!==-1;
-        var veryStrongExperience=experience.value==="أكثر من 5 سنوات";
-        var strongGerman=["B1","B2","C1"].indexOf(german.value)!==-1;
-        var exceptionalA0=ageBelow40&&advancedDiploma&&veryStrongExperience;
 
         var blocked=
           age.value==="أقل من 18 سنة"||
-          (german.value==="A0"&&!exceptionalA0)||
-          (age.value==="من 40 إلى 49 سنة"&&german.value==="A0")||
-          (age.value==="50 سنة فما فوق"&&!(strongGerman&&strongExperience&&seniorDiploma));
+          (age.value==="50 سنة فما فوق"&&!(strongExperience&&seniorDiploma));
 
         showResult(!blocked&&internalScore>=PASS_MARK);
 
