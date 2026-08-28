@@ -668,18 +668,9 @@
           points(DIPLOMA,diploma.value)+
           points(EXPERIENCE,experience.value);
 
-        var seniorDiploma=[
-          "شهادة تكوين مهني",
-          "تقني أو تقني سامي (TS)",
-          "ليسانس",
-          "ماستر أو مهندس",
-          "دكتوراه"
-        ].indexOf(diploma.value)!==-1;
-        var strongExperience=["3 إلى 5 سنوات","أكثر من 5 سنوات"].indexOf(experience.value)!==-1;
-
         var blocked=
           age.value==="أقل من 18 سنة"||
-          (age.value==="50 سنة فما فوق"&&!(strongExperience&&seniorDiploma));
+          age.value==="50 سنة فما فوق";
 
         showResult(!blocked&&internalScore>=PASS_MARK);
 
