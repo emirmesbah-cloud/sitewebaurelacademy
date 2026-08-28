@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f97316">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Simulateur Allemagne Aurel Academy : découvrez immédiatement si votre profil est accepté.">
+  <title>Simulateur Allemagne | Aurel Academy</title>
+  <style>
+    *{box-sizing:border-box;}
+    html{background:#f7f7f5;}
+    body{
+      margin:0;
+      min-width:0;
+      min-height:100vh;
+      padding:clamp(16px,4vw,48px);
+      background:
+        radial-gradient(circle at top right, rgba(249,115,22,.10), transparent 34rem),
+        #f7f7f5;
+      color:#111827;
+      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    .ee-wrap{max-width:1100px; margin:0 auto;}
+    .ee-card{
+      background:#ffffff;
+      border:1px solid #e5e7eb;
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.10);
+      overflow:hidden;
+      position:relative;
+    }
+    .ee-card::before{
+      content:"";
+      position:absolute;
+      inset:-40px -60px auto auto;
+      width:320px;
+      height:320px;
+      border-radius:999px;
+      background:radial-gradient(circle,rgba(249,115,22,.12),rgba(249,115,22,0) 68%);
+      pointer-events:none;
+    }
+    .ee-hero{
+      padding:18px 18px 14px 18px;
+      border-bottom:1px solid #e5e7eb;
+      background:linear-gradient(135deg,rgba(249,115,22,.14),rgba(17,24,39,.04));
+      position:relative;
+    }
+    .ee-heroTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .ee-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:260px;
+    }
+    .ee-logo{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(180deg,#ff7a18,#ea580c);
+      box-shadow:0 10px 24px rgba(249,115,22,.28);
+      color:#fff;
+      font-size:17px;
+      font-weight:1000;
+      letter-spacing:.5px;
+    }
+    .ee-title{
+      margin:0;
+      font-size:20px;
+      line-height:1.2;
+      letter-spacing:.2px;
+      color:#111827;
+    }
+    .ee-sub{
+      margin:4px 0 0 0;
+      max-width:650px;
+      color:#6b7280;
+      font-size:13px;
+      font-weight:600;
+    }
+    .ee-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.08);
+      background:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+      font-weight:900;
+      font-size:12px;
+      color:#111;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .ee-badge .ee-dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:#f97316;
+      box-shadow:0 0 0 4px rgba(249,115,22,.14);
+    }
+    .ee-grid{
+      display:grid;
+      grid-template-columns:220px minmax(0,520px);
+      justify-content:center;
+    }
+    .ee-cell{
+      padding:10px 12px;
+      border-bottom:1px solid #e5e7eb;
+      border-right:1px solid #e5e7eb;
+      display:flex;
+      align-items:center;
+      font-size:14px;
+      color:#111827;
+    }
+    .ee-cell:nth-last-child(-n+3){border-bottom:none;}
+    .ee-label{font-weight:900; justify-content:center;}
+    .ee-pointsHead,.ee-points{display:none !important;}
+    .ee-selectWrap{width:100%; max-width:520px;}
+    .ee-card select{
+      width:100%;
+      padding:9px 42px 9px 12px;
+      font-size:15px;
+      font-weight:900;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      outline:none;
+      background:#fff;
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+      cursor:pointer;
+    }
+    .ee-card select:focus-visible{outline:3px solid rgba(249,115,22,.28); outline-offset:2px;}
+    .ee-age select{background:#ea580c; color:#fff;}
+    .ee-diplome select{background:#ffedd5; color:#9a3412;}
+    .ee-exp select{background:#fff7ed; color:#c2410c;}
+    .ee-sf select{background:#fef3c7; color:#92400e;}
+    .ee-fam select{background:#ffedd5; color:#9a3412;}
+    .ee-banner{
+      margin:14px 18px 10px 18px;
+      padding:18px 16px;
+      border-radius:16px;
+      font-weight:1000;
+      font-size:20px;
+      line-height:1.45;
+      text-align:center;
+      border:1px solid #e5e7eb;
+      background:#fafafa;
+      color:#333;
+      display:none;
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
+      animation:eeFadeUp .28s ease both;
+    }
+    .ee-langBox{
+      margin:12px 18px 14px 18px;
+      padding:22px;
+      border-radius:18px;
+      border:2px solid #86efac;
+      background:linear-gradient(180deg,#f0fdf4,#dcfce7);
+      display:none;
+      box-shadow:0 12px 28px rgba(34,197,94,.16);
+      animation:eeFadeUp .32s ease both;
+    }
+    .ee-langTitle{
+      font-weight:1000;
+      margin-bottom:10px;
+      font-size:22px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color:#166534;
+    }
+    .ee-langTitle .ee-tag{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(22,101,52,.14);
+      background:#fff;
+      font-size:12px;
+      font-weight:1000;
+      color:#166534;
+    }
+    .ee-langHelp{
+      margin:0;
+      font-size:15px;
+      font-weight:800;
+      color:#166534;
+      line-height:1.65;
+    }
+    .ee-langOptions{display:none;}
+    .ee-ctaBottomWrap{
+      display:none;
+      padding:18px 18px 22px 18px;
+      border-top:1px solid #e5e7eb;
+      background:linear-gradient(180deg,#fff,#fafafa);
+      text-align:center;
+      animation:eeFadeUp .36s ease both;
+    }
+    .ee-ctaBottom{
+      display:block;
+      width:100%;
+      max-width:680px;
+      margin:0 auto;
+      padding:20px 22px;
+      border-radius:18px;
+      font-weight:1000;
+      font-size:22px;
+      text-decoration:none;
+      border:1px solid rgba(0,0,0,.08);
+      background:linear-gradient(180deg,#ff7a18,#ea580c);
+      color:#fff;
+      box-shadow:0 14px 30px rgba(249,115,22,.28);
+      transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .ee-ctaBottom:hover{transform:translateY(-1px); box-shadow:0 17px 34px rgba(249,115,22,.32);}
+    .ee-ctaBottom:active{transform:scale(.99);}
+    .ee-disclaimer{
+      margin:0;
+      padding:0 18px 18px;
+      color:#9ca3af;
+      font-size:11px;
+      font-weight:600;
+      text-align:center;
+    }
+    @keyframes eeFadeUp{
+      from{opacity:0; transform:translateY(8px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto !important; animation-duration:.01ms !important; transition-duration:.01ms !important;}
+    }
+    @media (max-width:900px),(hover:none) and (pointer:coarse){
+      body{padding:12px;}
+      .ee-heroTop{flex-direction:column; align-items:flex-start;}
+      .ee-title{font-size:22px;}
+      .ee-sub{font-size:14px; line-height:1.45;}
+      .ee-logo{width:46px; height:46px; border-radius:16px; font-size:18px;}
+      .ee-grid{grid-template-columns:1fr; justify-content:stretch;}
+      .ee-cell{border-right:none; border-bottom:none; padding:0;}
+      .ee-label{
+        justify-content:flex-start;
+        font-size:16px;
+        padding:12px 14px 6px 14px;
+        border-top:1px solid #e5e7eb;
+      }
+      .ee-age,.ee-diplome,.ee-exp,.ee-sf,.ee-fam{padding:0 14px 12px 14px; border-bottom:1px solid #e5e7eb;}
+      .ee-selectWrap{max-width:100%;}
+      .ee-card select{font-size:16px; padding:12px 42px 12px 14px; min-height:52px;}
+      .ee-banner{margin:12px 12px 10px 12px; font-size:18px; padding:16px 14px;}
+      .ee-langBox{margin:12px; padding:18px;}
+      .ee-langTitle{font-size:20px;}
+      .ee-ctaBottomWrap{padding:16px 12px 18px 12px;}
+      .ee-ctaBottom{font-size:20px; padding:18px; min-height:60px;}
+      .ee-badge{white-space:normal;}
+    }
+  </style>
+</head>
+<body>
+  <main class="ee-wrap">
+    <div class="ee-card">
+      <div class="ee-hero">
+        <div class="ee-heroTop">
+          <div class="ee-brand">
+            <div class="ee-logo" aria-label="Aurel Academy">AA</div>
+            <div>
+              <h1 class="ee-title">Simulateur Allemagne</h1>
+              <p class="ee-sub">Remplissez toutes les informations pour savoir immédiatement si votre profil est accepté.</p>
+            </div>
+          </div>
+          <div class="ee-badge">
+            <span class="ee-dot"></span>
+            Aurel Academy &bull; Allemagne
+          </div>
+        </div>
+      </div>
+
+      <div class="ee-grid">
+        <div class="ee-cell ee-label"></div>
+        <div class="ee-cell"></div>
+        <div class="ee-cell ee-pointsHead" aria-hidden="true">Points</div>
+
+        <div class="ee-cell ee-label"><label for="ee-age">Âge</label></div>
+        <div class="ee-cell ee-age"><div class="ee-selectWrap">
+          <select id="ee-age">
+            <option value="">&mdash; Choisir &mdash;</option>
+            <option>Moins de 18 ans</option>
+            <option>18-25 ans</option>
+            <option>26-30 ans</option>
+            <option>31-35 ans</option>
+            <option>36-40 ans</option>
+            <option>41-45 ans</option>
+            <option>46 ans et plus</option>
+          </select>
+        </div></div>
+        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-agePts">0</span></div>
+
+        <div class="ee-cell ee-label"><label for="ee-diplome">Plus haut diplôme</label></div>
+        <div class="ee-cell ee-diplome"><div class="ee-selectWrap">
+          <select id="ee-diplome">
+            <option value="">&mdash; Choisir &mdash;</option>
+            <option>Aucun diplôme</option>
+            <option>Niveau secondaire sans BAC</option>
+            <option>Baccalauréat (BAC)</option>
+            <option>Formation professionnelle (CAP / BEP)</option>
+            <option>Technicien / TS / BTS</option>
+            <option>Licence</option>
+            <option>Master / Ingénieur</option>
+            <option>Doctorat</option>
+          </select>
+        </div></div>
+        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-dipPts">0</span></div>
+
+        <div class="ee-cell ee-label"><label for="ee-exp">Années d’expérience</label></div>
+        <div class="ee-cell ee-exp"><div class="ee-selectWrap">
+          <select id="ee-exp">
+            <option value="">&mdash; Choisir &mdash;</option>
+            <option>Aucune expérience</option>
+            <option>Moins d’un an</option>
+            <option>1-2 ans</option>
+            <option>3-5 ans</option>
+            <option>6 ans ou plus</option>
+          </select>
+        </div></div>
+        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-expPts">0</span></div>
+
+        <div class="ee-cell ee-label"><label for="ee-german">Niveau actuel en allemand</label></div>
+        <div class="ee-cell ee-sf"><div class="ee-selectWrap">
+          <select id="ee-german">
+            <option value="">&mdash; Choisir &mdash;</option>
+            <option>A0</option>
+            <option>A1</option>
+            <option>A2</option>
+            <option>B1</option>
+            <option>B2</option>
+            <option>C1</option>
+          </select>
+        </div></div>
+        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-germanPts">0</span></div>
+
+        <div class="ee-cell ee-label"><label for="ee-start">Prêt à démarrer votre projet</label></div>
+        <div class="ee-cell ee-fam"><div class="ee-selectWrap">
+          <select id="ee-start">
+            <option value="">&mdash; Choisir &mdash;</option>
+            <option>Immédiatement</option>
+            <option>1-3 mois</option>
+            <option>3-6 mois</option>
+            <option>Plus de 6 mois</option>
+          </select>
+        </div></div>
+        <div class="ee-cell ee-points" aria-hidden="true"><span id="ee-startPts">0</span></div>
+      </div>
+
+      <div id="ee-banner" class="ee-banner" role="status" aria-live="polite"></div>
+
+      <div class="ee-langBox" id="ee-langBox">
+        <div class="ee-langTitle">
+          <span>✅ Votre profil répond aux critères d'Aurel Academy.</span>
+          <span class="ee-tag">Profil accepté</span>
+        </div>
+        <p class="ee-langHelp">Vous pouvez maintenant réserver votre place afin qu'un conseiller analyse votre dossier.</p>
+        <div id="ee-langOptions" class="ee-langOptions" aria-hidden="true"></div>
+      </div>
+
+      <div id="ee-ctaBottomWrap" class="ee-ctaBottomWrap">
+        <a id="ee-ctaBottom" class="ee-ctaBottom" href="https://app.aurel-academy.com" target="_blank" rel="noopener">
+          Réserver ma place
+        </a>
+      </div>
+
+      <p class="ee-disclaimer">Outil interne de qualification Aurel Academy. Ce résultat ne constitue pas une décision officielle d’éligibilité.</p>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded",function(){
+      var FORM_LINK="https://app.aurel-academy.com";
+      var PASS_MARK=60;
+
+      var AGE={
+        "Moins de 18 ans":0,
+        "18-25 ans":25,
+        "26-30 ans":23,
+        "31-35 ans":20,
+        "36-40 ans":14,
+        "41-45 ans":10,
+        "46 ans et plus":6
+      };
+      var DIPLOME={
+        "Aucun diplôme":0,
+        "Niveau secondaire sans BAC":10,
+        "Baccalauréat (BAC)":18,
+        "Formation professionnelle (CAP / BEP)":19,
+        "Technicien / TS / BTS":20,
+        "Licence":22,
+        "Master / Ingénieur":24,
+        "Doctorat":24
+      };
+      var EXP={
+        "Aucune expérience":6,
+        "Moins d’un an":8,
+        "1-2 ans":12,
+        "3-5 ans":15,
+        "6 ans ou plus":15
+      };
+      var GERMAN={"A0":4,"A1":8,"A2":13,"B1":18,"B2":20,"C1":20};
+      var START={"Immédiatement":16,"1-3 mois":15,"3-6 mois":12,"Plus de 6 mois":5};
+
+      var elAge=document.getElementById("ee-age");
+      var elDip=document.getElementById("ee-diplome");
+      var elExp=document.getElementById("ee-exp");
+      var elGerman=document.getElementById("ee-german");
+      var elStart=document.getElementById("ee-start");
+      var banner=document.getElementById("ee-banner");
+      var successBox=document.getElementById("ee-langBox");
+      var ctaBottomWrap=document.getElementById("ee-ctaBottomWrap");
+      var ctaBottom=document.getElementById("ee-ctaBottom");
+
+      function valueOf(map,key){return map[key]||0;}
+
+      function allFilled(){
+        return elAge.value&&elDip.value&&elExp.value&&elGerman.value&&elStart.value;
+      }
+
+      function hideResult(){
+        banner.style.display="none";
+        successBox.style.display="none";
+        ctaBottomWrap.style.display="none";
+      }
+
+      function showAccepted(){
+        banner.innerHTML="🟢 Félicitations !<br>Votre profil est accepté.";
+        banner.style.display="block";
+        banner.style.background="#dcfce7";
+        banner.style.border="1px solid #86efac";
+        banner.style.color="#166534";
+        successBox.style.display="block";
+        ctaBottomWrap.style.display="block";
+      }
+
+      function showRefused(){
+        banner.textContent="🔴 Votre profil n'est actuellement pas accepté.";
+        banner.style.display="block";
+        banner.style.background="#fee2e2";
+        banner.style.border="1px solid #fca5a5";
+        banner.style.color="#991b1b";
+        successBox.style.display="none";
+        ctaBottomWrap.style.display="none";
+      }
+
+      function eeUpdateAll(){
+        var agePts=valueOf(AGE,elAge.value);
+        var dipPts=valueOf(DIPLOME,elDip.value);
+        var expPts=valueOf(EXP,elExp.value);
+        var germanPts=valueOf(GERMAN,elGerman.value);
+        var startPts=valueOf(START,elStart.value);
+
+        document.getElementById("ee-agePts").textContent=agePts;
+        document.getElementById("ee-dipPts").textContent=dipPts;
+        document.getElementById("ee-expPts").textContent=expPts;
+        document.getElementById("ee-germanPts").textContent=germanPts;
+        document.getElementById("ee-startPts").textContent=startPts;
+        ctaBottom.href=FORM_LINK;
+
+        if(!allFilled()){
+          hideResult();
+          return;
+        }
+
+        var internalScore=agePts+dipPts+expPts+germanPts+startPts;
+        var hardStop=elAge.value==="Moins de 18 ans"||elDip.value==="Aucun diplôme";
+        var accepted=!hardStop&&internalScore>=PASS_MARK;
+
+        if(accepted){showAccepted();}
+        else{showRefused();}
+      }
+
+      [elAge,elDip,elExp,elGerman,elStart].forEach(function(element){
+        element.addEventListener("change",eeUpdateAll);
+      });
+
+      hideResult();
+      eeUpdateAll();
+    });
+  </script>
+</body>
+</html>
