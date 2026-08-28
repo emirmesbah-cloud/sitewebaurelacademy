@@ -7,6 +7,8 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="محاكي القبول في ألمانيا من Aurel Academy.">
   <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <link rel="dns-prefetch" href="https://dvrqtqghgaxhhgkoihcj.supabase.co">
+  <link rel="preconnect" href="https://dvrqtqghgaxhhgkoihcj.supabase.co" crossorigin>
   <title>محاكي القبول في ألمانيا | Aurel Academy</title>
   <style>
     :root{
@@ -302,7 +304,7 @@
 
     .aa-result{
       overflow:hidden;
-      padding:28px;
+      padding:clamp(34px,6vw,56px) clamp(20px,5vw,48px);
       border-radius:24px;
       animation:aa-result .45s cubic-bezier(.22,1,.36,1) both;
       text-align:center;
@@ -328,26 +330,52 @@
 
     .aa-result h2{
       margin:0;
-      font-size:clamp(26px,4.5vw,36px);
+      font-size:clamp(34px,6vw,52px);
       font-weight:950;
-      line-height:1.35;
+      line-height:1.3;
+      letter-spacing:-.025em;
     }
 
-    .aa-result p{
-      max-width:610px;
-      margin:9px auto 0;
+    .aa-result-subtitle{
+      max-width:700px;
+      margin:16px auto 0;
       color:currentColor;
-      font-size:15px;
-      font-weight:700;
+      font-size:clamp(16px,2.6vw,19px);
+      font-weight:800;
+      line-height:1.9;
+      opacity:.92;
+    }
+
+    .aa-result-note{
+      max-width:660px;
+      margin:10px auto 0;
+      color:currentColor;
+      font-size:12px;
+      font-weight:650;
       line-height:1.8;
-      opacity:.9;
+      opacity:.68;
+    }
+
+    .aa-cta-block{
+      margin-top:28px;
+      padding-top:24px;
+      border-top:1px solid rgba(21,128,61,.16);
+    }
+
+    .aa-cta-description{
+      max-width:650px;
+      margin:0 auto;
+      color:#4B5563;
+      font-size:13px;
+      font-weight:700;
+      line-height:1.9;
     }
 
     .aa-cta{
       display:flex;
       width:min(100%,520px);
       min-height:58px;
-      margin:22px auto 0;
+      margin:16px auto 0;
       align-items:center;
       justify-content:center;
       gap:9px;
@@ -368,12 +396,6 @@
     }
 
     .aa-cta:active{transform:scale(.99);}
-
-    .aa-cta-arrow{
-      font-family:"Inter",sans-serif;
-      font-size:18px;
-      direction:ltr;
-    }
 
     .aa-footer{
       padding:22px 16px 0;
@@ -409,8 +431,11 @@
       .aa-question label{font-size:15px;}
       .aa-select{min-height:56px; font-size:15px;}
       .aa-result-wrap{padding:0 12px 12px;}
-      .aa-result{padding:24px 17px; border-radius:20px;}
-      .aa-result p{font-size:14px;}
+      .aa-result{padding:34px 17px; border-radius:20px;}
+      .aa-result h2{font-size:35px;}
+      .aa-result-subtitle{font-size:15px;}
+      .aa-result-note,.aa-cta-description{font-size:12px;}
+      .aa-cta-block{margin-top:24px; padding-top:20px;}
       .aa-cta{min-height:58px; font-size:16px;}
     }
 
@@ -550,11 +575,14 @@
       <div class="aa-result-wrap">
         <section id="aa-result" class="aa-result" role="status" aria-live="polite" hidden>
           <h2 id="aa-result-title"></h2>
-          <p id="aa-result-text"></p>
-          <a id="aa-cta" class="aa-cta" href="https://app.aurel-academy.com" target="_blank" rel="noopener" hidden>
-            <span>احجز مكانك الآن</span>
-            <span class="aa-cta-arrow" aria-hidden="true">↗</span>
-          </a>
+          <p id="aa-result-subtitle" class="aa-result-subtitle"></p>
+          <p id="aa-result-note" class="aa-result-note"></p>
+          <div id="aa-cta-block" class="aa-cta-block" hidden>
+            <p class="aa-cta-description">في هذه الجلسة سنشرح بالتفصيل أفضل الطرق للدراسة والعمل في ألمانيا وكيف تبدأ مشروعك خطوة بخطوة.</p>
+            <a id="aa-cta" class="aa-cta" href="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live" rel="noreferrer">
+              🎥 احضر البث المباشر المجاني
+            </a>
+          </div>
         </section>
       </div>
     </section>
@@ -564,7 +592,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded",function(){
-      var CTA_URL="https://app.aurel-academy.com";
+      var LIVE_REDIRECT_URL="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live";
       var PASS_MARK=14;
 
       var AGE={
@@ -613,7 +641,9 @@
       var selects=[age,diploma,experience,german,start];
       var result=document.getElementById("aa-result");
       var resultTitle=document.getElementById("aa-result-title");
-      var resultText=document.getElementById("aa-result-text");
+      var resultSubtitle=document.getElementById("aa-result-subtitle");
+      var resultNote=document.getElementById("aa-result-note");
+      var ctaBlock=document.getElementById("aa-cta-block");
       var cta=document.getElementById("aa-cta");
       var wasComplete=false;
 
@@ -634,19 +664,22 @@
       function hideResult(){
         result.hidden=true;
         result.classList.remove("is-accepted","is-refused");
-        cta.hidden=true;
+        ctaBlock.hidden=true;
       }
 
       function showResult(accepted){
         result.hidden=false;
         result.classList.toggle("is-accepted",accepted);
         result.classList.toggle("is-refused",!accepted);
-        resultTitle.textContent=accepted?"✅ مقبول":"❌ مرفوض حالياً";
-        resultText.textContent=accepted
-          ?"ملفك مؤهل مبدئياً للانضمام إلى برنامج Aurel Academy."
-          :"ملفك لا يستوفي الشروط المطلوبة حالياً.";
-        cta.hidden=!accepted;
-        cta.href=CTA_URL;
+        resultTitle.textContent=accepted?"✅ مقبول مبدئياً":"❌ مرفوض حالياً";
+        resultSubtitle.textContent=accepted
+          ?"بناءً على المعلومات اللي قدمتها، يبدو أن عندك فرصة جيدة باش تبدأ مشروعك نحو ألمانيا."
+          :"بناءً على المعلومات اللي قدمتها، ملفك لا يستوفي حالياً الشروط الأولية للبدء في مشروعك نحو ألمانيا.";
+        resultNote.textContent=accepted
+          ?"هذه النتيجة هي تقييم أولي مبني على المعلومات التي أدخلتها وليست قراراً رسمياً من السلطات الألمانية."
+          :"يمكن تحسين فرصك مستقبلاً بعد تطوير بعض العناصر في ملفك.";
+        ctaBlock.hidden=!accepted;
+        cta.href=LIVE_REDIRECT_URL;
       }
 
       function calculate(){
@@ -680,6 +713,11 @@
 
       selects.forEach(function(select){
         select.addEventListener("change",calculate);
+      });
+
+      cta.addEventListener("click",function(event){
+        event.preventDefault();
+        window.location.replace(LIVE_REDIRECT_URL);
       });
 
       hideResult();
