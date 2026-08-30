@@ -20,6 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Tests du simulateur Ausbildung
+        run: node --test .github/tests/ausbildung-profile.test.js
+
       - name: Liste des fichiers HTML
         run: |
           echo "## HTML files in repo" >> $GITHUB_STEP_SUMMARY

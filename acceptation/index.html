@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#F97316">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="محاكي القبول في ألمانيا من Aurel Academy.">
+  <meta name="description" content="محاكي توجيهي لمعرفة إذا كان ملفك مناسباً مبدئياً لبدء مشروع Ausbildung في ألمانيا.">
   <link rel="stylesheet" href="/assets/fonts/fonts.css">
   <link rel="dns-prefetch" href="https://dvrqtqghgaxhhgkoihcj.supabase.co">
   <link rel="preconnect" href="https://dvrqtqghgaxhhgkoihcj.supabase.co" crossorigin>
-  <title>محاكي القبول في ألمانيا | Aurel Academy</title>
+  <title>محاكي القبول في Ausbildung بألمانيا | Aurel Academy</title>
   <style>
     :root{
       --orange:#F97316;
@@ -459,13 +459,13 @@
         <span class="aa-logo" aria-hidden="true">AA</span>
         <span class="aa-wordmark"><strong>Aurel</strong><em>Academy</em></span>
       </a>
-      <span class="aa-mini">محاكي توجيهي سريع</span>
+      <span class="aa-mini">محاكي Ausbildung توجيهي</span>
     </nav>
 
     <header class="aa-hero">
-      <div class="aa-badge">الدراسة والعمل في ألمانيا 🇩🇪</div>
-      <h1>محاكي القبول في ألمانيا</h1>
-      <p>جاوب على الأسئلة واعرف فوراً إذا كان ملفك مقبول أو مرفوض.</p>
+      <div class="aa-badge">Ausbildung في ألمانيا 🇩🇪</div>
+      <h1>محاكي القبول في Ausbildung بألمانيا</h1>
+      <p>جاوب على 4 أسئلة واعرف فوراً إذا كان ملفك مقبول مبدئياً باش تبدأ مشروع Ausbildung في ألمانيا.</p>
     </header>
 
     <section class="aa-form-shell" aria-labelledby="simulator-form-title">
@@ -477,22 +477,15 @@
         <span class="aa-count">4 أسئلة</span>
       </div>
 
-      <div class="aa-questions">
+      <form id="aurel-ausbildung-form" class="aa-questions" novalidate>
         <div class="aa-question" style="--delay:40ms">
           <div class="aa-question-top">
             <span class="aa-number" aria-hidden="true">01</span>
-            <label for="aa-age">شحال عمرك؟</label>
+            <label for="aurel-ausbildung-age">شحال عمرك؟</label>
           </div>
           <div class="aa-select-wrap">
-            <select class="aa-select" id="aa-age">
+            <select class="aa-select" id="aurel-ausbildung-age" name="age" required>
               <option value="">— اختر الإجابة —</option>
-              <option>أقل من 18 سنة</option>
-              <option>من 18 إلى 24 سنة</option>
-              <option>من 25 إلى 29 سنة</option>
-              <option>من 30 إلى 34 سنة</option>
-              <option>من 35 إلى 39 سنة</option>
-              <option>من 40 إلى 49 سنة</option>
-              <option>50 سنة فما فوق</option>
             </select>
           </div>
         </div>
@@ -500,19 +493,11 @@
         <div class="aa-question" style="--delay:90ms">
           <div class="aa-question-top">
             <span class="aa-number" aria-hidden="true">02</span>
-            <label for="aa-diploma">ما هو آخر مستوى دراسي وصلت له؟</label>
+            <label for="aurel-ausbildung-education">ما هو آخر مستوى دراسي أو مهني وصلت له؟</label>
           </div>
           <div class="aa-select-wrap">
-            <select class="aa-select" id="aa-diploma">
+            <select class="aa-select" id="aurel-ausbildung-education" name="education" required>
               <option value="">— اختر الإجابة —</option>
-              <option>بدون شهادة</option>
-              <option>مستوى ثانوي بدون بكالوريا</option>
-              <option>شهادة البكالوريا</option>
-              <option>شهادة تكوين مهني</option>
-              <option>تقني أو تقني سامي (TS)</option>
-              <option>ليسانس</option>
-              <option>ماستر أو مهندس</option>
-              <option>دكتوراه</option>
             </select>
           </div>
         </div>
@@ -520,16 +505,11 @@
         <div class="aa-question" style="--delay:140ms">
           <div class="aa-question-top">
             <span class="aa-number" aria-hidden="true">03</span>
-            <label for="aa-experience">كم سنة عندك خبرة في العمل؟</label>
+            <label for="aurel-ausbildung-german-level">واش هو مستواك الحالي في اللغة الألمانية؟</label>
           </div>
           <div class="aa-select-wrap">
-            <select class="aa-select" id="aa-experience">
+            <select class="aa-select" id="aurel-ausbildung-german-level" name="germanLevel" required>
               <option value="">— اختر الإجابة —</option>
-              <option>بدون خبرة</option>
-              <option>أقل من سنة</option>
-              <option>1 إلى 2 سنوات</option>
-              <option>3 إلى 5 سنوات</option>
-              <option>أكثر من 5 سنوات</option>
             </select>
           </div>
         </div>
@@ -537,22 +517,16 @@
         <div class="aa-question" style="--delay:190ms">
           <div class="aa-question-top">
             <span class="aa-number" aria-hidden="true">04</span>
-            <label for="aa-german">واش هو مستواك الحالي في اللغة الألمانية؟</label>
+            <label for="aurel-ausbildung-field-relation">واش هي علاقتك بالمجال اللي حاب تدير فيه Ausbildung؟</label>
           </div>
           <div class="aa-select-wrap">
-            <select class="aa-select" id="aa-german">
+            <select class="aa-select" id="aurel-ausbildung-field-relation" name="fieldRelation" required>
               <option value="">— اختر الإجابة —</option>
-              <option dir="ltr">A0</option>
-              <option dir="ltr">A1</option>
-              <option dir="ltr">A2</option>
-              <option dir="ltr">B1</option>
-              <option dir="ltr">B2</option>
-              <option dir="ltr">C1</option>
             </select>
           </div>
         </div>
 
-      </div>
+      </form>
 
       <div class="aa-result-wrap">
         <section id="aa-result" class="aa-result" role="status" aria-live="polite" hidden>
@@ -560,8 +534,8 @@
           <p id="aa-result-subtitle" class="aa-result-subtitle"></p>
           <p id="aa-result-note" class="aa-result-note"></p>
           <div id="aa-cta-block" class="aa-cta-block" hidden>
-            <p class="aa-cta-description">في هذه الجلسة سنشرح بالتفصيل أفضل الطرق للدراسة والعمل في ألمانيا وكيف تبدأ مشروعك خطوة بخطوة.</p>
-            <a id="aa-cta" class="aa-cta" href="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live" rel="noreferrer">
+            <p class="aa-cta-description">في البث المباشر راح نشرحولك كيفاش تبدأ مشروع Ausbildung في ألمانيا، من تعلم اللغة حتى البحث على عقد وتحضير الملف.</p>
+            <a id="aurel-ausbildung-cta" class="aa-cta" target="_blank" rel="noopener noreferrer">
               🎥 احضر البث المباشر المجاني
             </a>
           </div>
@@ -569,62 +543,41 @@
       </div>
     </section>
 
-    <footer class="aa-footer">Aurel Academy · ألمانيا</footer>
+    <footer class="aa-footer">Aurel Academy · Ausbildung في ألمانيا</footer>
   </main>
 
+  <script src="/acceptation/ausbildung-profile.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded",function(){
-      var LIVE_REDIRECT_URL="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live";
-      var PASS_MARK=36;
+      "use strict";
 
-      var AGE={
-        "أقل من 18 سنة":0,
-        "من 18 إلى 24 سنة":24,
-        "من 25 إلى 29 سنة":24,
-        "من 30 إلى 34 سنة":22,
-        "من 35 إلى 39 سنة":18,
-        "من 40 إلى 49 سنة":10,
-        "50 سنة فما فوق":4
-      };
-
-      var DIPLOMA={
-        "بدون شهادة":0,
-        "مستوى ثانوي بدون بكالوريا":5,
-        "شهادة البكالوريا":14,
-        "شهادة تكوين مهني":18,
-        "تقني أو تقني سامي (TS)":20,
-        "ليسانس":23,
-        "ماستر أو مهندس":25,
-        "دكتوراه":26
-      };
-
-      var EXPERIENCE={
-        "بدون خبرة":0,
-        "أقل من سنة":4,
-        "1 إلى 2 سنوات":10,
-        "3 إلى 5 سنوات":17,
-        "أكثر من 5 سنوات":22
-      };
-
-      var age=document.getElementById("aa-age");
-      var diploma=document.getElementById("aa-diploma");
-      var experience=document.getElementById("aa-experience");
-      var german=document.getElementById("aa-german");
-      var selects=[age,diploma,experience,german];
+      var YOUTUBE_LIVE_URL="https://dvrqtqghgaxhhgkoihcj.supabase.co/functions/v1/readiness-live";
+      var simulator=window.AurelAusbildung;
+      var age=document.getElementById("aurel-ausbildung-age");
+      var education=document.getElementById("aurel-ausbildung-education");
+      var germanLevel=document.getElementById("aurel-ausbildung-german-level");
+      var fieldRelation=document.getElementById("aurel-ausbildung-field-relation");
+      var selects=[age,education,germanLevel,fieldRelation];
       var result=document.getElementById("aa-result");
       var resultTitle=document.getElementById("aa-result-title");
       var resultSubtitle=document.getElementById("aa-result-subtitle");
       var resultNote=document.getElementById("aa-result-note");
       var ctaBlock=document.getElementById("aa-cta-block");
-      var cta=document.getElementById("aa-cta");
+      var cta=document.getElementById("aurel-ausbildung-cta");
       var wasComplete=false;
 
-      function points(map,key){
-        return Object.prototype.hasOwnProperty.call(map,key)?map[key]:0;
-      }
+      function populateSelect(select,options){
+        var fragment=document.createDocumentFragment();
 
-      function isComplete(){
-        return selects.every(function(select){return Boolean(select.value);});
+        options.forEach(function(option){
+          var node=document.createElement("option");
+          node.value=option.value;
+          node.textContent=option.label;
+          if(option.dir) node.dir=option.dir;
+          fragment.appendChild(node);
+        });
+
+        select.appendChild(fragment);
       }
 
       function updateFilledState(){
@@ -639,42 +592,49 @@
         ctaBlock.hidden=true;
       }
 
-      function showResult(accepted){
+      function showResult(decision){
+        var accepted=decision.accepted;
         result.hidden=false;
         result.classList.toggle("is-accepted",accepted);
         result.classList.toggle("is-refused",!accepted);
         resultTitle.textContent=accepted?"✅ مقبول مبدئياً":"❌ مرفوض حالياً";
         resultSubtitle.textContent=accepted
-          ?"بناءً على المعلومات اللي قدمتها، يبدو أن عندك فرصة جيدة باش تبدأ مشروعك نحو ألمانيا."
-          :"بناءً على المعلومات اللي قدمتها، ملفك لا يستوفي حالياً الشروط الأولية للبدء في مشروعك نحو ألمانيا.";
+          ?"حسب المعلومات اللي دخلتها، ملفك مناسب مبدئياً باش تبدأ التحضير لمشروع Ausbildung في ألمانيا."
+          :"حسب المعلومات اللي دخلتها، ملفك ما يطابقش حالياً الفئة المستهدفة لهذا المسار.";
         resultNote.textContent=accepted
-          ?"هذه النتيجة هي تقييم أولي مبني على المعلومات التي أدخلتها وليست قراراً رسمياً من السلطات الألمانية."
-          :"يمكن تحسين فرصك مستقبلاً بعد تطوير بعض العناصر في ملفك.";
+          ?"هذه نتيجة توجيهية فقط، وماشي موافقة رسمية على عقد Ausbildung أو الفيزا."
+          :"هذه نتيجة توجيهية فقط، وماشي قرار رسمي من السلطات الألمانية.";
         ctaBlock.hidden=!accepted;
-        cta.href=LIVE_REDIRECT_URL;
       }
 
-      function calculate(){
-        updateFilledState();
+      function currentProfile(){
+        return {
+          age:age.value,
+          education:education.value,
+          germanLevel:germanLevel.value,
+          fieldRelation:fieldRelation.value
+        };
+      }
 
-        if(!isComplete()){
+      function shouldScrollResultIntoView(){
+        var rect=result.getBoundingClientRect();
+        return window.matchMedia("(max-width: 700px)").matches&&
+          (rect.top<0||rect.bottom>window.innerHeight);
+      }
+
+      function evaluate(){
+        updateFilledState();
+        var decision=simulator.evaluateAusbildungProfile(currentProfile());
+
+        if(!decision.completed){
           wasComplete=false;
           hideResult();
           return;
         }
 
-        var internalScore=
-          points(AGE,age.value)+
-          points(DIPLOMA,diploma.value)+
-          points(EXPERIENCE,experience.value);
+        showResult(decision);
 
-        var blocked=
-          age.value==="أقل من 18 سنة"||
-          age.value==="50 سنة فما فوق";
-
-        showResult(!blocked&&internalScore>=PASS_MARK);
-
-        if(!wasComplete){
+        if(!wasComplete&&shouldScrollResultIntoView()){
           wasComplete=true;
           window.requestAnimationFrame(function(){
             result.scrollIntoView({
@@ -682,17 +642,21 @@
               block:"nearest"
             });
           });
+        }else{
+          wasComplete=true;
         }
       }
 
+      populateSelect(age,simulator.OPTIONS.age);
+      populateSelect(education,simulator.OPTIONS.education);
+      populateSelect(germanLevel,simulator.OPTIONS.germanLevel);
+      populateSelect(fieldRelation,simulator.OPTIONS.fieldRelation);
+
       selects.forEach(function(select){
-        select.addEventListener("change",calculate);
+        select.addEventListener("change",evaluate);
       });
 
-      cta.addEventListener("click",function(event){
-        event.preventDefault();
-        window.location.replace(LIVE_REDIRECT_URL);
-      });
+      cta.href=YOUTUBE_LIVE_URL;
 
       hideResult();
       updateFilledState();
